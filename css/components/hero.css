@@ -1,0 +1,184 @@
+/**
+ * hero.css
+ * 
+ * @description Hero section and canvas animation styling
+ * Includes glitch effect, scroll indicator, and hero content layout
+ * Canvas rendering handled in JavaScript (hero-canvas.js)
+ * 
+ * @components
+ * - #hero: Full-screen hero section
+ * - #hero-canvas: WebGL/2D canvas for animations
+ * - .hero-overlay: Gradient overlay on canvas
+ * - .hero-content: Text and CTA container
+ * - .glitch: Glitch effect text
+ * - .hero-scroll: Scroll indicator at bottom
+ * 
+ * @animations
+ * - glitch1, glitch2: Text glitch effects
+ * - fadeDown: Entrance animation
+ * - fadeIn: Fade entrance
+ * - scrollPulse: Scroll indicator pulse
+ * 
+ * @requires main.css, variables.css
+ */
+
+/* ─── HERO SECTION ─── */
+#hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+#hero-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ─── OVERLAY ─── */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.85) 100%);
+}
+
+/* ─── HERO CONTENT ─── */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-pre {
+  font-family: var(--font-cond);
+  font-size: 0.75rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 16px;
+  animation: fadeDown 1s ease 0.3s both;
+}
+
+/* ─── HERO TITLE WITH GLITCH ─── */
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 16vw, 14rem);
+  line-height: 0.88;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  animation: fadeDown 1s ease 0.5s both;
+  position: relative;
+}
+
+.hero-title .glitch {
+  position: relative;
+}
+
+.hero-title .glitch::before,
+.hero-title .glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.hero-title .glitch::before {
+  color: var(--red);
+  clip-path: polygon(0 30%, 100% 30%, 100% 55%, 0 55%);
+  animation: glitch1 3.5s infinite;
+}
+
+.hero-title .glitch::after {
+  color: #00eaff;
+  clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+  animation: glitch2 4s infinite;
+}
+
+@keyframes glitch1 {
+  0%, 90%, 100% { transform: translate(0); }
+  92% { transform: translate(-3px, 1px); }
+  94% { transform: translate(3px, -1px); }
+  96% { transform: translate(-2px, 0); }
+}
+
+@keyframes glitch2 {
+  0%, 88%, 100% { transform: translate(0); }
+  90% { transform: translate(3px, 2px); }
+  93% { transform: translate(-3px, -1px); }
+  95% { transform: translate(2px, 1px); }
+}
+
+/* ─── HERO SUBTITLE ─── */
+.hero-sub {
+  font-family: var(--font-cond);
+  font-size: clamp(0.9rem, 2.2vw, 1.2rem);
+  letter-spacing: 0.25em;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 24px;
+  margin-bottom: 48px;
+  animation: fadeDown 1s ease 0.7s both;
+}
+
+/* ─── HERO CTAs ─── */
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  animation: fadeDown 1s ease 0.9s both;
+}
+
+/* ─── SCROLL INDICATOR ─── */
+.hero-scroll {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: fadeIn 1s ease 1.4s both;
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, transparent, var(--red));
+  animation: scrollPulse 1.8s ease-in-out infinite;
+}
+
+.hero-scroll-text {
+  font-family: var(--font-cond);
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ─── HERO ANIMATIONS ─── */
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.15); }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}

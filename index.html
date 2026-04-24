@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GOAT RECORDS — Built for Greatness. Powered by Sound.</title>
+  <meta name="description" content="GOAT RECORDS — Premium record label discovering and building top-tier talent. Bookings, artists, events, and merch." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/components/navigation.css" />
+  <link rel="stylesheet" href="css/components/hero.css" />
+  <link rel="stylesheet" href="css/components/cards.css" />
+  <link rel="stylesheet" href="css/components/forms.css" />
+  <link rel="stylesheet" href="css/sections/featured-artist.css" />
+  <link rel="stylesheet" href="css/sections/about.css" />
+  <link rel="stylesheet" href="css/sections/artists.css" />
+  <link rel="stylesheet" href="css/sections/events.css" />
+  <link rel="stylesheet" href="css/sections/gallery.css" />
+  <link rel="stylesheet" href="css/sections/bookings.css" />
+  <link rel="stylesheet" href="css/sections/newsletter.css" />
+  <link rel="stylesheet" href="css/sections/contact.css" />
+  <link rel="stylesheet" href="css/sections/footer.css" />
+  <link rel="stylesheet" href="css/sections/music-player.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+<!-- ─── NAVIGATION ─── -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">GOAT<span>●</span>REC</a>
+  <ul class="nav-links">
+    <li><a href="#featured-artist" style="color:var(--red)">LUDA G</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#artists">Artists</a></li>
+    <li><a href="#events">Events</a></li>
+    <li><a href="#merch">Merch</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#bookings">Bookings</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#bookings" class="nav-cta">Book Now</a>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ─── MOBILE MENU ─── -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#featured-artist" style="color:var(--red)" onclick="closeMobile()">LUDA G</a>
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#artists" onclick="closeMobile()">Artists</a>
+  <a href="#events" onclick="closeMobile()">Events</a>
+  <a href="#merch" onclick="closeMobile()">Merch</a>
+  <a href="#gallery" onclick="closeMobile()">Gallery</a>
+  <a href="#bookings" onclick="closeMobile()">Bookings</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-pre">Est. 2020 — The Pinnacle of Sound</div>
+    <h1 class="hero-title">
+      <span class="glitch" data-text="GOAT">GOAT</span><br/>
+      <span class="glitch" data-text="RECORDS">RECORDS</span>
+    </h1>
+    <p class="hero-sub">Built for Greatness. Powered by Sound.</p>
+    <div class="hero-ctas">
+      <a href="#bookings" class="btn btn-red"><span>Join the Label</span></a>
+      <a href="#bookings" class="btn btn-white"><span>Book Us</span></a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <div class="hero-scroll-text">Scroll</div>
+  </div>
+</section>
+
+<!-- ─── TICKER ─── -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-inner">
+    <span>GOAT RECORDS</span><span>★</span>
+    <span>BUILT FOR GREATNESS</span><span>★</span>
+    <span>POWERED BY SOUND</span><span>★</span>
+    <span>TOP TIER TALENT</span><span>★</span>
+    <span>GOAT RECORDS</span><span>★</span>
+    <span>BUILT FOR GREATNESS</span><span>★</span>
+    <span>POWERED BY SOUND</span><span>★</span>
+    <span>TOP TIER TALENT</span><span>★</span>
+  </div>
+</div>
+
+<!-- ─── FEATURED ARTIST: LUDA G ─── -->
+<section id="featured-artist">
+  <div class="featured-inner">
+    <!-- Visual side -->
+    <div class="featured-visual">
+      <div class="featured-visual-bg"></div>
+      <div class="featured-visual-grid"></div>
+      <div class="featured-visual-glow"></div>
+      <div class="featured-rank">
+        <div class="featured-rank-badge">★ #1</div>
+        <div class="featured-rank-label">Lead Artist</div>
+      </div>
+      <div class="featured-monogram">
+        <div class="featured-monogram-text">LG</div>
+      </div>
+      <div class="featured-vinyl"></div>
+    </div>
+    <!-- Content side -->
+    <div class="featured-content fade-in">
+      <div class="featured-tag">Featured Artist</div>
+      <h2 class="featured-name">
+        LUDA
+        <span class="highlight">G</span>
+      </h2>
+      <div class="featured-genre-bar">
+        <span class="featured-genre-pill">Rap</span>
+        <div class="featured-genre-dot"></div>
+        <span class="featured-genre-pill">Hip-Hop</span>
+        <div class="featured-genre-dot"></div>
+        <span class="featured-genre-pill">Paarl</span>
+      </div>
+      <p class="featured-bio">
+        Born and raised in the streets of Paarl, LUDA G is the cornerstone of GOAT RECORDS. His razor-sharp lyricism, cinematic delivery, and relentless work ethic have made him the face of a new generation of South African rap. From local open mics to packed venues — every bar he drops is built to last.
+      </p>
+      <div class="featured-stats">
+        <div>
+          <div class="featured-stat-num">12+</div>
+          <div class="featured-stat-label">Tracks Released</div>
+        </div>
+        <div>
+          <div class="featured-stat-num">50K+</div>
+          <div class="featured-stat-label">Monthly Listeners</div>
+        </div>
+        <div>
+          <div class="featured-stat-num">3</div>
+          <div class="featured-stat-label">Years Active</div>
+        </div>
+      </div>
+      <div class="featured-ctas">
+        <a href="#bookings" class="btn btn-red"><span>Book LUDA G</span></a>
+        <a href="#artists" class="btn btn-white"><span>Full Roster</span></a>
+      </div>
+      <div class="featured-socials">
+        <a href="#" class="artist-social">IG</a>
+        <a href="#" class="artist-social">TW</a>
+        <a href="#" class="artist-social">SC</a>
+        <a href="#" class="artist-social">SP</a>
+        <a href="#" class="artist-social">YT</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section class="section" id="about">
+  <div class="about-visual fade-in">
+    <div class="about-img-frame">
+      <div class="about-img-inner">GOAT</div>
+    </div>
+    <div class="about-badge">
+      <div class="about-badge-num">5+</div>
+      <div class="about-badge-text">Years Strong</div>
+    </div>
+  </div>
+  <div class="about-text fade-in">
+    <div class="section-label">Our Story</div>
+    <h2 class="section-title">We Don't<br/><span class="red">Follow</span><br/>Trends.</h2>
+    <div class="divider"></div>
+    <p>GOAT RECORDS was born from one relentless vision: to build the most dominant music label on the continent. We don't chase charts — we create them. Founded by artists, for artists, we operate at the intersection of raw talent and strategic excellence.</p>
+    <p>From underground cyphers to main-stage headliners, every act we sign carries the GOAT standard — unbothered, undeniable, and undeniably elite. Our roster spans hip-hop, Afrobeats, electronic, and beyond.</p>
+    <p>We don't just sign artists. We build legacies.</p>
+    <a href="#artists" class="btn btn-red" style="margin-top:24px"><span>Meet Our Artists</span></a>
+    <div class="about-stats">
+      <div>
+        <div class="stat-num">40+</div>
+        <div class="stat-label">Artists Signed</div>
+      </div>
+      <div>
+        <div class="stat-num">200M</div>
+        <div class="stat-label">Streams Global</div>
+      </div>
+      <div>
+        <div class="stat-num">80+</div>
+        <div class="stat-label">Events/Year</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ARTISTS ─── -->
+<section class="section" id="artists">
+  <div class="artists-header fade-in">
+    <div>
+      <div class="section-label">The Roster</div>
+      <h2 class="section-title">Our<br/><span class="red">Artists</span></h2>
+    </div>
+    <a href="#bookings" class="btn btn-red"><span>Join the Roster</span></a>
+  </div>
+  <div class="artists-grid">
+    <!-- LUDA G — FEATURED LEAD ARTIST -->
+    <div class="artist-card luda-wide fade-in" style="grid-column: span 2; display:grid; grid-template-columns:1fr 1fr; min-height:320px;">
+      <div class="artist-card-img" style="padding-top:0; min-height:320px;">
+        <div class="artist-card-img-inner" style="position:relative; height:100%;">
+          <div class="artist-avatar" style="height:100%; background: linear-gradient(135deg,#200000,#400000,#0d0000); font-size:7rem; position:relative;">
+            LG
+            <div style="position:absolute;top:16px;left:16px;background:var(--red);font-family:var(--font-cond);font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;padding:4px 12px;color:#fff;">★ Lead Artist</div>
+          </div>
+        </div>
+      </div>
+      <div style="position:relative; background:var(--gray); display:flex; flex-direction:column; justify-content:center; padding:40px; border-left:3px solid var(--red);">
+        <span class="status-badge status-signed" style="align-self:flex-start;">Signed</span>
+        <div class="artist-name" style="font-size:3.2rem; margin-top:4px;">LUDA G</div>
+        <div class="artist-genre" style="font-size:0.8rem; margin-bottom:16px;">Rap / Hip-Hop — Paarl, SA</div>
+        <p class="artist-bio" style="max-width:400px; opacity:1; color:rgba(255,255,255,0.65);">The cornerstone of GOAT RECORDS. LUDA G's razor-sharp lyricism and cinematic delivery define the new sound coming out of Paarl. Every verse hits like a statement.</p>
+        <div class="artist-socials" style="justify-content:flex-start; margin-top:16px;">
+          <a href="#" class="artist-social">IG</a>
+          <a href="#" class="artist-social">TW</a>
+          <a href="#" class="artist-social">SC</a>
+          <a href="#" class="artist-social">SP</a>
+          <a href="#" class="artist-social">YT</a>
+        </div>
+        <a href="#bookings" class="btn btn-red" style="align-self:flex-start; margin-top:24px;"><span>Book LUDA G</span></a>
+      </div>
+    </div>
+    <div class="artist-card fade-in">
+      <div class="artist-card-img">
+        <div class="artist-card-img-inner">
+          <div class="artist-avatar" style="background: linear-gradient(135deg,#1a0000,#330000);">KNG</div>
+        </div>
+      </div>
+      <div class="artist-overlay">
+        <span class="status-badge status-signed">Signed</span>
+        <div class="artist-name">KINGSTON</div>
+        <div class="artist-genre">Afrobeats / Hip-Hop</div>
+      </div>
+      <div class="artist-overlay-detail">
+        <span class="status-badge status-signed">Signed</span>
+        <div class="artist-name" style="font-size:1.4rem;">KINGSTON</div>
+        <div class="artist-genre">Afrobeats / Hip-Hop</div>
+        <p class="artist-bio">Multi-platinum selling artist with a signature Afro-fusion sound. 3 albums, 40M+ streams and counting.</p>
+        <div class="artist-socials">
+          <a href="#" class="artist-social">IG</a>
+          <a href="#" class="artist-social">TW</a>
+          <a href="#" class="artist-social">SC</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="artist-card fade-in">
+      <div class="artist-card-img">
+        <div class="artist-card-img-inner">
+          <div class="artist-avatar" style="background: linear-gradient(135deg,#000011,#000033);">ZΛRΛ</div>
+        </div>
+      </div>
+      <div class="artist-overlay">
+        <span class="status-badge status-signed">Signed</span>
+        <div class="artist-name">ZΛRΛ NOIR</div>
+        <div class="artist-genre">R&B / Soul</div>
+      </div>
+      <div class="artist-overlay-detail">
+        <span class="status-badge status-signed">Signed</span>
+        <div class="artist-name" style="font-size:1.4rem;">ZΛRΛ NOIR</div>
+        <div class="artist-genre">R&B / Soul</div>
+        <p class="artist-bio">Boundary-breaking vocalist blending cinematic R&B with raw emotional depth. Her debut single went top 5 in 12 countries.</p>
+        <div class="artist-socials">
+          <a href="#" class="artist-social">IG</a>
+          <a href="#" class="artist-social">TW</a>
+          <a href="#" class="artist-social">YT</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="artist-card fade-in">
+      <div class="artist-card-img">
+        <div class="artist-card-img-inner">
+          <div class="artist-avatar" style="background: linear-gradient(135deg,#001100,#002200);">D/MN</div>
+        </div>
+      </div>
+      <div class="artist-overlay">
+        <span class="status-badge status-signed">Signed</span>
+        <div class="artist-name">DJ DÆMON</div>
+        <div class="artist-genre">Electronic / Amapiano</div>
+      </div>
+      <div class="artist-overlay-detail">
+        <span class="status-badge status-signed">Signed</span>
+        <div class="artist-name" style="font-size:1.4rem;">DJ DÆMON</div>
+        <div class="artist-genre">Electronic / Amapiano</div>
+        <p class="artist-bio">The architect of the new Amapiano wave. Sells out venues across Africa and Europe with a legendary DJ set.</p>
+        <div class="artist-socials">
+          <a href="#" class="artist-social">IG</a>
+          <a href="#" class="artist-social">SC</a>
+          <a href="#" class="artist-social">SP</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="artist-card fade-in">
+      <div class="artist-card-img">
+        <div class="artist-card-img-inner">
+          <div class="artist-avatar" style="background: linear-gradient(135deg,#110011,#220022);">RXGE</div>
+        </div>
+      </div>
+      <div class="artist-overlay">
+        <span class="status-badge status-signed">Signed</span>
+        <div class="artist-name">RXGE</div>
+        <div class="artist-genre">Trap / Drill</div>
+      </div>
+      <div class="artist-overlay-detail">
+        <span class="status-badge status-signed">Signed</span>
+        <div class="artist-name" style="font-size:1.4rem;">RXGE</div>
+        <div class="artist-genre">Trap / Drill</div>
+        <p class="artist-bio">Raw. Unfiltered. Unstoppable. RXGE brings the hardest bars on the continent backed by cinematic production.</p>
+        <div class="artist-socials">
+          <a href="#" class="artist-social">IG</a>
+          <a href="#" class="artist-social">TW</a>
+          <a href="#" class="artist-social">YT</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="artist-card fade-in">
+      <div class="artist-card-img">
+        <div class="artist-card-img-inner">
+          <div class="artist-avatar" style="background: linear-gradient(135deg,#111100,#222200);">LVNA</div>
+        </div>
+      </div>
+      <div class="artist-overlay">
+        <span class="status-badge status-upcoming">Upcoming</span>
+        <div class="artist-name">LVNA</div>
+        <div class="artist-genre">Pop / Alt-R&B</div>
+      </div>
+      <div class="artist-overlay-detail">
+        <span class="status-badge status-upcoming">Upcoming</span>
+        <div class="artist-name" style="font-size:1.4rem;">LVNA</div>
+        <div class="artist-genre">Pop / Alt-R&B</div>
+        <p class="artist-bio">Emerging force with an ethereal voice and genre-defying sound. Debut EP dropping this fall — watch closely.</p>
+        <div class="artist-socials">
+          <a href="#" class="artist-social">IG</a>
+          <a href="#" class="artist-social">TW</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="artist-card fade-in">
+      <div class="artist-card-img">
+        <div class="artist-card-img-inner">
+          <div class="artist-avatar" style="background: linear-gradient(135deg,#0d0000,#1a0a00);">BLCK</div>
+        </div>
+      </div>
+      <div class="artist-overlay">
+        <span class="status-badge status-upcoming">Upcoming</span>
+        <div class="artist-name">BLXCKOUT</div>
+        <div class="artist-genre">Gqom / Club</div>
+      </div>
+      <div class="artist-overlay-detail">
+        <span class="status-badge status-upcoming">Upcoming</span>
+        <div class="artist-name" style="font-size:1.4rem;">BLXCKOUT</div>
+        <div class="artist-genre">Gqom / Club</div>
+        <p class="artist-bio">Pure Durban energy meeting next-level production. The clubs shut down when BLXCKOUT drops a set.</p>
+        <div class="artist-socials">
+          <a href="#" class="artist-social">IG</a>
+          <a href="#" class="artist-social">SC</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── EVENTS ─── -->
+<section class="section" id="events">
+  <div class="fade-in">
+    <div class="section-label">Live Performances</div>
+    <h2 class="section-title">Tour<br/><span class="red">Dates</span></h2>
+  </div>
+  <div class="events-grid fade-in">
+    <div class="event-row">
+      <div class="event-date">
+        <div class="event-day">04</div>
+        <div class="event-month">Apr 2026</div>
+      </div>
+      <div class="event-info">
+        <div class="event-title">GOAT RECORDS SHOWCASE</div>
+        <div class="event-venue">Pearl Valley, Paarl — Western Cape, SA</div>
+        <div class="event-tags">
+          <span class="event-tag">Live Show</span>
+          <span class="event-tag">All Artists</span>
+        </div>
+      </div>
+      <div class="event-action">
+        <a href="#bookings" class="btn btn-red" style="padding:10px 24px"><span>Get Tickets</span></a>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-date">
+        <div class="event-day">12</div>
+        <div class="event-month">Apr 2026</div>
+      </div>
+      <div class="event-info">
+        <div class="event-title">LUDA G — PAARL HOMECOMING</div>
+        <div class="event-venue">Bolandse Kloof, Paarl — Western Cape, SA</div>
+        <div class="event-tags">
+          <span class="event-tag">Headline</span>
+          <span class="event-tag">Rap</span>
+        </div>
+      </div>
+      <div class="event-action">
+        <a href="#bookings" class="btn btn-red" style="padding:10px 24px"><span>Get Tickets</span></a>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-date">
+        <div class="event-day">25</div>
+        <div class="event-month">Apr 2026</div>
+      </div>
+      <div class="event-info">
+        <div class="event-title">DÆMON B2B SET</div>
+        <div class="event-venue">Fabric, London — United Kingdom</div>
+        <div class="event-tags">
+          <span class="event-tag">DJ Set</span>
+          <span class="event-tag">Electronic</span>
+        </div>
+      </div>
+      <div class="event-action">
+        <a href="#bookings" class="btn btn-white" style="padding:10px 24px"><span>Sold Out</span></a>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-date">
+        <div class="event-day">09</div>
+        <div class="event-month">May 2026</div>
+      </div>
+      <div class="event-info">
+        <div class="event-title">RXGE — RAGE TOUR</div>
+        <div class="event-venue">Lyric Theatre, Johannesburg — South Africa</div>
+        <div class="event-tags">
+          <span class="event-tag">Trap</span>
+          <span class="event-tag">Tour</span>
+        </div>
+      </div>
+      <div class="event-action">
+        <a href="#bookings" class="btn btn-red" style="padding:10px 24px"><span>Get Tickets</span></a>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-date">
+        <div class="event-day">22</div>
+        <div class="event-month">May 2026</div>
+      </div>
+      <div class="event-info">
+        <div class="event-title">ZΛRΛ NOIR — DEBUT SHOWCASE</div>
+        <div class="event-venue">The Grand, Nairobi — Kenya</div>
+        <div class="event-tags">
+          <span class="event-tag">R&B</span>
+          <span class="event-tag">Debut</span>
+        </div>
+      </div>
+      <div class="event-action">
+        <a href="#bookings" class="btn btn-red" style="padding:10px 24px"><span>Get Tickets</span></a>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-date">
+        <div class="event-day">14</div>
+        <div class="event-month">Jun 2026</div>
+      </div>
+      <div class="event-info">
+        <div class="event-title">GOAT RECORDS FESTIVAL</div>
+        <div class="event-venue">Dal Josaphat Oval, Paarl — Western Cape, SA</div>
+        <div class="event-tags">
+          <span class="event-tag">Festival</span>
+          <span class="event-tag">All Roster</span>
+          <span class="event-tag">Outdoor</span>
+        </div>
+      </div>
+      <div class="event-action">
+        <a href="#bookings" class="btn btn-red" style="padding:10px 24px"><span>Get Tickets</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MERCH ─── -->
+<section class="section" id="merch">
+  <div class="fade-in" style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;flex-wrap:wrap;gap:20px">
+    <div>
+      <div class="section-label">Official Store</div>
+      <h2 class="section-title">Merch<br/><span class="red">Drop</span></h2>
+    </div>
+    <a href="#" class="btn btn-red"><span>View All</span></a>
+  </div>
+  <div class="merch-grid">
+    <div class="merch-card fade-in">
+      <div class="merch-new">New</div>
+      <div class="merch-img">
+        <div class="merch-img-inner" style="background:linear-gradient(135deg,#1a1a1a,#2a2a2a);flex-direction:column;gap:8px;">
+          <div style="font-family:var(--font-display);font-size:4rem;color:rgba(255,0,0,0.6);">G</div>
+          <div style="font-family:var(--font-cond);font-size:0.65rem;letter-spacing:0.3em;color:rgba(255,255,255,0.2);">HOODIE</div>
+        </div>
+      </div>
+      <div class="merch-body">
+        <div class="merch-name">Classic Logo Hoodie</div>
+        <div class="merch-desc">Premium heavyweight fleece — Black / Red</div>
+        <div class="merch-footer">
+          <div class="merch-price">R750<span> ZAR</span></div>
+          <button class="merch-buy">Buy Now</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="merch-card fade-in">
+      <div class="merch-img">
+        <div class="merch-img-inner" style="background:linear-gradient(135deg,#110000,#220000);flex-direction:column;gap:8px;">
+          <div style="font-family:var(--font-display);font-size:2.5rem;color:rgba(255,0,0,0.55);letter-spacing:0.05em;">GOAT</div>
+          <div style="font-family:var(--font-cond);font-size:0.65rem;letter-spacing:0.3em;color:rgba(255,255,255,0.2);">TEE</div>
+        </div>
+      </div>
+      <div class="merch-body">
+        <div class="merch-name">Bold Logo Tee</div>
+        <div class="merch-desc">100% ringspun cotton — Washed Black</div>
+        <div class="merch-footer">
+          <div class="merch-price">R420<span> ZAR</span></div>
+          <button class="merch-buy">Buy Now</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="merch-card fade-in">
+      <div class="merch-new">New</div>
+      <div class="merch-img">
+        <div class="merch-img-inner" style="background:linear-gradient(135deg,#0d0d0d,#1a1a1a);flex-direction:column;gap:8px;">
+          <div style="font-family:var(--font-display);font-size:3rem;color:rgba(255,0,0,0.5);">●</div>
+          <div style="font-family:var(--font-cond);font-size:0.65rem;letter-spacing:0.3em;color:rgba(255,255,255,0.2);">SNAPBACK</div>
+        </div>
+      </div>
+      <div class="merch-body">
+        <div class="merch-name">GOAT Snapback Cap</div>
+        <div class="merch-desc">Structured 6-panel — Black / Red embroidery</div>
+        <div class="merch-footer">
+          <div class="merch-price">R380<span> ZAR</span></div>
+          <button class="merch-buy">Buy Now</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="merch-card fade-in">
+      <div class="merch-img">
+        <div class="merch-img-inner" style="background:linear-gradient(135deg,#200000,#300000);flex-direction:column;gap:8px;">
+          <div style="font-family:var(--font-display);font-size:2.5rem;color:rgba(255,0,0,0.5);">RECORDS</div>
+          <div style="font-family:var(--font-cond);font-size:0.65rem;letter-spacing:0.3em;color:rgba(255,255,255,0.2);">JACKET</div>
+        </div>
+      </div>
+      <div class="merch-body">
+        <div class="merch-name">Varsity Jacket</div>
+        <div class="merch-desc">Limited edition — Black wool / Red leather sleeves</div>
+        <div class="merch-footer">
+          <div class="merch-price">R1,800<span> ZAR</span></div>
+          <button class="merch-buy">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GALLERY ─── -->
+<section class="section" id="gallery">
+  <div class="fade-in" style="margin-bottom:48px">
+    <div class="section-label">Moments</div>
+    <h2 class="section-title">The<br/><span class="red">Gallery</span></h2>
+  </div>
+  <div class="gallery-grid fade-in" id="gallery-grid">
+    <!-- Gallery items generated by JS -->
+  </div>
+</section>
+
+<!-- ─── LIGHTBOX ─── -->
+<div id="lightbox">
+  <div class="lightbox-close" id="lb-close">✕</div>
+  <div class="lightbox-content" id="lb-content"></div>
+</div>
+
+<!-- ─── BOOKINGS ─── -->
+<section class="section" id="bookings">
+  <div class="bookings-inner">
+    <div class="bookings-info fade-in">
+      <div class="section-label">For Event Organizers</div>
+      <h2 class="section-title">Book<br/><span class="red">GOAT</span><br/>Records</h2>
+      <div class="divider"></div>
+      <p>We bring elite performances to stages of all sizes. From intimate club nights to massive festival headliners — our artists deliver unforgettable experiences every single time.</p>
+      <p>Fill in the form and our bookings team will respond within 48 hours with full rider details, availability, and quotes.</p>
+      <div class="booking-features">
+        <div class="booking-feature">
+          <div class="bf-icon">🎤</div>
+          <div>
+            <div class="bf-title">Live Performances</div>
+            <div class="bf-desc">Full live shows with bands, backing tracks, and visuals</div>
+          </div>
+        </div>
+        <div class="booking-feature">
+          <div class="bf-icon">🎧</div>
+          <div>
+            <div class="bf-title">DJ Sets</div>
+            <div class="bf-desc">Club nights, festivals, private events — our DJs go all night</div>
+          </div>
+        </div>
+        <div class="booking-feature">
+          <div class="bf-icon">🎬</div>
+          <div>
+            <div class="bf-title">Brand Partnerships</div>
+            <div class="bf-desc">Artist endorsements, brand events, and media appearances</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bookings-form fade-in">
+      <form onsubmit="handleBooking(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" placeholder="Your name" required />
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="you@example.com" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+27 000 000 0000" />
+          </div>
+          <div class="form-group">
+            <label>Event Type</label>
+            <select required>
+              <option value="" disabled selected>Select type</option>
+              <option>Club Night</option>
+              <option>Festival</option>
+              <option>Private Event</option>
+              <option>Corporate Event</option>
+              <option>Brand Partnership</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Event Date</label>
+            <input type="date" required />
+          </div>
+          <div class="form-group">
+            <label>Budget Range</label>
+            <select required>
+              <option value="" disabled selected>Select range</option>
+              <option>R5,000 – R15,000</option>
+              <option>R15,000 – R50,000</option>
+              <option>R50,000 – R150,000</option>
+              <option>R150,000+</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Venue & Location</label>
+          <input type="text" placeholder="Venue name and city" />
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Tell us about your event, which artist(s) you want to book, expected attendance, and any special requirements..."></textarea>
+        </div>
+        <button type="submit" class="form-submit">Book GOAT Records →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ─── NEWSLETTER ─── -->
+<section id="newsletter" class="fade-in">
+  <div class="nl-title">STAY IN THE<br/>LOOP</div>
+  <div class="nl-sub">New drops. Exclusive events. Artist news. First access.</div>
+  <div class="nl-form">
+    <input class="nl-input" type="email" placeholder="Enter your email address" />
+    <button class="nl-btn">Subscribe</button>
+  </div>
+</section>
+
+<!-- ─── CONTACT ─── -->
+<section class="section" id="contact">
+  <div class="fade-in" style="margin-bottom:56px">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Contact<br/><span class="red">Us</span></h2>
+  </div>
+  <div class="contact-grid">
+    <div class="fade-in">
+      <div class="contact-block-label">Email</div>
+      <a href="mailto:info@goatrecords.co.za" class="contact-value">info@goatrecords.co.za</a>
+      <div class="contact-value-small">General inquiries & press</div>
+      <br/>
+      <a href="mailto:bookings@goatrecords.co.za" class="contact-value">bookings@goatrecords.co.za</a>
+      <div class="contact-value-small">Bookings & events</div>
+      <br/>
+      <div class="contact-block-label" style="margin-top:24px">Phone</div>
+      <a href="tel:+27210000000" class="contact-value">+27 21 000 0000</a>
+      <div class="contact-value-small">Mon – Fri, 9am – 6pm SAST</div>
+    </div>
+    <div class="fade-in">
+      <div class="contact-block-label">Follow Us</div>
+      <div class="social-links">
+        <a href="#" class="social-link">
+          <div class="social-link-icon">IG</div>
+          <div class="social-link-name">@goatrecordssa</div>
+        </a>
+        <a href="#" class="social-link">
+          <div class="social-link-icon">TW</div>
+          <div class="social-link-name">@goatrecords</div>
+        </a>
+        <a href="#" class="social-link">
+          <div class="social-link-icon">YT</div>
+          <div class="social-link-name">GOAT RECORDS Official</div>
+        </a>
+        <a href="#" class="social-link">
+          <div class="social-link-icon">TK</div>
+          <div class="social-link-name">@goatrecords</div>
+        </a>
+        <a href="#" class="social-link">
+          <div class="social-link-icon">SP</div>
+          <div class="social-link-name">GOAT Records on Spotify</div>
+        </a>
+      </div>
+    </div>
+    <div class="fade-in">
+      <div class="contact-block-label">Location</div>
+      <div class="contact-value" style="pointer-events:none;">Paarl, South Africa</div>
+      <div class="contact-value-small">Western Cape</div>
+      <div style="margin-top:24px;background:var(--gray-mid);padding:24px;border-left:3px solid var(--red);">
+        <div style="font-family:var(--font-cond);font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:8px;">Office Hours</div>
+        <div style="font-family:var(--font-cond);font-size:0.88rem;color:rgba(255,255,255,0.6);">Monday – Friday: 9:00 – 18:00</div>
+        <div style="font-family:var(--font-cond);font-size:0.88rem;color:rgba(255,255,255,0.6);">Saturday: 10:00 – 14:00</div>
+        <div style="font-family:var(--font-cond);font-size:0.88rem;color:rgba(255,255,255,0.35);">Sunday: Closed</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="#hero" class="footer-logo">GOAT<span>●</span>REC</a>
+      <div class="footer-slogan">Built for Greatness. Powered by Sound.</div>
+    </div>
+    <div style="display:flex;gap:60px;flex-wrap:wrap;">
+      <div class="footer-links-col">
+        <h4>Label</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#artists">Artists</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+        </ul>
+      </div>
+      <div class="footer-links-col">
+        <h4>Business</h4>
+        <ul>
+          <li><a href="#bookings">Bookings</a></li>
+          <li><a href="#merch">Merch Store</a></li>
+          <li><a href="#contact">Press & Media</a></li>
+          <li><a href="#bookings">A&R Submissions</a></li>
+        </ul>
+      </div>
+      <div class="footer-links-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 GOAT RECORDS. All rights reserved. Paarl, Western Cape, South Africa.</div>
+    <div class="footer-red-line"></div>
+    <div class="footer-copy">Crafted with dominance.</div>
+  </div>
+</footer>
+
+<!-- ─── MUSIC TOGGLE ─── -->
+<button id="music-toggle" title="Toggle ambient sound">
+  <div class="music-bars">
+    <div class="music-bar"></div>
+    <div class="music-bar"></div>
+    <div class="music-bar"></div>
+    <div class="music-bar"></div>
+  </div>
+  <div class="pause-icon">♫</div>
+</button>
+
+<!-- ─── JAVASCRIPT MODULES ─── -->
+<script src="js/canvas/hero-canvas.js" defer></script>
+<script src="js/ui/navigation.js" defer></script>
+<script src="js/ui/scroll-animations.js" defer></script>
+<script src="js/ui/gallery.js" defer></script>
+<script src="js/ui/lightbox.js" defer></script>
+<script src="js/ui/music-player.js" defer></script>
+<script src="js/forms/booking-form.js" defer></script>
+<script src="js/forms/newsletter.js" defer></script>
+<script src="js/main.js" defer></script>
+</body>
+</html>

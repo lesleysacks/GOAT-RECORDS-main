@@ -1,0 +1,105 @@
+/**
+ * events.css
+ * 
+ * @description Events/tour dates section styling
+ * Table-like layout for displaying upcoming events
+ * Includes date formatting and event tags
+ * 
+ * @components
+ * - #events: Section container
+ * - .events-grid: Flex container for event rows
+ * - .event-row: Individual event entry
+ * - .event-date: Date display (day/month)
+ * - .event-info: Event details (title, venue)
+ * - .event-tags: Category tags
+ * - .event-action: CTA button
+ * 
+ * @requires main.css, variables.css
+ */
+
+#events { }
+
+.events-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ─── EVENT ROW ─── */
+.event-row {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  align-items: center;
+  gap: 32px;
+  padding: 28px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  transition: background 0.2s;
+}
+
+.event-row:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.event-row:hover {
+  background: rgba(255, 0, 0, 0.03);
+}
+
+/* ─── DATE DISPLAY ─── */
+.event-date {
+  text-align: center;
+}
+
+.event-day {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  line-height: 1;
+  color: var(--red);
+}
+
+.event-month {
+  font-family: var(--font-cond);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ─── EVENT INFO ─── */
+.event-info { }
+
+.event-title {
+  font-family: var(--font-cond);
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.event-venue {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 3px;
+}
+
+/* ─── TAGS ─── */
+.event-tags {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.event-tag {
+  font-family: var(--font-cond);
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ─── ACTION ─── */
+.event-action {
+  flex-shrink: 0;
+}

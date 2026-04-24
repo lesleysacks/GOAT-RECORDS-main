@@ -1,0 +1,96 @@
+/**
+ * music-player.css
+ * 
+ * @description Music toggle button styling
+ * Fixed button in bottom-right corner with animated bar visualization
+ * 
+ * @components
+ * - #music-toggle: Toggle button for ambient sound
+ * - .music-bars: Bar visualization
+ * - .music-bar: Individual bar element
+ * - .pause-icon: Pause symbol display
+ * 
+ * @animations
+ * - musicBar: Bar height animation
+ * 
+ * @requires main.css, variables.css
+ */
+
+#music-toggle {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 500;
+  width: 48px;
+  height: 48px;
+  background: var(--red);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+}
+
+#music-toggle:hover {
+  background: var(--red-dim);
+  transform: scale(1.08);
+}
+
+.music-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 18px;
+}
+
+.music-bar {
+  width: 3px;
+  background: var(--white);
+  border-radius: 1px;
+  animation: musicBar 0.8s ease-in-out infinite alternate;
+}
+
+.music-bar:nth-child(1) {
+  height: 6px;
+  animation-delay: 0s;
+}
+
+.music-bar:nth-child(2) {
+  height: 14px;
+  animation-delay: 0.15s;
+}
+
+.music-bar:nth-child(3) {
+  height: 10px;
+  animation-delay: 0.3s;
+}
+
+.music-bar:nth-child(4) {
+  height: 16px;
+  animation-delay: 0.1s;
+}
+
+@keyframes musicBar {
+  from { transform: scaleY(0.4); }
+  to   { transform: scaleY(1); }
+}
+
+#music-toggle.paused .music-bar {
+  animation-play-state: paused;
+}
+
+.pause-icon {
+  display: none;
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+#music-toggle.paused .music-bars {
+  display: none;
+}
+
+#music-toggle.paused .pause-icon {
+  display: block;
+}

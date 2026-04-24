@@ -1,0 +1,41 @@
+/**
+ * newsletter.css
+ * 
+ * @description Newsletter subscription section styling
+ * Full-width red background with centered form
+ * 
+ * @components
+ * - #newsletter: Section container with red background
+ * - .nl-title: Main heading
+ * - .nl-sub: Subheading
+ * - .nl-form: Newsletter form (defined in forms.css)
+ * 
+ * @requires main.css, variables.css, forms.css
+ */
+
+#newsletter {
+  background: var(--red);
+  padding: 80px 5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.nl-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: var(--black);
+  line-height: 0.95;
+  letter-spacing: 0.03em;
+  margin-bottom: 12px;
+}
+
+.nl-sub {
+  font-family: var(--font-cond);
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.55);
+  margin-bottom: 36px;
+}

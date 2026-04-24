@@ -1,0 +1,115 @@
+/**
+ * responsive.css
+ * 
+ * @description Responsive design media queries
+ * Handles layout adjustments for tablets and mobile devices
+ * Breakpoints: 900px (tablet), 768px (small tablet), 500px (mobile)
+ * 
+ * @requires main.css and all component/section CSS files
+ */
+
+/* ─── TABLET & SMALL SCREENS (900px) ─── */
+@media (max-width: 900px) {
+  #about {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .about-visual {
+    max-width: 400px;
+  }
+
+  .bookings-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .gallery-grid {
+    columns: 2;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+/* ─── SMALL TABLET (768px) ─── */
+@media (max-width: 768px) {
+  .nav-links,
+  .nav-cta {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .mobile-menu {
+    display: flex;
+  }
+
+  .artists-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .event-row {
+    grid-template-columns: 60px 1fr;
+    gap: 16px;
+  }
+
+  .event-action {
+    display: none;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .luda-wide {
+    grid-column: span 1 !important;
+    grid-template-columns: 1fr !important;
+    flex-direction: column;
+  }
+
+  .luda-wide .artist-card-img {
+    min-height: 200px !important;
+    padding-top: 0 !important;
+  }
+}
+
+/* ─── MOBILE PHONES (500px) ─── */
+@media (max-width: 500px) {
+  .section {
+    padding: 72px 5vw;
+  }
+
+  .gallery-grid {
+    columns: 1;
+  }
+
+  .about-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .nl-form {
+    flex-direction: column;
+  }
+
+  .nl-input,
+  .nl-btn {
+    width: 100%;
+  }
+
+  .nl-input {
+    border-right: 2px solid rgba(0, 0, 0, 0.2);
+    border-bottom: none;
+  }
+}

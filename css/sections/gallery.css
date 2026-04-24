@@ -1,0 +1,104 @@
+/**
+ * gallery.css
+ * 
+ * @description Gallery section and lightbox styling
+ * Masonry column layout for gallery items
+ * Includes lightbox overlay for expanded viewing
+ * 
+ * @components
+ * - #gallery: Gallery section
+ * - .gallery-grid: Masonry column layout
+ * - #lightbox: Fullscreen image viewer overlay
+ * - .lightbox-content: Image container
+ * - .lightbox-close: Close button
+ * 
+ * @requires main.css, variables.css, cards.css
+ */
+
+#gallery { }
+
+/* ─── GALLERY GRID ─── */
+.gallery-grid {
+  columns: 3;
+  column-gap: 12px;
+}
+
+.gallery-item {
+  break-inside: avoid;
+  position: relative;
+  margin-bottom: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--gray-mid);
+}
+
+/* ─── LIGHTBOX ─── */
+#lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.96);
+  z-index: 9000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+#lightbox.open {
+  display: flex;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 85vw;
+  max-height: 85vh;
+}
+
+.lightbox-close {
+  position: fixed;
+  top: 24px;
+  right: 32px;
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: var(--white);
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.lightbox-close:hover {
+  color: var(--red);
+}
+
+.lightbox-img-display {
+  max-width: 100%;
+  max-height: 85vh;
+  display: block;
+}
+
+/* ─── LIGHTBOX PLACEHOLDER ─── */
+.lb-placeholder {
+  width: 800px;
+  max-width: 85vw;
+  height: 500px;
+  max-height: 85vh;
+  background: var(--gray-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lb-placeholder-title {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: rgba(255, 0, 0, 0.3);
+}
+
+.lb-placeholder-sub {
+  font-family: var(--font-cond);
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.2);
+}

@@ -1,0 +1,199 @@
+/**
+ * main.css
+ * 
+ * @description Core foundation styles for GOAT RECORDS
+ * Includes resets, base element styles, global scrollbar customization,
+ * and utility classes used throughout the application
+ * 
+ * @sections
+ * - Reset & base styles
+ * - Custom scrollbar
+ * - Grain overlay
+ * - Utility classes (sections, text, buttons, animations)
+ * 
+ * @requires variables.css (CSS custom properties)
+ */
+
+/* ─── RESET & BASE STYLES ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.65;
+  overflow-x: hidden;
+  cursor: default;
+}
+
+/* ─── CUSTOM SCROLLBAR ─── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--red);
+}
+
+/* ─── GRAIN OVERLAY ─── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.028;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ─── UTILITY CLASSES ─── */
+.section {
+  padding: 100px 5vw;
+}
+
+.section-label {
+  font-family: var(--font-cond);
+  font-size: 0.75rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 7vw, 6rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  color: var(--white);
+  margin-bottom: 40px;
+}
+
+.red {
+  color: var(--red);
+}
+
+/* ─── BUTTONS ─── */
+.btn {
+  display: inline-block;
+  font-family: var(--font-cond);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 14px 36px;
+  border: 1.5px solid currentColor;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(.22,1,.36,1);
+  z-index: 0;
+}
+
+.btn:hover::before {
+  transform: scaleX(1);
+}
+
+.btn span {
+  position: relative;
+  z-index: 1;
+}
+
+.btn:hover span {
+  color: var(--black);
+}
+
+.btn-red {
+  color: var(--red);
+  border-color: var(--red);
+}
+
+.btn-white {
+  color: var(--white);
+  border-color: var(--white);
+}
+
+.btn-solid {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+}
+
+.btn-solid::before {
+  background: #fff;
+}
+
+.btn-solid:hover span {
+  color: var(--red);
+}
+
+/* ─── DIVIDER ─── */
+.divider {
+  width: 60px;
+  height: 3px;
+  background: var(--red);
+  margin: 24px 0;
+}
+
+/* ─── ANIMATIONS ─── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── TICKER ─── */
+.ticker-wrap {
+  background: var(--red);
+  padding: 10px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker-inner {
+  display: inline-block;
+  animation: ticker 28s linear infinite;
+}
+
+.ticker-inner span {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.15em;
+  color: var(--black);
+  margin-right: 60px;
+}
+
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

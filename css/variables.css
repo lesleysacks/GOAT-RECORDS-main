@@ -1,0 +1,36 @@
+/**
+ * variables.css
+ * 
+ * @description CSS custom properties for GOAT RECORDS
+ * Centralizes all color, typography, and spacing variables
+ * Enables consistent theming across the entire application
+ * 
+ * @variables
+ * - Colors: Primary (red), neutrals (black, grays, white)
+ * - Fonts: Display (Bebas Neue), body (Barlow), condensed (Barlow Condensed)
+ * - Spacing: Uses standard rem-based scaling
+ * 
+ * @usage Import first in all stylesheets to access variables globally
+ */
+
+:root {
+  /* ─── COLORS ─── */
+  --red:    #FF0000;
+  --red-dim: #cc0000;
+  --black:  #000000;
+  --gray-dark: #0d0d0d;
+  --gray-mid:  #1a1a1a;
+  --gray:      #333333;
+  --gray-light:#888888;
+  --white:  #ffffff;
+
+  /* ─── TYPOGRAPHY ─── */
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body:    'Barlow', sans-serif;
+  --font-cond:    'Barlow Condensed', sans-serif;
+
+  /* ─── TRANSITIONS ─── */
+  --transition-fast: 0.2s ease;
+  --transition-smooth: 0.3s ease;
+  --transition-slow: 0.6s ease;
+}

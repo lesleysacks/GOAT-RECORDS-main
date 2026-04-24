@@ -1,0 +1,291 @@
+/**
+ * featured-artist.css
+ * 
+ * @description Featured artist showcase section styling
+ * Grid layout with visual side (animations) and content side
+ * Includes vinyl animation and monogram text effects
+ * 
+ * @components
+ * - #featured-artist: Section container
+ * - .featured-inner: Two-column grid layout
+ * - .featured-visual: Left side with animations
+ * - .featured-content: Right side with text
+ * - .featured-vinyl: Rotating vinyl record animation
+ * - .featured-monogram: Animated artist initials
+ * 
+ * @animations
+ * - spin: Continuous vinyl record rotation
+ * - monogramPulse: Glowing text stroke effect
+ * 
+ * @requires main.css, variables.css
+ */
+
+#featured-artist {
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  background: var(--black);
+}
+
+.featured-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 90vh;
+  align-items: stretch;
+}
+
+/* ─── VISUAL SIDE ─── */
+.featured-visual {
+  position: relative;
+  overflow: hidden;
+  min-height: 500px;
+}
+
+.featured-visual-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, #1a0000 0%, #000 40%, #0d0000 100%);
+}
+
+.featured-visual-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 0, 0, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.featured-visual-glow {
+  position: absolute;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 0, 0, 0.22) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+/* ─── RANK BADGE ─── */
+.featured-rank {
+  position: absolute;
+  top: 36px;
+  left: 36px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.featured-rank-badge {
+  background: var(--red);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  padding: 6px 14px;
+  color: var(--white);
+}
+
+.featured-rank-label {
+  font-family: var(--font-cond);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* ─── MONOGRAM ─── */
+.featured-monogram {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featured-monogram-text {
+  font-family: var(--font-display);
+  font-size: clamp(7rem, 14vw, 16rem);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 0, 0, 0.18);
+  user-select: none;
+  animation: monogramPulse 4s ease-in-out infinite;
+}
+
+@keyframes monogramPulse {
+  0%, 100% { -webkit-text-stroke-color: rgba(255, 0, 0, 0.18); }
+  50% { -webkit-text-stroke-color: rgba(255, 0, 0, 0.38); }
+}
+
+/* ─── VINYL RECORD ─── */
+.featured-vinyl {
+  position: absolute;
+  bottom: 32px;
+  right: 32px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: spin 10s linear infinite;
+}
+
+.featured-vinyl::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 0, 0, 0.15);
+}
+
+.featured-vinyl::after {
+  content: '';
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--red);
+  opacity: 0.6;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ─── CONTENT SIDE ─── */
+.featured-content {
+  padding: 80px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  background: var(--gray-dark);
+  border-left: 1px solid rgba(255, 0, 0, 0.12);
+}
+
+.featured-tag {
+  font-family: var(--font-cond);
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.featured-tag::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--red);
+}
+
+.featured-name {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 7vw, 7.5rem);
+  line-height: 0.9;
+  letter-spacing: 0.03em;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.featured-name .highlight {
+  color: var(--red);
+  display: block;
+}
+
+/* ─── GENRE BAR ─── */
+.featured-genre-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 20px 0 32px;
+}
+
+.featured-genre-pill {
+  font-family: var(--font-cond);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border: 1px solid rgba(255, 0, 0, 0.4);
+  color: var(--red);
+}
+
+.featured-genre-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ─── BIO ─── */
+.featured-bio {
+  font-size: 0.92rem;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 480px;
+  margin-bottom: 36px;
+  border-left: 2px solid var(--red);
+  padding-left: 20px;
+}
+
+/* ─── STATS ─── */
+.featured-stats {
+  display: flex;
+  gap: 36px;
+  margin-bottom: 44px;
+  padding: 24px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.featured-stat-num {
+  font-family: var(--font-display);
+  font-size: 2.2rem;
+  color: var(--white);
+  line-height: 1;
+}
+
+.featured-stat-label {
+  font-family: var(--font-cond);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  margin-top: 4px;
+}
+
+/* ─── CTA AREA ─── */
+.featured-ctas {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.featured-socials {
+  display: flex;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .featured-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-visual {
+    min-height: 380px;
+  }
+
+  .featured-content {
+    padding: 56px 32px;
+  }
+}

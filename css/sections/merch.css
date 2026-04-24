@@ -1,0 +1,22 @@
+/**
+ * merch.css
+ * 
+ * @description Merchandise section styling
+ * Grid layout for merch card display
+ * 
+ * @components
+ * - #merch: Section container with dark background
+ * - .merch-grid: Responsive grid for product cards
+ * 
+ * @requires main.css, variables.css, cards.css
+ */
+
+#merch {
+  background: var(--gray-dark);
+}
+
+.merch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 28px;
+}

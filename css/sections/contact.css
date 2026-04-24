@@ -1,0 +1,101 @@
+/**
+ * contact.css
+ * 
+ * @description Contact section styling
+ * Three-column layout for contact info, social links, and location
+ * 
+ * @components
+ * - #contact: Section container
+ * - .contact-grid: Three-column grid
+ * - .contact-block-label: Section headers
+ * - .contact-value: Contact information
+ * - .social-links: Social media links
+ * - .social-link: Individual social link
+ * 
+ * @requires main.css, variables.css
+ */
+
+#contact { }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px;
+}
+
+/* ─── CONTACT BLOCKS ─── */
+.contact-block-label {
+  font-family: var(--font-cond);
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 16px;
+}
+
+.contact-value {
+  font-family: var(--font-cond);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--white);
+  text-decoration: none;
+  display: block;
+  transition: color 0.2s;
+}
+
+.contact-value:hover {
+  color: var(--red);
+}
+
+.contact-value-small {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 4px;
+}
+
+/* ─── SOCIAL LINKS ─── */
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.social-link:hover {
+  transform: translateX(4px);
+}
+
+.social-link-icon {
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-cond);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--white);
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.social-link:hover .social-link-icon {
+  background: var(--red);
+}
+
+.social-link-name {
+  font-family: var(--font-cond);
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}

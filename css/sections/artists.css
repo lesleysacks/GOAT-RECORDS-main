@@ -1,0 +1,30 @@
+/**
+ * artists.css
+ * 
+ * @description Artists section styling
+ * Grid layout with responsive card sizing
+ * 
+ * @components
+ * - #artists: Section container with dark background
+ * - .artists-header: Header with title and CTA
+ * - .artists-grid: Responsive grid for artist cards
+ * 
+ * @requires main.css, variables.css, cards.css
+ */
+
+#artists {
+  background: var(--gray-dark);
+}
+
+.artists-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 56px;
+}
+
+.artists-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}

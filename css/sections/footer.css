@@ -1,0 +1,105 @@
+/**
+ * footer.css
+ * 
+ * @description Footer section styling
+ * Top section with logo and column links, bottom with copyright
+ * 
+ * @components
+ * - footer: Main footer element
+ * - .footer-top: Logo and navigation columns
+ * - .footer-logo: Branding
+ * - .footer-links-col: Navigation column
+ * - .footer-bottom: Copyright and divider
+ * 
+ * @requires main.css, variables.css
+ */
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--black);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 56px 5vw 32px;
+}
+
+/* ─── TOP SECTION ─── */
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 48px;
+}
+
+.footer-logo {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  letter-spacing: 0.08em;
+  color: var(--white);
+  text-decoration: none;
+  line-height: 1;
+}
+
+.footer-logo span {
+  color: var(--red);
+}
+
+.footer-slogan {
+  font-family: var(--font-cond);
+  font-size: 0.72rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.28);
+  margin-top: 8px;
+}
+
+/* ─── LINK COLUMNS ─── */
+.footer-links-col h4 {
+  font-family: var(--font-cond);
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 16px;
+}
+
+.footer-links-col ul {
+  list-style: none;
+}
+
+.footer-links-col li {
+  margin-bottom: 10px;
+}
+
+.footer-links-col a {
+  font-family: var(--font-cond);
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-links-col a:hover {
+  color: var(--red);
+}
+
+/* ─── BOTTOM SECTION ─── */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer-copy {
+  font-family: var(--font-cond);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.footer-red-line {
+  width: 40px;
+  height: 2px;
+  background: var(--red);
+}
