@@ -1,0 +1,52 @@
+{
+  "merchandise": [
+    {
+      "id": "merch-1",
+      "name": "Classic Logo Hoodie",
+      "description": "Premium heavyweight fleece — Black / Red",
+      "price": 750,
+      "currency": "ZAR",
+      "new": true,
+      "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect fill='%231a1a1a' width='200' height='200'/%3E%3Ctext x='50%25' y='50%25' font-size='80' fill='%23ff0000' text-anchor='middle' dominant-baseline='middle' font-family='sans-serif' font-weight='bold'%3EG%3C/text%3E%3C/svg%3E",
+      "gradient": "linear-gradient(135deg,#1a1a1a,#2a2a2a)",
+      "symbol": "G",
+      "type": "HOODIE"
+    },
+    {
+      "id": "merch-2",
+      "name": "Bold Logo Tee",
+      "description": "100% ringspun cotton — Washed Black",
+      "price": 420,
+      "currency": "ZAR",
+      "new": false,
+      "image": "",
+      "gradient": "linear-gradient(135deg,#110000,#220000)",
+      "symbol": "GOAT",
+      "type": "TEE"
+    },
+    {
+      "id": "merch-3",
+      "name": "GOAT Snapback Cap",
+      "description": "Structured 6-panel — Black / Red embroidery",
+      "price": 380,
+      "currency": "ZAR",
+      "new": true,
+      "image": "",
+      "gradient": "linear-gradient(135deg,#0d0d0d,#1a1a1a)",
+      "symbol": "●",
+      "type": "SNAPBACK"
+    },
+    {
+      "id": "merch-4",
+      "name": "Varsity Jacket",
+      "description": "Limited edition — Black wool / Red leather sleeves",
+      "price": 1800,
+      "currency": "ZAR",
+      "new": false,
+      "image": "",
+      "gradient": "linear-gradient(135deg,#200000,#300000)",
+      "symbol": "RECORDS",
+      "type": "JACKET"
+    }
+  ]
+}

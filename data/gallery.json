@@ -1,0 +1,76 @@
+{
+  "gallery": [
+    {
+      "id": "gallery-1",
+      "label": "STAGE",
+      "height": 280,
+      "gradient": "linear-gradient(135deg,#1a0000,#330000,#000)",
+      "image": "",
+      "description": "Live stage performance"
+    },
+    {
+      "id": "gallery-2",
+      "label": "STUDIO",
+      "height": 200,
+      "gradient": "linear-gradient(135deg,#000,#0d0d0d,#1a1a1a)",
+      "image": "",
+      "description": "Recording studio session"
+    },
+    {
+      "id": "gallery-3",
+      "label": "CROWD",
+      "height": 340,
+      "gradient": "linear-gradient(135deg,#0d0000,#200000)",
+      "image": "",
+      "description": "Crowd at live event"
+    },
+    {
+      "id": "gallery-4",
+      "label": "LIGHTS",
+      "height": 220,
+      "gradient": "linear-gradient(135deg,#110000,#1a0000,#0d0d00)",
+      "image": "",
+      "description": "Stage lighting setup"
+    },
+    {
+      "id": "gallery-5",
+      "label": "ARTIST",
+      "height": 360,
+      "gradient": "linear-gradient(135deg,#000,#0a0a1a,#000)",
+      "image": "",
+      "description": "Artist portrait"
+    },
+    {
+      "id": "gallery-6",
+      "label": "BACKSTAGE",
+      "height": 200,
+      "gradient": "linear-gradient(135deg,#0a0a0a,#1a0a00)",
+      "image": "",
+      "description": "Backstage moments"
+    },
+    {
+      "id": "gallery-7",
+      "label": "FESTIVAL",
+      "height": 300,
+      "gradient": "linear-gradient(135deg,#0d0000,#1a0000,#000)",
+      "image": "",
+      "description": "Festival performance"
+    },
+    {
+      "id": "gallery-8",
+      "label": "STUDIO",
+      "height": 240,
+      "gradient": "linear-gradient(135deg,#000,#111,#0a000a)",
+      "image": "",
+      "description": "Studio equipment"
+    },
+    {
+      "id": "gallery-9",
+      "label": "MERCH",
+      "height": 260,
+      "gradient": "linear-gradient(135deg,#0d0d0d,#1a0000)",
+      "image": "",
+      "description": "Merchandise display"
+    }
+  ]
+}

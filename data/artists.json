@@ -1,0 +1,126 @@
+{
+  "artists": [
+    {
+      "id": "luda-g",
+      "name": "LUDA G",
+      "status": "Signed",
+      "genres": ["Rap", "Hip-Hop"],
+      "location": "Paarl, SA",
+      "image": "images/luda g poster pic.jpg",
+      "bio": "Born and raised in the streets of Paarl, LUDA G is the cornerstone of GOAT RECORDS. His razor-sharp lyricism, cinematic delivery, and relentless work ethic have made him the face of a new generation of South African rap.",
+      "shortBio": "The cornerstone of GOAT RECORDS. LUDA G's razor-sharp lyricism and cinematic delivery define the new sound coming out of Paarl. Every verse hits like a statement.",
+      "stats": {
+        "tracksReleased": "50+",
+        "monthlyListeners": "50K+",
+        "yearsActive": 3
+      },
+      "socials": {
+        "instagram": "#",
+        "twitter": "#",
+        "soundcloud": "#",
+        "spotify": "#",
+        "youtube": "#"
+      },
+      "featured": true,
+      "featured_rank": "★ #1 Lead Artist"
+    },
+    {
+      "id": "dj-les",
+      "name": "DJ-LES",
+      "status": "Signed",
+      "genres": ["Hip-Hop", "R&B", "Amapiano"],
+      "location": "South Africa",
+      "image": "images/DJ_LES.jpeg",
+      "bio": "Multi-platinum selling artist with a signature Afro-fusion sound.",
+      "shortBio": "Multi-platinum selling artist with a signature Afro-fusion sound. 3 albums, 40M+ streams and counting.",
+      "stats": {
+        "albums": 3,
+        "totalStreams": "40M+"
+      },
+      "socials": {
+        "instagram": "#",
+        "twitter": "#",
+        "soundcloud": "#"
+      },
+      "featured": false
+    },
+    {
+      "id": "kay-medusa",
+      "name": "KAY_MEDUSA",
+      "status": "Signed",
+      "genres": ["Hip-Hop", "Rap"],
+      "location": "South Africa",
+      "image": "images/KAY_MEDUSA.jpeg",
+      "bio": "Making history as the first female rapper in SA under the GOAT RECORDS banner. Untouchable flow and groundbreaking energy.",
+      "shortBio": "Making history as the first female rapper in SA under the GOAT RECORDS banner. Untouchable flow and groundbreaking energy.",
+      "socials": {
+        "instagram": "#",
+        "twitter": "#",
+        "youtube": "#"
+      },
+      "featured": false
+    },
+    {
+      "id": "geo-flame",
+      "name": "GEO FLAME",
+      "status": "Signed",
+      "genres": ["R&B", "Soul"],
+      "location": "Paarl, SA",
+      "image": "images/Geo_flame.jpg",
+      "bio": "Hailing from Paarl, Geo Flame brings the smoothest R&B and soul to the label. His vocal depth and emotional delivery are unmatched.",
+      "shortBio": "Hailing from Paarl, Geo Flame brings the smoothest R&B and soul to the label. His vocal depth and emotional delivery are unmatched.",
+      "socials": {
+        "instagram": "#",
+        "soundcloud": "#",
+        "spotify": "#"
+      },
+      "featured": false
+    },
+    {
+      "id": "young-og-cpt",
+      "name": "YOUNG OG CPT",
+      "status": "Signed",
+      "genres": ["Rap", "Soul"],
+      "location": "Cape Town, SA",
+      "image": "images/YOUNG_OG_CPT.jpeg",
+      "bio": "The perfect blend of raw rap energy and smooth soul. Young brings a unique and versatile sound to the GOAT roster.",
+      "shortBio": "The perfect blend of raw rap energy and smooth soul. Young brings a unique and versatile sound to the GOAT roster.",
+      "socials": {
+        "instagram": "#",
+        "twitter": "#",
+        "youtube": "#"
+      },
+      "featured": false
+    },
+    {
+      "id": "young-og",
+      "name": "YOUNG OG",
+      "status": "Signed",
+      "genres": ["Rap", "Hip-Hop", "R&B"],
+      "location": "South Africa",
+      "image": "images/ENERGY.jpg",
+      "bio": "A versatile powerhouse who effortlessly bridges the gap between hard-hitting rap verses and melodic R&B hooks.",
+      "shortBio": "A versatile powerhouse who effortlessly bridges the gap between hard-hitting rap verses and melodic R&B hooks.",
+      "socials": {
+        "instagram": "#",
+        "twitter": "#"
+      },
+      "featured": false
+    },
+    {
+      "id": "blxckout",
+      "name": "BLXCKOUT",
+      "status": "Upcoming",
+      "genres": ["Gqom", "Club"],
+      "location": "South Africa",
+      "image": "images/MIDNIGHT FREQUENCIES.jpg",
+      "bio": "Pure Durban energy meeting next-level production. The clubs shut down when BLXCKOUT drops a set.",
+      "shortBio": "Pure Durban energy meeting next-level production. The clubs shut down when BLXCKOUT drops a set.",
+      "socials": {
+        "instagram": "#",
+        "soundcloud": "#"
+      },
+      "featured": false
+    }
+  ]
+}

@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GOAT RECORDS — Admin Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --red: #FF0000;
+      --white: #FFFFFF;
+      --black: #000000;
+      --gray: #1a1a1a;
+      --gray-mid: #2a2a2a;
+      --gray-light: #3a3a3a;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-cond: 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+    }
+    
+    body {
+      font-family: var(--font-body);
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+    }
+    
+    .admin-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .admin-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 40px;
+      border-bottom: 3px solid var(--red);
+      padding-bottom: 20px;
+    }
+    
+    .admin-header h1 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      letter-spacing: 0.1em;
+    }
+    
+    .admin-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    
+    button, .btn {
+      padding: 10px 20px;
+      border: none;
+      background: var(--red);
+      color: var(--white);
+      font-family: var(--font-cond);
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 2px solid var(--red);
+    }
+    
+    button:hover, .btn:hover {
+      background: transparent;
+      color: var(--red);
+    }
+    
+    button.secondary {
+      background: var(--gray-mid);
+      border-color: var(--gray-light);
+      color: var(--white);
+    }
+    
+    button.secondary:hover {
+      background: var(--gray-light);
+      color: var(--white);
+    }
+    
+    .tabs {
+      display: flex;
+      gap: 5px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--gray-light);
+      overflow-x: auto;
+    }
+    
+    .tab-btn {
+      padding: 15px 25px;
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.6);
+      font-family: var(--font-cond);
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s ease;
+    }
+    
+    .tab-btn:hover {
+      color: var(--white);
+    }
+    
+    .tab-btn.active {
+      color: var(--red);
+      border-bottom-color: var(--red);
+    }
+    
+    .tab-content {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .form-group label {
+      font-family: var(--font-cond);
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 12px;
+      background: var(--gray-mid);
+      border: 1px solid var(--gray-light);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+    }
+    
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--red);
+      background: var(--gray-light);
+    }
+    
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .items-list {
+      display: grid;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .item-card {
+      background: var(--gray-mid);
+      border-left: 3px solid var(--red);
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .item-info {
+      flex: 1;
+      min-width: 250px;
+    }
+    
+    .item-info h3 {
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+    
+    .item-info p {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 5px;
+    }
+    
+    .item-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    
+    .btn-small {
+      padding: 8px 15px;
+      font-size: 0.8rem;
+    }
+    
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .modal.active {
+      display: flex;
+    }
+    
+    .modal-content {
+      background: var(--gray);
+      border: 2px solid var(--red);
+      padding: 30px;
+      max-width: 600px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      animation: slideIn 0.3s ease;
+    }
+    
+    @keyframes slideIn {
+      from { transform: translateY(-50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    
+    .modal-header {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--red);
+      padding-bottom: 15px;
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 2rem;
+      cursor: pointer;
+      color: var(--red);
+    }
+    
+    .status-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      background: var(--red);
+      font-size: 0.75rem;
+      font-family: var(--font-cond);
+      letter-spacing: 0.1em;
+      border-radius: 3px;
+      text-transform: uppercase;
+    }
+    
+    .status-badge.secondary {
+      background: var(--gray-light);
+    }
+    
+    .message {
+      padding: 15px 20px;
+      margin-bottom: 20px;
+      border-left: 3px solid var(--red);
+      background: var(--gray-mid);
+      border-radius: 3px;
+    }
+    
+    .message.success {
+      color: #00ff00;
+      border-left-color: #00ff00;
+    }
+    
+    .message.error {
+      color: #ff4444;
+      border-left-color: #ff4444;
+    }
+    
+    .import-export {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+    
+    textarea.json-export {
+      width: 100%;
+      height: 300px;
+      padding: 15px;
+      background: var(--gray-mid);
+      border: 1px solid var(--gray-light);
+      color: var(--white);
+      font-family: 'Monaco', 'Courier New', monospace;
+      font-size: 0.85rem;
+      margin-bottom: 10px;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+    
+    .stat-card {
+      background: var(--gray-mid);
+      border: 1px solid var(--gray-light);
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .stat-num {
+      font-size: 2rem;
+      color: var(--red);
+      font-family: var(--font-display);
+      margin-bottom: 5px;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+      color: rgba(255, 255, 255, 0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <!-- HEADER -->
+    <div class="admin-header">
+      <h1>GOAT RECORDS<br><span style="font-size: 0.6em; color: var(--red);">ADMIN DASHBOARD</span></h1>
+      <div class="admin-actions">
+        <button onclick="exportData()">↓ Export JSON</button>
+        <button class="secondary" onclick="importData()">↑ Import JSON</button>
+        <button class="secondary" onclick="window.location.href='../index.html'">← Back to Site</button>
+      </div>
+    </div>
+    
+    <!-- MESSAGE AREA -->
+    <div id="messageBox" class="message" style="display: none;"></div>
+    
+    <!-- TABS -->
+    <div class="tabs">
+      <button class="tab-btn active" onclick="showTab('artists')">Artists</button>
+      <button class="tab-btn" onclick="showTab('events')">Events</button>
+      <button class="tab-btn" onclick="showTab('merchandise')">Merchandise</button>
+      <button class="tab-btn" onclick="showTab('gallery')">Gallery</button>
+      <button class="tab-btn" onclick="showTab('featured')">Featured Artist</button>
+      <button class="tab-btn" onclick="showTab('label')">Label Info</button>
+      <button class="tab-btn" onclick="showTab('sync')">Import/Export</button>
+    </div>
+    
+    <!-- TAB CONTENT -->
+    
+    <!-- ARTISTS TAB -->
+    <div id="artists" class="tab-content active">
+      <button onclick="openArtistModal()">+ Add New Artist</button>
+      <div id="artistsList" class="items-list" style="margin-top: 20px;"></div>
+    </div>
+    
+    <!-- EVENTS TAB -->
+    <div id="events" class="tab-content">
+      <button onclick="openEventModal()">+ Add New Event</button>
+      <div id="eventsList" class="items-list" style="margin-top: 20px;"></div>
+    </div>
+    
+    <!-- MERCHANDISE TAB -->
+    <div id="merchandise" class="tab-content">
+      <button onclick="openMerchModal()">+ Add New Product</button>
+      <div id="merchList" class="items-list" style="margin-top: 20px;"></div>
+    </div>
+    
+    <!-- GALLERY TAB -->
+    <div id="gallery" class="tab-content">
+      <button onclick="openGalleryModal()">+ Add New Gallery Item</button>
+      <div id="galleryList" class="items-list" style="margin-top: 20px;"></div>
+    </div>
+    
+    <!-- FEATURED ARTIST TAB -->
+    <div id="featured" class="tab-content">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Select Featured Artist</label>
+          <select id="featuredSelect" onchange="updateFeaturedArtist()">
+            <option value="">-- Select Artist --</option>
+          </select>
+        </div>
+      </div>
+      <div id="featuredPreview" style="margin-top: 30px;"></div>
+    </div>
+    
+    <!-- LABEL INFO TAB -->
+    <div id="label" class="tab-content">
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Label Name</label>
+          <input type="text" id="labelName" placeholder="GOAT RECORDS">
+        </div>
+        <div class="form-group">
+          <label>Tagline</label>
+          <input type="text" id="labelTagline" placeholder="Built for Greatness. Powered by Sound.">
+        </div>
+        <div class="form-group">
+          <label>General Email</label>
+          <input type="email" id="labelEmail" placeholder="info@goatrecords.co.za">
+        </div>
+        <div class="form-group">
+          <label>Bookings Email</label>
+          <input type="email" id="bookingsEmail" placeholder="bookings@goatrecords.co.za">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Main Description</label>
+        <textarea id="labelDesc" placeholder="Label description..."></textarea>
+      </div>
+      <button onclick="saveLabelInfo()">Save Label Info</button>
+    </div>
+    
+    <!-- IMPORT/EXPORT TAB -->
+    <div id="sync" class="tab-content">
+      <h3 style="margin-bottom: 20px;">Data Backup & Restore</h3>
+      <div class="import-export">
+        <button onclick="exportDataFile()">📥 Download All Data (JSON)</button>
+        <button class="secondary" onclick="document.getElementById('importFile').click()">📤 Upload Data (JSON)</button>
+        <input type="file" id="importFile" accept=".json" style="display: none;" onchange="importDataFile(event)">
+      </div>
+      <h3 style="margin-bottom: 15px;">Raw JSON Export</h3>
+      <textarea class="json-export" id="jsonExport" readonly></textarea>
+      <button onclick="copyToClipboard()">📋 Copy to Clipboard</button>
+      <button class="secondary" onclick="downloadRawJSON()">💾 Download Raw JSON</button>
+    </div>
+  </div>
+  
+  <!-- MODALS -->
+  <div id="artistModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-close" onclick="closeModal('artistModal')">×</div>
+      <div class="modal-header">Add/Edit Artist</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Artist Name</label>
+          <input type="text" id="artistName" placeholder="Artist Name">
+        </div>
+        <div class="form-group">
+          <label>Status</label>
+          <select id="artistStatus">
+            <option>Signed</option>
+            <option>Upcoming</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Genres (comma-separated)</label>
+          <input type="text" id="artistGenres" placeholder="Hip-Hop, Rap">
+        </div>
+        <div class="form-group">
+          <label>Location</label>
+          <input type="text" id="artistLocation" placeholder="Paarl, SA">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Bio</label>
+        <textarea id="artistBio" placeholder="Artist biography..."></textarea>
+      </div>
+      <div class="form-group">
+        <label>Image URL</label>
+        <input type="text" id="artistImage" placeholder="images/artist-name.jpg">
+      </div>
+      <button onclick="saveArtist()" style="width: 100%;">Save Artist</button>
+    </div>
+  </div>
+  
+  <div id="eventModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-close" onclick="closeModal('eventModal')">×</div>
+      <div class="modal-header">Add/Edit Event</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Event Title</label>
+          <input type="text" id="eventTitle" placeholder="Event Title">
+        </div>
+        <div class="form-group">
+          <label>Date</label>
+          <input type="date" id="eventDate">
+        </div>
+        <div class="form-group">
+          <label>Venue</label>
+          <input type="text" id="eventVenue" placeholder="Venue Name">
+        </div>
+        <div class="form-group">
+          <label>Location</label>
+          <input type="text" id="eventLocation" placeholder="City, Country">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Tags (comma-separated)</label>
+        <input type="text" id="eventTags" placeholder="Live Show, All Artists">
+      </div>
+      <button onclick="saveEvent()" style="width: 100%;">Save Event</button>
+    </div>
+  </div>
+  
+  <div id="merchModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-close" onclick="closeModal('merchModal')">×</div>
+      <div class="modal-header">Add/Edit Product</div>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Product Name</label>
+          <input type="text" id="merchName" placeholder="Product Name">
+        </div>
+        <div class="form-group">
+          <label>Price (ZAR)</label>
+          <input type="number" id="merchPrice" placeholder="999">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea id="merchDesc" placeholder="Product description..."></textarea>
+      </div>
+      <button onclick="saveMerch()" style="width: 100%;">Save Product</button>
+    </div>
+  </div>
+  
+  <!-- SCRIPT -->
+  <script src="../js/content-loader.js"></script>
+  <script>
+    let currentEditIndex = -1;
+    let currentEditType = '';
+    
+    // ─── INITIALIZATION ─── 
+    window.addEventListener('goatDataLoaded', () => {
+      renderArtists();
+      renderEvents();
+      renderMerch();
+      renderGallery();
+      renderFeaturedSelect();
+      renderLabelInfo();
+      renderJSONExport();
+      showMessage('✓ Data loaded successfully', 'success');
+    });
+    
+    // ─── TAB MANAGEMENT ─── 
+    function showTab(tabName) {
+      document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById(tabName).classList.add('active');
+      event.target.classList.add('active');
+    }
+    
+    // ─── MESSAGE DISPLAY ───
+    function showMessage(text, type = 'success') {
+      const box = document.getElementById('messageBox');
+      box.textContent = text;
+      box.className = 'message ' + type;
+      box.style.display = 'block';
+      setTimeout(() => box.style.display = 'none', 4000);
+    }
+    
+    // ─── ARTISTS ─── 
+    function renderArtists() {
+      const list = document.getElementById('artistsList');
+      list.innerHTML = window.goatData.artists.map((artist, idx) => `
+        <div class="item-card">
+          <div class="item-info">
+            <h3>${artist.name}</h3>
+            <p>${artist.genres.join(', ')}</p>
+            <span class="status-badge ${artist.status === 'Upcoming' ? 'secondary' : ''}">${artist.status}</span>
+          </div>
+          <div class="item-actions">
+            <button class="btn-small" onclick="editArtist(${idx})">Edit</button>
+            <button class="btn-small secondary" onclick="deleteArtist(${idx})">Delete</button>
+          </div>
+        </div>
+      `).join('');
+    }
+    
+    function openArtistModal() {
+      currentEditIndex = -1;
+      document.getElementById('artistName').value = '';
+      document.getElementById('artistStatus').value = 'Signed';
+      document.getElementById('artistGenres').value = '';
+      document.getElementById('artistLocation').value = '';
+      document.getElementById('artistBio').value = '';
+      document.getElementById('artistImage').value = '';
+      document.getElementById('artistModal').classList.add('active');
+    }
+    
+    function editArtist(idx) {
+      currentEditIndex = idx;
+      const artist = window.goatData.artists[idx];
+      document.getElementById('artistName').value = artist.name;
+      document.getElementById('artistStatus').value = artist.status;
+      document.getElementById('artistGenres').value = artist.genres.join(', ');
+      document.getElementById('artistLocation').value = artist.location;
+      document.getElementById('artistBio').value = artist.bio;
+      document.getElementById('artistImage').value = artist.image;
+      document.getElementById('artistModal').classList.add('active');
+    }
+    
+    function saveArtist() {
+      const artist = {
+        id: currentEditIndex >= 0 ? window.goatData.artists[currentEditIndex].id : 'artist-' + Date.now(),
+        name: document.getElementById('artistName').value,
+        status: document.getElementById('artistStatus').value,
+        genres: document.getElementById('artistGenres').value.split(',').map(g => g.trim()),
+        location: document.getElementById('artistLocation').value,
+        image: document.getElementById('artistImage').value,
+        bio: document.getElementById('artistBio').value,
+        featured: false
+      };
+      
+      if (currentEditIndex >= 0) {
+        window.goatData.artists[currentEditIndex] = { ...window.goatData.artists[currentEditIndex], ...artist };
+      } else {
+        window.goatData.artists.push(artist);
+      }
+      
+      renderArtists();
+      renderFeaturedSelect();
+      closeModal('artistModal');
+      showMessage('✓ Artist saved', 'success');
+    }
+    
+    function deleteArtist(idx) {
+      if (confirm('Delete this artist?')) {
+        window.goatData.artists.splice(idx, 1);
+        renderArtists();
+        renderFeaturedSelect();
+        showMessage('✓ Artist deleted', 'success');
+      }
+    }
+    
+    // ─── EVENTS ─── 
+    function renderEvents() {
+      const list = document.getElementById('eventsList');
+      list.innerHTML = window.goatData.events.map((event, idx) => `
+        <div class="item-card">
+          <div class="item-info">
+            <h3>${event.title}</h3>
+            <p>${event.day} ${event.month} — ${event.venue}</p>
+            <div>${event.tags.map(t => `<span class="status-badge" style="margin-right: 5px;">${t}</span>`).join('')}</div>
+          </div>
+          <div class="item-actions">
+            <button class="btn-small" onclick="editEvent(${idx})">Edit</button>
+            <button class="btn-small secondary" onclick="deleteEvent(${idx})">Delete</button>
+          </div>
+        </div>
+      `).join('');
+    }
+    
+    function openEventModal() {
+      currentEditIndex = -1;
+      document.getElementById('eventTitle').value = '';
+      document.getElementById('eventDate').value = '';
+      document.getElementById('eventVenue').value = '';
+      document.getElementById('eventLocation').value = '';
+      document.getElementById('eventTags').value = '';
+      document.getElementById('eventModal').classList.add('active');
+    }
+    
+    function editEvent(idx) {
+      currentEditIndex = idx;
+      const event = window.goatData.events[idx];
+      document.getElementById('eventTitle').value = event.title;
+      document.getElementById('eventDate').value = event.date;
+      document.getElementById('eventVenue').value = event.venue;
+      document.getElementById('eventLocation').value = event.location;
+      document.getElementById('eventTags').value = event.tags.join(', ');
+      document.getElementById('eventModal').classList.add('active');
+    }
+    
+    function saveEvent() {
+      const date = new Date(document.getElementById('eventDate').value);
+      const event = {
+        id: currentEditIndex >= 0 ? window.goatData.events[currentEditIndex].id : 'event-' + Date.now(),
+        title: document.getElementById('eventTitle').value,
+        date: document.getElementById('eventDate').value,
+        day: String(date.getDate()).padStart(2, '0'),
+        month: date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
+        venue: document.getElementById('eventVenue').value,
+        location: document.getElementById('eventLocation').value,
+        tags: document.getElementById('eventTags').value.split(',').map(t => t.trim()),
+        status: 'available'
+      };
+      
+      if (currentEditIndex >= 0) {
+        window.goatData.events[currentEditIndex] = event;
+      } else {
+        window.goatData.events.push(event);
+      }
+      
+      renderEvents();
+      closeModal('eventModal');
+      showMessage('✓ Event saved', 'success');
+    }
+    
+    function deleteEvent(idx) {
+      if (confirm('Delete this event?')) {
+        window.goatData.events.splice(idx, 1);
+        renderEvents();
+        showMessage('✓ Event deleted', 'success');
+      }
+    }
+    
+    // ─── MERCHANDISE ─── 
+    function renderMerch() {
+      const list = document.getElementById('merchList');
+      list.innerHTML = window.goatData.merchandise.map((item, idx) => `
+        <div class="item-card">
+          <div class="item-info">
+            <h3>${item.name}</h3>
+            <p>${item.description}</p>
+            <p style="font-size: 1.2rem; color: var(--red); margin-top: 10px;"><strong>R${item.price} ZAR</strong></p>
+          </div>
+          <div class="item-actions">
+            <button class="btn-small" onclick="editMerch(${idx})">Edit</button>
+            <button class="btn-small secondary" onclick="deleteMerch(${idx})">Delete</button>
+          </div>
+        </div>
+      `).join('');
+    }
+    
+    function openMerchModal() {
+      currentEditIndex = -1;
+      document.getElementById('merchName').value = '';
+      document.getElementById('merchPrice').value = '';
+      document.getElementById('merchDesc').value = '';
+      document.getElementById('merchModal').classList.add('active');
+    }
+    
+    function editMerch(idx) {
+      currentEditIndex = idx;
+      const item = window.goatData.merchandise[idx];
+      document.getElementById('merchName').value = item.name;
+      document.getElementById('merchPrice').value = item.price;
+      document.getElementById('merchDesc').value = item.description;
+      document.getElementById('merchModal').classList.add('active');
+    }
+    
+    function saveMerch() {
+      const item = {
+        id: currentEditIndex >= 0 ? window.goatData.merchandise[currentEditIndex].id : 'merch-' + Date.now(),
+        name: document.getElementById('merchName').value,
+        price: parseInt(document.getElementById('merchPrice').value),
+        description: document.getElementById('merchDesc').value,
+        currency: 'ZAR',
+        new: false
+      };
+      
+      if (currentEditIndex >= 0) {
+        window.goatData.merchandise[currentEditIndex] = item;
+      } else {
+        window.goatData.merchandise.push(item);
+      }
+      
+      renderMerch();
+      closeModal('merchModal');
+      showMessage('✓ Product saved', 'success');
+    }
+    
+    function deleteMerch(idx) {
+      if (confirm('Delete this product?')) {
+        window.goatData.merchandise.splice(idx, 1);
+        renderMerch();
+        showMessage('✓ Product deleted', 'success');
+      }
+    }
+    
+    // ─── GALLERY ─── 
+    function renderGallery() {
+      const list = document.getElementById('galleryList');
+      list.innerHTML = window.goatData.gallery.map((item, idx) => `
+        <div class="item-card">
+          <div class="item-info">
+            <h3>${item.label}</h3>
+            <p>Height: ${item.height}px</p>
+          </div>
+          <div class="item-actions">
+            <button class="btn-small" onclick="alert('Gallery editing in progress')">Edit</button>
+            <button class="btn-small secondary" onclick="deleteGallery(${idx})">Delete</button>
+          </div>
+        </div>
+      `).join('');
+    }
+    
+    function openGalleryModal() {
+      alert('Gallery item creation coming soon');
+    }
+    
+    function deleteGallery(idx) {
+      if (confirm('Delete this gallery item?')) {
+        window.goatData.gallery.splice(idx, 1);
+        renderGallery();
+        showMessage('✓ Gallery item deleted', 'success');
+      }
+    }
+    
+    // ─── FEATURED ARTIST ─── 
+    function renderFeaturedSelect() {
+      const select = document.getElementById('featuredSelect');
+      select.innerHTML = '<option value="">-- Select Artist --</option>' + 
+        window.goatData.artists.map(a => `<option value="${a.id}">${a.name}</option>`).join('');
+      select.value = window.goatData.featuredArtist?.artistId || '';
+    }
+    
+    function updateFeaturedArtist() {
+      const id = document.getElementById('featuredSelect').value;
+      window.goatData.featuredArtist.artistId = id;
+      renderFeaturedPreview();
+      showMessage('✓ Featured artist updated', 'success');
+    }
+    
+    function renderFeaturedPreview() {
+      const artist = window.goatData.getFeaturedArtist();
+      const preview = document.getElementById('featuredPreview');
+      if (artist) {
+        preview.innerHTML = `
+          <div style="background: var(--gray-mid); border: 2px solid var(--red); padding: 20px;">
+            <h3 style="margin-bottom: 15px;">Preview: ${artist.name}</h3>
+            <p><strong>Genres:</strong> ${artist.genres.join(', ')}</p>
+            <p><strong>Location:</strong> ${artist.location}</p>
+            <p><strong>Bio:</strong> ${artist.bio}</p>
+          </div>
+        `;
+      }
+    }
+    
+    // ─── LABEL INFO ─── 
+    function renderLabelInfo() {
+      document.getElementById('labelName').value = window.goatData.label.name || '';
+      document.getElementById('labelTagline').value = window.goatData.label.tagline || '';
+      document.getElementById('labelEmail').value = window.goatData.label.contact?.generalEmail || '';
+      document.getElementById('bookingsEmail').value = window.goatData.label.contact?.bookingsEmail || '';
+      document.getElementById('labelDesc').value = window.goatData.label.description || '';
+    }
+    
+    function saveLabelInfo() {
+      window.goatData.label.name = document.getElementById('labelName').value;
+      window.goatData.label.tagline = document.getElementById('labelTagline').value;
+      window.goatData.label.contact = window.goatData.label.contact || {};
+      window.goatData.label.contact.generalEmail = document.getElementById('labelEmail').value;
+      window.goatData.label.contact.bookingsEmail = document.getElementById('bookingsEmail').value;
+      window.goatData.label.description = document.getElementById('labelDesc').value;
+      showMessage('✓ Label info saved', 'success');
+    }
+    
+    // ─── IMPORT/EXPORT ─── 
+    function renderJSONExport() {
+      document.getElementById('jsonExport').value = window.goatData.exportJSON();
+    }
+    
+    function exportDataFile() {
+      const json = window.goatData.exportJSON();
+      const blob = new Blob([json], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'goat-records-data.json';
+      a.click();
+      showMessage('✓ Data exported', 'success');
+    }
+    
+    function importDataFile(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          window.goatData.importJSON(e.target.result);
+          renderArtists();
+          renderEvents();
+          renderMerch();
+          renderGallery();
+          renderFeaturedSelect();
+          renderLabelInfo();
+          renderJSONExport();
+          showMessage('✓ Data imported successfully', 'success');
+        } catch (err) {
+          showMessage('✗ Error importing data: ' + err.message, 'error');
+        }
+      };
+      reader.readAsText(file);
+    }
+    
+    function copyToClipboard() {
+      const textarea = document.getElementById('jsonExport');
+      textarea.select();
+      document.execCommand('copy');
+      showMessage('✓ Copied to clipboard', 'success');
+    }
+    
+    function downloadRawJSON() {
+      exportDataFile();
+    }
+    
+    // ─── MODAL MANAGEMENT ─── 
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+    }
+    
+    // Close modals on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal.active').forEach(m => m.classList.remove('active'));
+      }
+    });
+  </script>
+</body>
+</html>

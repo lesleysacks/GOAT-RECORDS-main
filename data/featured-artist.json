@@ -1,0 +1,8 @@
+{
+  "featuredArtist": {
+    "artistId": "luda-g",
+    "rotation": false,
+    "rotationInterval": 0,
+    "description": "Featured Artist - Rotate or set manually in Admin Dashboard"
+  }
+}

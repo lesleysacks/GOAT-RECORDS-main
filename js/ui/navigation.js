@@ -41,3 +41,9 @@ function closeMobile() {
   ham.classList.remove('open');
   mob.classList.remove('open');
 }
+
+// ─── MOBILE MENU LINK HANDLERS ───
+const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+mobileMenuLinks.forEach(link => {
+  link.addEventListener('click', closeMobile);
+});

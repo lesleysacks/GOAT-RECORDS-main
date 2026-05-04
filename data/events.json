@@ -1,0 +1,82 @@
+{
+  "events": [
+    {
+      "id": "event-1",
+      "title": "GOAT RECORDS SHOWCASE",
+      "date": "2026-04-04",
+      "day": "04",
+      "month": "Apr 2026",
+      "venue": "Pearl Valley, Paarl",
+      "location": "Western Cape, SA",
+      "tags": ["Live Show", "All Artists"],
+      "type": "Showcase",
+      "status": "available",
+      "buttonText": "Get Tickets"
+    },
+    {
+      "id": "event-2",
+      "title": "LUDA G — PAARL HOMECOMING",
+      "date": "2026-04-12",
+      "day": "12",
+      "month": "Apr 2026",
+      "venue": "Bolandse Kloof, Paarl",
+      "location": "Western Cape, SA",
+      "tags": ["Headline", "Rap"],
+      "type": "Headline",
+      "status": "available",
+      "buttonText": "Get Tickets"
+    },
+    {
+      "id": "event-3",
+      "title": "DÆMON B2B SET",
+      "date": "2026-04-25",
+      "day": "25",
+      "month": "Apr 2026",
+      "venue": "Fabric, London",
+      "location": "United Kingdom",
+      "tags": ["DJ Set", "Electronic"],
+      "type": "DJ Set",
+      "status": "sold-out",
+      "buttonText": "Sold Out"
+    },
+    {
+      "id": "event-4",
+      "title": "RXGE — RAGE TOUR",
+      "date": "2026-05-09",
+      "day": "09",
+      "month": "May 2026",
+      "venue": "Lyric Theatre, Johannesburg",
+      "location": "South Africa",
+      "tags": ["Trap", "Tour"],
+      "type": "Tour",
+      "status": "available",
+      "buttonText": "Get Tickets"
+    },
+    {
+      "id": "event-5",
+      "title": "ZΛRΛ NOIR — DEBUT SHOWCASE",
+      "date": "2026-05-22",
+      "day": "22",
+      "month": "May 2026",
+      "venue": "The Grand, Nairobi",
+      "location": "Kenya",
+      "tags": ["R&B", "Debut"],
+      "type": "Showcase",
+      "status": "available",
+      "buttonText": "Get Tickets"
+    },
+    {
+      "id": "event-6",
+      "title": "GOAT RECORDS FESTIVAL",
+      "date": "2026-06-14",
+      "day": "14",
+      "month": "Jun 2026",
+      "venue": "Dal Josaphat Oval, Paarl",
+      "location": "Western Cape, SA",
+      "tags": ["Festival", "All Roster", "Outdoor"],
+      "type": "Festival",
+      "status": "available",
+      "buttonText": "Get Tickets"
+    }
+  ]
+}

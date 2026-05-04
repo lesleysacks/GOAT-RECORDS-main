@@ -24,7 +24,7 @@
  * - Efficient gain node management
  */
 
-let audioCtx = null, oscillators = [], gainNode = null, musicOn = false;
+let audioCtx = null, oscillators = [], gainNode = null, musicOn = false, fadeOutTimeout = null;
 const musicBtn = document.getElementById('music-toggle');
 
 /**
@@ -32,7 +32,14 @@ const musicBtn = document.getElementById('music-toggle');
  * Creates oscillators with filter chain
  */
 function startAmbient() {
+  // Clean up any previous fade-out timeout
+  if (fadeOutTimeout) clearTimeout(fadeOutTimeout);
+  
   if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  
+  // Clean up old oscillators if they exist
+  stopAmbient(true);
+  
   gainNode = audioCtx.createGain();
   gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
   gainNode.gain.linearRampToValueAtTime(0.04, audioCtx.currentTime + 2);
@@ -58,11 +65,33 @@ function startAmbient() {
 
 /**
  * Stops ambient sound with smooth fade out
+ * @param {boolean} immediate - If true, stop immediately without fade
  */
-function stopAmbient() {
-  if (gainNode) {
+function stopAmbient(immediate = false) {
+  if (!gainNode || !audioCtx) return;
+  
+  if (immediate) {
+    // Hard stop for cleanup
+    oscillators.forEach(o => {
+      try { o.stop(); } catch(e){}
+    });
+    oscillators = [];
+    gainNode = null;
+  } else {
+    // Smooth fade out
     gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 1.5);
-    setTimeout(() => oscillators.forEach(o => { try { o.stop(); } catch(e){} }), 2000);
+    
+    // Clean up timeout from previous call if any
+    if (fadeOutTimeout) clearTimeout(fadeOutTimeout);
+    
+    fadeOutTimeout = setTimeout(() => {
+      oscillators.forEach(o => {
+        try { o.stop(); } catch(e){}
+      });
+      oscillators = [];
+      gainNode = null;
+      fadeOutTimeout = null;
+    }, 1500);
   }
 }
 
@@ -72,4 +101,13 @@ musicBtn.addEventListener('click', () => {
   musicBtn.classList.toggle('paused', !musicOn);
   if (musicOn) startAmbient();
   else stopAmbient();
+});
+
+// ─── CLEANUP ON PAGE UNLOAD ───
+window.addEventListener('beforeunload', () => {
+  stopAmbient(true);
+  if (audioCtx) {
+    try { audioCtx.close(); } catch(e){}
+    audioCtx = null;
+  }
 });

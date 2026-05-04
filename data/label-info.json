@@ -1,0 +1,72 @@
+{
+  "label": {
+    "name": "GOAT RECORDS",
+    "tagline": "Built for Greatness. Powered by Sound.",
+    "established": 2020,
+    "yearsStrong": 5,
+    "description": "GOAT RECORDS was born from one relentless vision: to build the most dominant music label on the continent. We don't chase charts — we create them. Founded by artists, for artists, we operate at the intersection of raw talent and strategic excellence.",
+    "description2": "From underground cyphers to main-stage headliners, every act we sign carries the GOAT standard — unbothered, undeniable, and undeniably elite. Our roster spans hip-hop, Afrobeats, electronic, and beyond.",
+    "description3": "We don't just sign artists. We build legacies.",
+    "stats": {
+      "artistsSigned": "40+",
+      "streamsGlobal": "200M",
+      "eventsPerYear": "80+"
+    },
+    "contact": {
+      "generalEmail": "info@goatrecords.co.za",
+      "bookingsEmail": "bookings@goatrecords.co.za",
+      "phone": "+27 21 000 0000",
+      "hours": "Mon – Fri, 9am – 6pm SAST",
+      "location": "Paarl, Western Cape, South Africa"
+    },
+    "officeHours": {
+      "monday_friday": "9:00 – 18:00",
+      "saturday": "10:00 – 14:00",
+      "sunday": "Closed"
+    },
+    "socials": {
+      "instagram": {
+        "icon": "IG",
+        "handle": "@goatrecordssa",
+        "url": "#"
+      },
+      "twitter": {
+        "icon": "TW",
+        "handle": "@goatrecords",
+        "url": "#"
+      },
+      "youtube": {
+        "icon": "YT",
+        "handle": "GOAT RECORDS Official",
+        "url": "#"
+      },
+      "tiktok": {
+        "icon": "TK",
+        "handle": "@goatrecords",
+        "url": "#"
+      },
+      "spotify": {
+        "icon": "SP",
+        "handle": "GOAT Records on Spotify",
+        "url": "#"
+      }
+    },
+    "bookingFeatures": [
+      {
+        "icon": "🎤",
+        "title": "Live Performances",
+        "description": "Full live shows with bands, backing tracks, and visuals"
+      },
+      {
+        "icon": "🎧",
+        "title": "DJ Sets",
+        "description": "Club nights, festivals, private events — our DJs go all night"
+      },
+      {
+        "icon": "🎬",
+        "title": "Brand Partnerships",
+        "description": "Artist endorsements, brand events, and media appearances"
+      }
+    ]
+  }
+}
