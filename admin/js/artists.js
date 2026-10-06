@@ -81,9 +81,9 @@ export function saveArtist() {
     location: field('artistLocation').value.trim(),
     image: field('artistImage').value.trim(),
     bio,
-    shortBio: existing?.shortBio && existing.shortBio !== existing.bio ? existing.shortBio : bio,
-    featured: existing?.featured === true
+    shortBio: existing?.shortBio && existing.shortBio !== existing.bio ? existing.shortBio : bio
   };
+  delete artist.featured;
 
   if (existing) store.state.artists[editor.artist] = artist;
   else store.state.artists.push(artist);

@@ -1,431 +1,173 @@
-# GOAT RECORDS — Testing & Validation Report
-
-> Historical snapshot from before the architecture refactor. The checklist below describes an earlier pass and is not a current certification. See `README.md` for how the site is structured now.
-
-**Test Date:** May 4, 2026  
-**Test Environment:** Windows 10, Chrome, Firefox, Safari (simulated)  
-**Overall Status:** ✅ PASS
-
----
-
-## 📋 Test Execution Summary
-
-| Category | Tests | Passed | Failed | Status |
-|----------|-------|--------|--------|--------|
-| Functionality | 18 | 18 | 0 | ✅ PASS |
-| Accessibility | 8 | 8 | 0 | ✅ PASS |
-| Performance | 6 | 6 | 0 | ✅ PASS |
-| Responsiveness | 5 | 5 | 0 | ✅ PASS |
-| Content Management | 12 | 12 | 0 | ✅ PASS |
-| **TOTAL** | **49** | **49** | **0** | **✅ PASS** |
-
----
-
-## 1. FUNCTIONALITY TESTS ✅
-
-### 1.1 Image Display
-- [x] **All 13 images load correctly**
-  - DJ_LES.jpeg ✓
-  - KAY_MEDUSA.jpeg ✓
-  - Geo_flame.jpg ✓
-  - YOUNG_OG_CPT.jpeg ✓
-  - ENERGY.jpg (YOUNG OG) ✓
-  - MIDNIGHT FREQUENCIES.jpg (BLXCKOUT) ✓
-  - LUDA_G image (featured) ✓
-  - All other images ✓
-
-### 1.2 Navigation
-- [x] **Sticky navigation bar** - Works on scroll past 60px
-- [x] **Hamburger menu toggle** - Opens/closes on mobile
-- [x] **Mobile menu links close menu** - Click link → menu closes (no inline onclick)
-- [x] **All anchor links work** - About, Artists, Events, Merch, Gallery, Bookings, Contact
-
-### 1.3 Hero Section
-- [x] **Canvas animation loads** - No console errors
-- [x] **Glitch effect displays** - "GOAT RECORDS" text animates
-- [x] **Hero buttons functional** - "Join the Label" and "Book Us" link to bookings
-
-### 1.4 Featured Artist Section
-- [x] **Featured artist displays** - LUDA G shown with image and bio
-- [x] **Stats display correctly** - 50+ tracks, 50K+ listeners, 3 years active
-- [x] **Featured artist controls responsive** - Works at all breakpoints
-
-### 1.5 Artist Roster
-- [x] **All 7 artists display** - LUDA G (featured), DJ-LES, KAY_MEDUSA, GEO FLAME, YOUNG OG CPT, YOUNG OG, BLXCKOUT
-- [x] **Artist status badges** - "Signed" or "Upcoming" displayed correctly
-- [x] **Artist hover effects** - Card expansion works on click
-
-### 1.6 Events Section
-- [x] **All 6 events display** - Correct titles, dates, venues
-- [x] **Event sorting** - Events appear in chronological order
-- [x] **Event buttons functional** - "Get Tickets" or "Sold Out" state displays correctly
-
-### 1.7 Merchandise Section
-- [x] **All 4 products display** - Hoodies, Tees, Caps, Jackets
-- [x] **Prices display** - R750, R420, R380, R1,800 ZAR
-- [x] **"New" badges** - Display on Hoodie and Snapback
-
-### 1.8 Gallery Section
-- [x] **9 gallery items render** - All placeholders load
-- [x] **Gallery grid responsive** - Adjusts layout for different screen sizes
-- [x] **Lightbox opens** - Click any gallery item opens lightbox modal
-
-### 1.9 Forms
-- [x] **Booking form submits** - No errors, success message displays
-- [x] **Newsletter form submits** - Input acceptance, success feedback
-- [x] **Form validation** - Required fields enforced
-
-### 1.10 Music Player
-- [x] **Music toggle button works** - Toggles on/off without errors
-- [x] **Web Audio API initializes** - No memory leaks
-- [x] **Audio context cleanup** - No orphaned oscillators
-
----
-
-## 2. ACCESSIBILITY TESTS ✅
-
-### 2.1 Image Alt Text
-- [x] **All images have descriptive alt text** - Not empty
-- [x] **Featured artist image:** "LUDA G - Lead Artist"
-- [x] **DJ-LES image:** "DJ-LES - Hip-Hop, R&B, Amapiano Artist"
-- [x] **KAY_MEDUSA image:** "KAY_MEDUSA - Female Rapper"
-- [x] **GEO FLAME image:** "GEO FLAME - R&B / Soul Artist"
-- [x] **YOUNG OG CPT image:** "YOUNG OG CPT - Rap / Soul Artist"
-
-### 2.2 ARIA Labels
-- [x] **Hamburger menu button:** aria-label="Toggle mobile menu" ✓
-- [x] **Music toggle button:** aria-label="Toggle ambient background music" ✓
-
-### 2.3 Semantic HTML
-- [x] **Proper heading hierarchy** - H1 for main title, H2 for sections
-- [x] **Navigation uses semantic `<nav>` element** ✓
-- [x] **Form labels associated with inputs** ✓
-- [x] **Mobile menu links use proper anchor tags** (removed inline onclick) ✓
-
-### 2.4 Keyboard Navigation
-- [x] **Tab key navigates through interactive elements** ✓
-- [x] **Enter key activates buttons** ✓
-- [x] **Hamburger menu keyboard accessible** ✓
-
-### 2.5 Color Contrast
-- [x] **Red (#FF0000) on Black (#000000)** - Contrast ratio: 5.25:1 ✓ (exceeds 4.5:1 WCAG AA)
-- [x] **White on Black** - Contrast ratio: 21:1 ✓ (excellent)
-- [x] **Text on backgrounds** - All meet WCAG AA standard
-
-### 2.6 Screen Reader Compatibility
-- [x] **All text content readable** - No missing labels
-- [x] **Semantic structure aids navigation** ✓
-- [x] **Form fields properly labeled** ✓
-
----
-
-## 3. PERFORMANCE TESTS ✅
-
-### 3.1 Page Load Times
-- [x] **Time to First Byte (TTFB):** <100ms (local file) ✓
-- [x] **DOM Interactive:** <500ms ✓
-- [x] **Page Fully Loaded:** <1s ✓
-
-### 3.2 Resource Loading
-- [x] **CSS files load without blocking** - All stylesheets loaded
-- [x] **JavaScript deferred** - `defer` attribute on all script tags ✓
-- [x] **No render-blocking resources** ✓
-
-### 3.3 Asset Optimization
-- [x] **Images optimized** - All sizes reasonable (<2MB each)
-- [x] **No console errors** - Clean startup
-- [x] **No 404 errors** - All resources found
-
-### 3.4 JavaScript Performance
-- [x] **No memory leaks** - Web Audio cleanup working ✓
-- [x] **Event listeners properly removed** - Mobile menu handlers cleaned up
-- [x] **Module system efficient** - No global namespace pollution
-
-### 3.5 Animation Performance
-- [x] **Canvas animation smooth** - 60 FPS (no stuttering observed)
-- [x] **Scroll animations smooth** - Intersection Observer efficient
-- [x] **No performance dips** during interactions
-
-### 3.6 Data Loading
-- [x] **JSON files load asynchronously** - Non-blocking
-- [x] **Fallback data works** - If JSON fails to load
-- [x] **Content renders after load** - No flash of unstyled content
-
----
-
-## 4. RESPONSIVENESS TESTS ✅
-
-### 4.1 Mobile (375px)
-- [x] **Layout adapts** - Single column, stacked navigation
-- [x] **Hamburger menu displays** - Mobile nav visible
-- [x] **Touch targets sized** - Buttons ≥48px for touch
-- [x] **No horizontal scroll** - Content fits viewport
-- [x] **Images scale properly** - No overflow
-
-### 4.2 Tablet (768px)
-- [x] **2-column layout** - Artists grid, events sidebar
-- [x] **Navigation responsive** - Links visible
-- [x] **Forms readable** - Labels and inputs properly sized
-- [x] **Gallery adjusts** - Multi-column grid
-
-### 4.3 Desktop (1024px+)
-- [x] **Full layout** - All sections display as designed
-- [x] **Multi-column grids** - Artists, events, merch
-- [x] **Optimal line lengths** - Text readable (not too wide)
-
-### 4.4 Large Screens (1440px+)
-- [x] **Content not stretched** - Max-width enforced
-- [x] **Proper spacing** - Not cramped
-- [x] **Grid layouts balanced** - Even distribution
-
-### 4.5 Orientation Changes
-- [x] **Portrait to landscape transitions** - No layout breaks
-- [x] **Content reflows** - Readable in all orientations
-
----
-
-## 5. CONTENT MANAGEMENT TESTS ✅
-
-### 5.1 JSON Data Files
-- [x] **artists.json** - 7 artists loaded correctly
-- [x] **events.json** - 6 events loaded correctly
-- [x] **merchandise.json** - 4 products loaded correctly
-- [x] **gallery.json** - 9 items loaded correctly
-- [x] **featured-artist.json** - LUDA G selected
-- [x] **label-info.json** - Contact info loaded
-
-### 5.2 Admin Dashboard - Artists Tab
-- [x] **All 7 artists display** in list
-- [x] **Add new artist** button works
-- [x] **Edit artist** modal opens
-- [x] **Delete artist** function works (with confirmation)
-- [x] **Form validation** - Required fields enforced
-
-### 5.3 Admin Dashboard - Events Tab
-- [x] **All 6 events display** in list
-- [x] **Add new event** button works
-- [x] **Event date picker** functional
-- [x] **Delete event** works
-
-### 5.4 Admin Dashboard - Merchandise Tab
-- [x] **All 4 products display** in list
-- [x] **Add new product** button works
-- [x] **Price input** accepts numbers
-- [x] **Delete product** works
-
-### 5.5 Admin Dashboard - Featured Artist Tab
-- [x] **Artist dropdown populates** with all artists
-- [x] **Featured artist selection** works
-- [x] **Changes persist** in JSON
-
-### 5.6 Admin Dashboard - Label Info Tab
-- [x] **Label info form** displays current data
-- [x] **Editable fields** - Name, tagline, emails, description
-- [x] **Save functionality** - Updates data
-
-### 5.7 Admin Dashboard - Import/Export Tab
-- [x] **Export JSON** button downloads data file
-- [x] **Import JSON** button uploads data file
-- [x] **JSON copy to clipboard** works
-- [x] **Fallback data** displays if no JSON files
-
----
-
-## 6. BROWSER COMPATIBILITY ✅
-
-| Browser | Status | Notes |
-|---------|--------|-------|
-| Chrome | ✅ PASS | All features working |
-| Firefox | ✅ PASS | All features working |
-| Safari | ✅ PASS | All features working (Web Audio supported) |
-| Edge | ✅ PASS | Chromium-based, all features working |
-
----
-
-## 7. CRITICAL BUGS FIXED ✅
-
-| Bug | Status | Fix |
-|-----|--------|-----|
-| 5 missing artist images | ✅ FIXED | Images now display (DJ-LES, GEO FLAME, YOUNG OG CPT, YOUNG OG, BLXCKOUT) |
-| Broken image paths (`assets/img/`) | ✅ FIXED | Corrected to `images/` folder |
-| Empty alt text on images | ✅ FIXED | Descriptive alt text added to all images |
-| Inline onclick handlers | ✅ FIXED | Replaced with proper event listeners |
-| Missing aria-labels | ✅ FIXED | Added labels to interactive elements |
-| Web Audio memory leak | ✅ FIXED | Proper cleanup on toggle and page unload |
-| Admin dashboard JSON path errors | ✅ FIXED | Path detection handles both root and /admin/ paths |
-
----
-
-## 8. STRESS TEST RESULTS ✅
-
-### 8.1 Rapid Image Loading
-- [x] **Load all 13 images simultaneously** - No crashes, all display correctly
-
-### 8.2 Form Submission Spam
-- [x] **Submit booking form 5 times rapidly** - No errors, all messages display
-- [x] **Submit newsletter form 5 times rapidly** - Works correctly
-
-### 8.3 Mobile Menu Toggle
-- [x] **Toggle hamburger menu 10 times rapidly** - No glitches, smooth animation
-- [x] **Click links rapidly** - All navigation works
-
-### 8.4 Admin Dashboard Heavy Usage
-- [x] **Add/Edit/Delete 5 artists** - No data corruption
-- [x] **Export and re-import JSON** - Data integrity maintained
-- [x] **Rapid tab switching** - 7 tabs, no lag
-
-### 8.5 Music Player Toggle
-- [x] **Toggle on/off 10 times** - No orphaned oscillators, no memory leaks
-- [x] **Toggle rapidly during fade** - Proper cleanup happens
-
-### 8.6 Concurrent Operations
-- [x] **Open admin dashboard and main site simultaneously** - Data syncs correctly
-- [x] **Multiple browser tabs** - Data consistency maintained
-
----
-
-## 9. ISSUES FOUND & RESOLUTION ✅
-
-### Issue #1: Admin Dashboard JSON Path Error
-**Status:** ✅ RESOLVED
-
-**Description:** Admin dashboard couldn't find JSON files (404 errors)
-
-**Root Cause:** Path references were relative to admin/ subdirectory but JSON in root /data/
-
-**Resolution:** Updated content-loader.js to detect current location and adjust paths:
-```javascript
-const isAdminPage = window.location.pathname.includes('/admin/');
-const basePath = isAdminPage ? '../data/' : 'data/';
-```
-
-**Test Result:** Admin dashboard now loads all JSON files correctly ✅
-
----
-
-## 10. PERFORMANCE RECOMMENDATIONS ✅
-
-### Implemented
-- [x] Content separated from HTML (JSON files)
-- [x] Dynamic rendering using renderer.js module
-- [x] Web Audio memory leak fixed
-- [x] Proper cleanup on page unload
-- [x] Images with corrected paths
-- [x] Scripts loaded with `defer` attribute
-
-### Optional Future Enhancements
-- [ ] CSS minification (reduces file size by ~30%)
-- [ ] JavaScript bundling with esbuild (reduces HTTP requests)
-- [ ] Image WebP format with fallbacks (further optimization)
-- [ ] Lazy loading for below-fold images
-- [ ] Service Worker for offline support
-
----
-
-## 11. ACCESSIBILITY COMPLIANCE ✅
-
-**WCAG 2.1 Level AA:** ✅ **COMPLIANT**
-
-Verified:
-- ✅ All images have alt text
-- ✅ Keyboard navigation works
-- ✅ Color contrast sufficient
-- ✅ Semantic HTML
-- ✅ ARIA labels present
-- ✅ Forms properly labeled
-- ✅ No flickering content
-- ✅ Motion not required for interaction
-
----
-
-## 12. CONCLUSION ✅
-
-### Summary
-All 49 tests passed successfully. The GOAT RECORDS website is:
-- ✅ Fully functional
-- ✅ Accessible (WCAG 2.1 AA compliant)
-- ✅ Responsive (all screen sizes)
-- ✅ Well-structured (JSON-based content management)
-- ✅ Easy to maintain (admin dashboard)
-- ✅ Performance optimized
-- ✅ Production-ready
-
-### Key Achievements
-1. **Fixed all critical bugs** (images, accessibility, memory leaks)
-2. **Implemented content management system** (JSON + admin dashboard)
-3. **Improved code structure** (modular, maintainable)
-4. **Enhanced user experience** (better navigation, content)
-5. **Ensured accessibility** (WCAG 2.1 AA compliant)
-
-### Deployment Recommendation
-🚀 **READY FOR PRODUCTION**
-
----
-
-## 13. TEST ENVIRONMENT DETAILS
-
-| Property | Value |
-|----------|-------|
-| Test Date | May 4, 2026 |
-| Operating System | Windows 10 |
-| Primary Browser | Chrome 96+ |
-| File Access | Local file:// protocol |
-| Node Version | N/A (static site) |
-| Build Tool | None (vanilla JS) |
-
----
-
-## Appendix: Test Checklist
-
-```
-FUNCTIONALITY
-[x] All images display
-[x] Navigation works
-[x] Hero section animates
-[x] Featured artist shows
-[x] Artist roster displays
-[x] Events list works
-[x] Merchandise displays
-[x] Gallery renders
-[x] Forms submit
-[x] Music player toggles
-
-ACCESSIBILITY
-[x] Alt text present
-[x] ARIA labels added
-[x] Semantic HTML
-[x] Keyboard accessible
-[x] Color contrast OK
-[x] Screen reader compatible
-[x] Mobile-friendly
-[x] No accessibility errors
-
-PERFORMANCE
-[x] Fast page load
-[x] Resources efficient
-[x] No memory leaks
-[x] Smooth animations
-[x] JSON async loading
-[x] Proper error handling
-
-RESPONSIVENESS
-[x] Mobile (375px)
-[x] Tablet (768px)
-[x] Desktop (1024px)
-[x] Large (1440px)
-[x] Orientation changes
-
-CONTENT MANAGEMENT
-[x] JSON files load
-[x] Admin dashboard works
-[x] CRUD operations functional
-[x] Import/export works
-[x] Data persistence maintained
-[x] Path handling correct
-```
-
----
-
-**Report Generated:** May 4, 2026  
-**Tested By:** Automated Testing Suite + Manual Verification  
-**Status:** ✅ **ALL TESTS PASSED** 🎉
+# GOAT RECORDS — Hardening test report
+
+This report covers the post-refactor hardening pass. It is not a production certification. The site was compared with the pre-refactor `main` commit `eeb7df5` for behavior and appearance. Implementation differences were ignored unless they changed what a visitor sees or how content is maintained.
+
+Checked in headless Chrome on Linux against `http://127.0.0.1:8080/`, with the pre-refactor page on port `8090` for the featured-section comparison. There is no automated unit-test suite in the repository.
+
+## Automated / static checks
+
+These were read from the source or executed in Node without a browser.
+
+| Check | Result |
+| --- | --- |
+| No framework, bundler, backend, or database added | Pass. Pages are HTML, CSS, and ES modules. |
+| `window.GOAT` is the only assigned global | Pass. `js/app.js` and `admin/js/admin.js` only. No `window.renderer` or `window.goatData`. |
+| No `innerHTML` in site or admin scripts | Pass. Text is set with `textContent`. |
+| Event `date` is the stored field | Pass. `day` and `month` are gone from `data/events.json`. The admin save deletes them if an older object still has them. |
+| Featured artist is selected only by `artistId` | Pass. `artists.json` no longer stores a `featured` boolean. The admin no longer rewrites one. |
+| Artist renderer has no hardcoded names, images, bios, or URLs | Pass. Those values are read from the artist object. |
+| Location is one contact string | Pass. `locationPrimary` and `locationRegion` were removed. The contact block derives the two lines from `contact.location`. |
+| Unused `.luda-wide` rules | Removed after confirming no HTML or JS still uses that class. |
+| JSON files parse | Pass after the data edits. |
+| Image files that nothing in `data/` references | Reported below. Not deleted. |
+
+## Browser checks
+
+Chrome, six widths, after the fade-in observer had time to run. Horizontal overflow is `scrollWidth - clientWidth`.
+
+| Width | Overflow | Nav | Roster | Events | Merch | Gallery |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1440 | 0 | Desktop links | 7 cards | 6 rows | 4 | 9 |
+| 1280 | 0 | Desktop links | 7 | 6 | 4 | 9 |
+| 1024 | 0 | Desktop links | 7 | 6 | 4 | 9 |
+| 768 | 0 | Hamburger | 7 | 6 | 4 | 9, two masonry columns |
+| 390 | 0 | Hamburger | 7 | 6 | 4 | 9 |
+| 360 | 0 | Hamburger | 7 | 6 | 4 | 9 |
+
+Before `html { overflow-x: hidden }`, 390 and 360 reported 1px and 2px of overflow. The only elements past the viewport were the ticker phrase spans, which the ticker already clips. The same ticker overflow exists on pre-refactor `main`. The document no longer grows a horizontal scrollbar.
+
+Other browser results:
+
+- Featured showcase at 1440 uses the stylesheet's two columns. The photo is on the left. The name, genres, biography, stats, and buttons are on the right. Pre-refactor `main` nested the copy inside the photo because `.featured-inner` was left unclosed, so the text covered the portrait. That nesting was not restored.
+- LUDA G's biography includes the sentence that was only in the old HTML: "From local open mics to packed venues — every bar he drops is built to last."
+- Contact lines derived from `contact.location` are "Paarl, South Africa" and "Western Cape". The footer uses the full location string.
+- Event days and months match the dates: 04 Apr 2026, 12 Apr 2026, 25 Apr 2026, 09 May 2026, 22 May 2026, 14 Jun 2026. DÆMON B2B SET uses the sold-out button.
+- At 390 the footer copyright wraps, and "Crafted with dominance." sits clear of the fixed music button.
+- At 768 the mobile menu opens, the links are opaque, and Escape closes it and returns focus to the button.
+- Gallery: click opens the lightbox, Escape closes it, Enter on a focused item opens it, and a click on the backdrop closes it.
+- Console on a full load: no page errors and no failed responses from this site.
+- Public global visible to the page is `window.GOAT` only.
+
+### Featured artist swap
+
+`data/featured-artist.json` was changed from `luda-g` to `kay-medusa`, the page was reloaded with the cache disabled, then the file was restored.
+
+| Surface | After the swap |
+| --- | --- |
+| Showcase name | KAY_MEDUSA |
+| Image | `images/KAY_MEDUSA.jpeg` |
+| Biography | Kay's biography, not LUDA G's |
+| Genres | Hip-Hop, Rap, and the location pill |
+| Socials | IG, TW, YT (the networks present on that artist) |
+| Wide roster card | KAY_MEDUSA |
+| Rest of the roster | LUDA G remains as a normal card |
+| 360px overflow | 0. The single-token name stays inside the column |
+
+The file on disk is `luda-g` again.
+
+### Events with bad data
+
+The events file was replaced in the browser only. The section stayed up, and the other sections still rendered.
+
+| Case | Result |
+| --- | --- |
+| Available event with a valid date | Day and month derived (`01` / `Aug 2026`) |
+| Sold-out event | Outline button |
+| Several tags | All rendered |
+| Tags omitted | Row still rendered |
+| Invalid date plus legacy `day` / `month` | Fallback text used (`09` / `Legacy`) |
+| `null` entry | Skipped |
+| Title that is not a string | Shown as "Untitled event" |
+| Empty `events` array | "No dates announced yet." The rest of the page stayed |
+
+### Images
+
+| Case | Result |
+| --- | --- |
+| Valid artist image | Displayed |
+| Missing file | Image removed, initials left in place |
+| Empty `image` | Initials, no request for a bad URL |
+| `javascript:` URL | Not applied to `src` |
+| Gallery empty `image` | Gradient placeholder |
+| Gallery real image | Displayed |
+| Gallery missing file and unsafe URL | Placeholder, no script URL |
+
+One broken image did not remove the other cards.
+
+### Admin
+
+Loaded at `/admin/` in Chrome. Edits were checked in the export textarea. Nothing was written to `/data`.
+
+| Action | Result |
+| --- | --- |
+| Artists load | 7 |
+| Create then delete an artist | Both worked in the session |
+| Featured select set to `geo-flame` | Export `artistId` changed. No `featured` booleans were written |
+| Event edit and save | Export has `date` and does not reintroduce `day` or `month` |
+| Merchandise list | 4 |
+| Gallery list | 9 |
+| Label form | Name and `info@goatrecords.co.za` filled from JSON |
+
+## Manual checks
+
+A person should still do these. They were not treated as certified.
+
+- Listen to the music button and confirm the tone is acceptable.
+- Submit the booking and newsletter forms and confirm the on-page message. They do not send mail.
+- Tab from the skip link through the desktop nav, a roster card, the lightbox, and both forms.
+- Repeat the 390px footer and menu check in Safari and Firefox.
+- Open the admin export, replace the files under `data/`, and reload the public page.
+
+## Not tested
+
+- Real form delivery. There is no mail service.
+- Payment or checkout. Merch buttons do not charge anyone.
+- A full accessibility audit, screen reader pass, or contrast measurement.
+- Deployment to GitHub Pages, Netlify, or any host.
+- Firefox, Safari, or a physical phone. This pass used Chrome only.
+- Authenticated admin access. The admin page has no login.
+
+## Regression checklist
+
+Compared with pre-refactor `main` for what a visitor can do and see.
+
+| Area | Result |
+| --- | --- |
+| Navigation and section anchors | Same labels and targets |
+| Hero, glitch title, canvas | Present |
+| Featured artist | Same artist, stats, and socials. Layout now matches the two-column stylesheet instead of the nested-photo bug |
+| Artist roster | Same seven artists. Wide card follows `artistId` |
+| Events | Same six dates, venues, tags, and sold-out state. Display comes from `date` |
+| Merchandise | Same four products and prices. `merch.css` is linked, so the grid rules apply |
+| Gallery | Same nine records. Lightbox opens, Escape closes, backdrop click closes |
+| Bookings and newsletter | Still browser-only confirmation |
+| Contact and footer | Same addresses, phone, hours, and location lines |
+| Mobile navigation | Hamburger at 768px and below. Escape closes it |
+| Music button | Still fixed at the bottom right. Footer text no longer sits underneath it on a narrow screen |
+| Breakpoints | 900, 768, and 500, as in the stylesheet |
+
+Known appearance differences that were kept on purpose:
+
+- The featured copy is beside the photo, which is what `featured-artist.css` describes. The old page painted that copy on top of the photo.
+- The featured location pill uses the city from the artist record (`Paarl`). The old HTML hardcoded `Paarl , 7646`, which is not in the JSON.
+- The newsletter script still asks for `@` and `.`. The field is `type="email"`. The old script only checked for `@`.
+
+## Duplicate images
+
+These files are in `images/` and are not referenced by the current JSON. They were not deleted.
+
+- `Dj_Les.jpg` (the roster uses `DJ_LES.jpeg`)
+- `kay_medusa.jpg` (the roster uses `KAY_MEDUSA.jpeg`)
+- `YOUNG_OG_CPT.jpg` (the roster uses `YOUNG_OG_CPT.jpeg`)
+- `LUDA_G.jpeg` (the roster uses `luda g poster pic.jpg`)
+- `KAITLYN_FILANDER.jpeg`
+- `KATTIE.jpeg`
+
+## Remaining debt
+
+- The admin Label tab does not edit phone, location, hours, or socials. Those stay in `label-info.json`.
+- New events saved in the admin default to `available`. Sold-out status is preserved when you edit an existing sold-out row, but the form has no status control.
+- Booking and newsletter submissions are not delivered.
+- Sold-out event buttons are still links to `#bookings`, matching the old page.
+- First-paint sentences in `index.html` repeat the JSON until the files load. They are the fallback if JavaScript is slow, not a second source the renderer keeps.
+- The duplicate image files above are still in the folder.

@@ -195,6 +195,23 @@ function renderBooking(config, label) {
   if (submit && config.bookings?.successLabel) submit.dataset.success = config.bookings.successLabel;
 }
 
+function locationLines(contact) {
+  const explicitPrimary = contact.locationPrimary;
+  const explicitRegion = contact.locationRegion;
+  if (explicitPrimary || explicitRegion) {
+    return {
+      primary: explicitPrimary || '',
+      region: explicitRegion || ''
+    };
+  }
+  const parts = String(contact.location || '').split(',').map((part) => part.trim()).filter(Boolean);
+  if (parts.length >= 3) {
+    return { primary: `${parts[0]}, ${parts[parts.length - 1]}`, region: parts.slice(1, -1).join(', ') };
+  }
+  if (parts.length === 2) return { primary: parts[0], region: parts[1] };
+  return { primary: parts[0] || '', region: '' };
+}
+
 function renderContact(label) {
   const socials = document.querySelector('[data-render="social-links"]');
   const networks = label.socials;
@@ -217,6 +234,12 @@ function renderContact(label) {
       socials.append(anchor);
     });
   }
+
+  const lines = locationLines(label.contact || {});
+  const primary = document.querySelector('[data-location="primary"]');
+  const region = document.querySelector('[data-location="region"]');
+  if (primary && lines.primary) primary.textContent = lines.primary;
+  if (region) region.textContent = lines.region;
 
   const hours = label.officeHours || {};
   const weekdays = document.querySelector('[data-hours="weekdays"]');

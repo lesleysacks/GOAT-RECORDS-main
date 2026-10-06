@@ -23,8 +23,8 @@ export const store = {
   getFeaturedArtist() {
     const artists = Array.isArray(this.state.artists) ? this.state.artists : [];
     const id = this.state.featuredArtist && this.state.featuredArtist.artistId;
-    if (id) return artists.find((artist) => artist && artist.id === id) || null;
-    return artists.find((artist) => artist && artist.featured) || null;
+    if (!id) return null;
+    return artists.find((artist) => artist && artist.id === id) || null;
   },
 
   getArtist(id) {

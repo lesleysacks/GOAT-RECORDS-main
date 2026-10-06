@@ -23,11 +23,6 @@ export function closeLightbox() {
 function placeholder(item, index, total) {
   const block = el('div', { className: 'lb-placeholder' });
   if (isSafeGradient(item.gradient)) block.style.background = item.gradient.trim();
-  else if (isSafeUrl(item.image) && !String(item.image).startsWith('data:')) {
-    block.style.backgroundImage = `url("${String(item.image).replace(/["\\]/g, '')}")`;
-    block.style.backgroundSize = 'cover';
-    block.style.backgroundPosition = 'center';
-  }
   block.append(
     el('div', { className: 'lb-placeholder-title', text: item.label || 'GOAT' }),
     el('div', { className: 'lb-placeholder-sub', text: `GOAT RECORDS — ${index + 1} / ${total}` })

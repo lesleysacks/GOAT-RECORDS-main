@@ -7,7 +7,7 @@
       "genres": ["Rap", "Hip-Hop"],
       "location": "Paarl, SA",
       "image": "images/luda g poster pic.jpg",
-      "bio": "Born and raised in the streets of Paarl, LUDA G is the cornerstone of GOAT RECORDS. His razor-sharp lyricism, cinematic delivery, and relentless work ethic have made him the face of a new generation of South African rap.",
+      "bio": "Born and raised in the streets of Paarl, LUDA G is the cornerstone of GOAT RECORDS. His razor-sharp lyricism, cinematic delivery, and relentless work ethic have made him the face of a new generation of South African rap. From local open mics to packed venues — every bar he drops is built to last.",
       "shortBio": "The cornerstone of GOAT RECORDS. LUDA G's razor-sharp lyricism and cinematic delivery define the new sound coming out of Paarl. Every verse hits like a statement.",
       "stats": {
         "tracksReleased": "50+",
@@ -21,7 +21,6 @@
         "spotify": "#",
         "youtube": "#"
       },
-      "featured": true,
       "featured_rank": "★ #1 Lead Artist"
     },
     {
@@ -41,8 +40,7 @@
         "instagram": "#",
         "twitter": "#",
         "soundcloud": "#"
-      },
-      "featured": false
+      }
     },
     {
       "id": "kay-medusa",
@@ -57,8 +55,7 @@
         "instagram": "#",
         "twitter": "#",
         "youtube": "#"
-      },
-      "featured": false
+      }
     },
     {
       "id": "geo-flame",
@@ -73,8 +70,7 @@
         "instagram": "#",
         "soundcloud": "#",
         "spotify": "#"
-      },
-      "featured": false
+      }
     },
     {
       "id": "young-og-cpt",
@@ -89,8 +85,7 @@
         "instagram": "#",
         "twitter": "#",
         "youtube": "#"
-      },
-      "featured": false
+      }
     },
     {
       "id": "young-og",
@@ -104,8 +99,7 @@
       "socials": {
         "instagram": "#",
         "twitter": "#"
-      },
-      "featured": false
+      }
     },
     {
       "id": "blxckout",
@@ -119,8 +113,7 @@
       "socials": {
         "instagram": "#",
         "soundcloud": "#"
-      },
-      "featured": false
+      }
     }
   ]
 }

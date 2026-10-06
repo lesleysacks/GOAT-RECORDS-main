@@ -69,14 +69,11 @@ export function saveEvent() {
     return;
   }
   const existing = editor.event >= 0 ? store.state.events[editor.event] : null;
-  const parts = dateParts(iso) || { day: existing?.day || '', month: existing?.month || '' };
   const event = {
     ...(existing || {}),
     id: existing?.id || `event-${Date.now()}`,
     title,
     date: iso,
-    day: parts.day,
-    month: parts.month,
     venue: field('eventVenue').value.trim(),
     location: field('eventLocation').value.trim(),
     tags: field('eventTags').value.split(',').map((tag) => tag.trim()).filter(Boolean),
@@ -84,6 +81,8 @@ export function saveEvent() {
     status: existing?.status || 'available',
     buttonText: existing?.buttonText || 'Get Tickets'
   };
+  delete event.day;
+  delete event.month;
 
   if (existing) store.state.events[editor.event] = event;
   else store.state.events.push(event);

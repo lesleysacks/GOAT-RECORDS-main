@@ -53,9 +53,6 @@ export function updateFeaturedArtist() {
     ...(store.state.featuredArtist || {}),
     artistId
   };
-  (store.state.artists || []).forEach((artist) => {
-    if (artist) artist.featured = Boolean(artistId) && artist.id === artistId;
-  });
   notifyChanged();
   showMessage(artistId ? 'Featured artist updated in this session' : 'Featured artist cleared in this session', 'success');
 }

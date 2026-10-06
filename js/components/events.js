@@ -26,8 +26,9 @@ function renderEvent(event) {
     el('div', { className: 'event-month', text: when.month })
   );
 
+  const title = typeof event.title === 'string' && event.title.trim() ? event.title.trim() : 'Untitled event';
   const info = el('div', { className: 'event-info' });
-  info.append(el('div', { className: 'event-title', text: event.title || 'Untitled event' }));
+  info.append(el('div', { className: 'event-title', text: title }));
   const place = [event.venue, event.location].filter(Boolean).join(' — ');
   if (place) info.append(el('div', { className: 'event-venue', text: place }));
 

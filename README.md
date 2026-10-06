@@ -2,7 +2,9 @@
 
 Static website for GOAT RECORDS. The pages are HTML, CSS, and vanilla JavaScript. Content lives in JSON. There is no framework, build step, backend, or database.
 
-The visual design is unchanged. The refactor separates structure, presentation, behavior, and content so the site can be updated without editing a large HTML file or copying the same card markup.
+The visual system is the existing stylesheet. The refactor separates structure, presentation, behavior, and content so the site can be updated without editing a large HTML file or copying the same card markup.
+
+The featured showcase follows the two-column grid in `css/sections/featured-artist.css`. On the pre-refactor page the copy was nested inside the photo, because the column wrapper was left unclosed, so that grid never applied and the text covered the portrait.
 
 ## Project structure
 
@@ -51,7 +53,7 @@ Brand, hero, navigation labels, about copy, contact, and footer text are filled 
 
 One missing or broken JSON file does not blank the rest of the page. That section shows a short message and the others still render.
 
-Text from JSON is written with `textContent`. Image addresses are checked before they are applied. A missing image falls back to initials or a gradient block.
+Text from JSON is written with `textContent`. Image addresses are checked before they are applied. A missing image falls back to initials or a gradient block. The sentences in `index.html` are a first paint only. After the JSON loads, the same spots are replaced from `data/`.
 
 ## Customization
 
@@ -71,7 +73,8 @@ Text from JSON is written with `textContent`. Image addresses are checked before
 | Merch | `data/merchandise.json` |
 | Gallery | `data/gallery.json` |
 | About copy, stats, booking blurbs | `data/label-info.json` |
-| Email, phone, location, office hours, socials | `data/label-info.json` → `contact`, `officeHours`, `socials` |
+| Email, phone, hours, socials | `data/label-info.json` → `contact`, `officeHours`, `socials` |
+| Location | `data/label-info.json` → `contact.location` (`City, Region, Country`). The contact block splits that one string into two lines. The footer uses the full string. Older files that still include `locationPrimary` and `locationRegion` are still shown as written. |
 | Layout, spacing, animation | The CSS file for that section. Do not put CSS rules in JSON. |
 
 Theme values are hex colors. On load they are applied to `--color-primary`, `--color-bg`, `--color-surface`, and `--color-text`. The older names (`--red`, `--black`, `--gray-dark`) point at those tokens, so existing CSS follows the config.
@@ -90,20 +93,19 @@ Add an object to the `artists` array in `data/artists.json`. Do not add a card t
   "image": "images/new-artist.jpg",
   "bio": "Full biography.",
   "shortBio": "Short line used on the roster card.",
-  "socials": { "instagram": "https://instagram.com/example" },
-  "featured": false
+  "socials": { "instagram": "https://instagram.com/example" }
 }
 ```
 
-`status` is `Signed` or `Upcoming`. `image` is a path under `images/` or a full `http` URL. Leave `image` empty to show initials on a dark gradient. Put the file in `images/` with the same spelling and capitalization the JSON uses.
+`status` is `Signed` or `Upcoming`. `image` is a path under `images/` or a full `http` URL. Leave `image` empty to show initials on a dark gradient. Put the file in `images/` with the same spelling and capitalization the JSON uses. Do not set a `featured` flag on the artist. Who is featured is only `artistId` in `data/featured-artist.json`.
 
 ### Choose the featured artist
 
-Set `artistId` in `data/featured-artist.json` to an `id` from `artists.json`. The showcase and the wide roster card both use that id. The component does not assume the featured artist is LUDA G. Optional `stats` on the artist object (`tracksReleased`, `monthlyListeners`, `yearsActive`) appear in the showcase. Optional `featured_rank` such as `"★ #1 Lead Artist"` sets the badge.
+Set `artistId` in `data/featured-artist.json` to an `id` from `artists.json`. The showcase and the wide roster card both use that id. An empty `artistId` leaves the showcase empty. The component does not assume the featured artist is LUDA G. Optional `stats` on the artist object (`tracksReleased`, `monthlyListeners`, `yearsActive`) appear in the showcase. Optional `featured_rank` such as `"★ #1 Lead Artist"` sets the badge; other artists use the default badge from `site-config.json`.
 
 ### Add an event
 
-Add an object to `events` in `data/events.json`. `date` is the canonical value (`YYYY-MM-DD`). The day and month on the page are derived from it. `day` and `month` are only a fallback if `date` is missing.
+Add an object to `events` in `data/events.json`. Store the date once, as `date` (`YYYY-MM-DD`). The day and month on the page are derived from it. Do not add `day` or `month`. If an older import still has those fields and `date` is missing or invalid, the renderer uses them as a fallback so one bad date does not blank the section.
 
 ```json
 {
@@ -161,7 +163,7 @@ If `image` is empty or the file fails to load, the gradient block is used. `heig
 
 ## Admin editor
 
-Open `admin/index.html` through the same local server. It can edit artists, events, merchandise, gallery items, the featured artist, and the main label fields, and it can import or export a JSON backup.
+Open `admin/index.html` through the same local server. It can load and edit artists (create, edit, delete), choose the featured artist, and edit events, merchandise, and gallery items. The Label tab edits the name, tagline, the two email addresses, and the first about paragraph. Phone, location, office hours, socials, and the rest of the about copy stay in `data/label-info.json`. Import and export work on a JSON backup of the in-memory collections.
 
 Those edits exist only in the current browser tab. Refreshing the admin page loads the files from `data/` again and drops unsaved work. The editor cannot write files to disk, to GitHub, or to a host. To publish:
 
