@@ -1,0 +1,145 @@
+{
+  "brand": {
+    "name": "GOAT RECORDS",
+    "logoLead": "GOAT",
+    "logoMark": "●",
+    "logoTail": "REC",
+    "tagline": "Built for Greatness. Powered by Sound.",
+    "established": 2020,
+    "copyrightYear": 2026,
+    "signoff": "Crafted with dominance."
+  },
+  "meta": {
+    "title": "GOAT RECORDS — Built for Greatness. Powered by Sound.",
+    "description": "GOAT RECORDS — Premium record label discovering and building top-tier talent. Bookings, artists, events, and merch."
+  },
+  "hero": {
+    "eyebrow": "Est. 2020 — The Pinnacle of Sound",
+    "titleLine1": "GOAT",
+    "titleLine2": "RECORDS",
+    "subtitle": "Built for Greatness. Powered by Sound.",
+    "primaryCta": { "label": "Join the Label", "href": "#bookings" },
+    "secondaryCta": { "label": "Book Us", "href": "#bookings" }
+  },
+  "ticker": [
+    "GOAT RECORDS",
+    "BUILT FOR GREATNESS",
+    "POWERED BY SOUND",
+    "TOP TIER TALENT"
+  ],
+  "navigation": {
+    "cta": { "label": "Book Now", "href": "#bookings" },
+    "links": [
+      { "label": "About", "href": "#about" },
+      { "label": "Artists", "href": "#artists" },
+      { "label": "Events", "href": "#events" },
+      { "label": "Merch", "href": "#merch" },
+      { "label": "Gallery", "href": "#gallery" },
+      { "label": "Bookings", "href": "#bookings" },
+      { "label": "Contact", "href": "#contact" }
+    ]
+  },
+  "sections": {
+    "about": {
+      "label": "Our Story",
+      "line1": "We Don't",
+      "accent": "Follow",
+      "line2": "Trends.",
+      "cta": "Meet Our Artists",
+      "yearsCaption": "Years Strong"
+    },
+    "artists": {
+      "label": "The Roster",
+      "line1": "Our",
+      "accent": "Artists",
+      "cta": "Join the Roster"
+    },
+    "events": {
+      "label": "Live Performances",
+      "line1": "Tour",
+      "accent": "Dates"
+    },
+    "merch": {
+      "label": "Official Store",
+      "line1": "Merch",
+      "accent": "Drop",
+      "cta": "View All",
+      "ctaHref": "#merch"
+    },
+    "gallery": {
+      "label": "Moments",
+      "line1": "The",
+      "accent": "Gallery"
+    },
+    "contact": {
+      "label": "Get In Touch",
+      "line1": "Contact",
+      "accent": "Us"
+    }
+  },
+  "featured": {
+    "tag": "Featured Artist",
+    "rankBadge": "★ #1",
+    "rankLabel": "Lead Artist",
+    "rosterBadge": "★ Lead Artist",
+    "rosterCta": "Full Roster",
+    "rosterHref": "#artists"
+  },
+  "bookings": {
+    "label": "For Event Organizers",
+    "line1": "Book",
+    "accent": "GOAT",
+    "line2": "Records",
+    "intro": [
+      "We bring elite performances to stages of all sizes. From intimate club nights to massive festival headliners — our artists deliver unforgettable experiences every single time.",
+      "Fill in the form and our bookings team will respond within 48 hours with full rider details, availability, and quotes."
+    ],
+    "submitLabel": "Book GOAT Records →",
+    "successLabel": "✓ Request Sent — We'll Be In Touch!"
+  },
+  "newsletter": {
+    "title": "STAY IN THE\nLOOP",
+    "subtitle": "New drops. Exclusive events. Artist news. First access.",
+    "placeholder": "Enter your email address",
+    "button": "Subscribe",
+    "success": "✓ Subscribed!"
+  },
+  "footer": {
+    "columns": [
+      {
+        "title": "Label",
+        "links": [
+          { "label": "About Us", "href": "#about" },
+          { "label": "Artists", "href": "#artists" },
+          { "label": "Events", "href": "#events" },
+          { "label": "Gallery", "href": "#gallery" }
+        ]
+      },
+      {
+        "title": "Business",
+        "links": [
+          { "label": "Bookings", "href": "#bookings" },
+          { "label": "Merch Store", "href": "#merch" },
+          { "label": "Press & Media", "href": "#contact" },
+          { "label": "A&R Submissions", "href": "#bookings" }
+        ]
+      },
+      {
+        "title": "Legal",
+        "links": [
+          { "label": "Privacy Policy", "href": "#" },
+          { "label": "Terms of Use", "href": "#" },
+          { "label": "Cookie Policy", "href": "#" }
+        ]
+      }
+    ]
+  },
+  "theme": {
+    "primary": "#FF0000",
+    "primaryDim": "#cc0000",
+    "background": "#000000",
+    "surface": "#0d0d0d",
+    "surfaceRaised": "#1a1a1a",
+    "text": "#ffffff"
+  }
+}

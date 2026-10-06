@@ -1,5 +1,7 @@
 # GOAT RECORDS — Testing & Validation Report
 
+> Historical snapshot from before the architecture refactor. The checklist below describes an earlier pass and is not a current certification. See `README.md` for how the site is structured now.
+
 **Test Date:** May 4, 2026  
 **Test Environment:** Windows 10, Chrome, Firefox, Safari (simulated)  
 **Overall Status:** ✅ PASS

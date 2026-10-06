@@ -1,32 +1,39 @@
 /**
- * scroll-animations.js
- * 
- * @description Scroll-triggered fade-in animations
- * Uses Intersection Observer API for performance
- * 
- * @requires None (vanilla JS)
- * @exports None (IIFE pattern)
- * 
- * @features
- * - Fade-in animation on scroll
- * - Staggered animation delay (60ms between elements)
- * - Efficient Intersection Observer implementation
- * - Low threshold (0.08) for early trigger
- * 
- * @performance
- * - Single observer instance for all elements
- * - No layout thrashing
- * - Smooth CSS transitions (0.8s)
+ * Reveals .fade-in elements as they enter the viewport.
+ * Call observe() again after dynamic sections are rendered.
  */
 
-// ─── SCROLL ANIMATIONS ───
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) {
-      setTimeout(() => e.target.classList.add('visible'), i * 60);
-    }
-  });
-}, { threshold: 0.08 });
+let observer = null;
+let reduced = false;
 
-// Observe all fade-in elements
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+export function initScrollAnimations() {
+  reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduced) {
+    document.querySelectorAll('.fade-in').forEach((node) => node.classList.add('visible'));
+    return;
+  }
+
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (!entry.isIntersecting) return;
+      window.setTimeout(() => entry.target.classList.add('visible'), index * 60);
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.08 });
+
+  observe(document);
+}
+
+export function observe(root) {
+  const scope = root && root.querySelectorAll ? root : document;
+  const nodes = scope.querySelectorAll('.fade-in');
+  nodes.forEach((node) => {
+    if (reduced || !observer) {
+      node.classList.add('visible');
+      return;
+    }
+    if (node.dataset.observed === 'true') return;
+    node.dataset.observed = 'true';
+    observer.observe(node);
+  });
+}

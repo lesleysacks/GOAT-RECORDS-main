@@ -1,35 +1,42 @@
 /**
- * variables.css
- * 
- * @description CSS custom properties for GOAT RECORDS
- * Centralizes all color, typography, and spacing variables
- * Enables consistent theming across the entire application
- * 
- * @variables
- * - Colors: Primary (red), neutrals (black, grays, white)
- * - Fonts: Display (Bebas Neue), body (Barlow), condensed (Barlow Condensed)
- * - Spacing: Uses standard rem-based scaling
- * 
- * @usage Import first in all stylesheets to access variables globally
+ * Design tokens. Existing component CSS still reads --red, --black, and the
+ * gray scale. Those names point at the tokens so site-config.json can recolor
+ * the site without editing stylesheets.
  */
 
 :root {
-  /* ─── COLORS ─── */
-  --red:    #FF0000;
-  --red-dim: #cc0000;
-  --black:  #000000;
-  --gray-dark: #0d0d0d;
-  --gray-mid:  #1a1a1a;
-  --gray:      #333333;
-  --gray-light:#888888;
-  --white:  #ffffff;
+  --color-primary: #FF0000;
+  --color-primary-dim: #cc0000;
+  --color-bg: #000000;
+  --color-surface: #0d0d0d;
+  --color-surface-raised: #1a1a1a;
+  --color-muted: #333333;
+  --color-text-muted: #888888;
+  --color-text: #ffffff;
 
-  /* ─── TYPOGRAPHY ─── */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --container-width: 1400px;
+
+  --red: var(--color-primary);
+  --red-dim: var(--color-primary-dim);
+  --black: var(--color-bg);
+  --gray-dark: var(--color-surface);
+  --gray-mid: var(--color-surface-raised);
+  --gray: var(--color-muted);
+  --gray-light: var(--color-text-muted);
+  --white: var(--color-text);
+
   --font-display: 'Bebas Neue', sans-serif;
-  --font-body:    'Barlow', sans-serif;
-  --font-cond:    'Barlow Condensed', sans-serif;
+  --font-body: 'Barlow', sans-serif;
+  --font-cond: 'Barlow Condensed', sans-serif;
 
-  /* ─── TRANSITIONS ─── */
   --transition-fast: 0.2s ease;
   --transition-smooth: 0.3s ease;
   --transition-slow: 0.6s ease;

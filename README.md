@@ -1,392 +1,185 @@
-# GOAT RECORDS — Website Documentation
+# GOAT RECORDS
 
-**Last Updated:** May 4, 2026
+Static website for GOAT RECORDS. The pages are HTML, CSS, and vanilla JavaScript. Content lives in JSON. There is no framework, build step, backend, or database.
 
----
+The visual design is unchanged. The refactor separates structure, presentation, behavior, and content so the site can be updated without editing a large HTML file or copying the same card markup.
 
-## 🎵 Quick Start
-
-### Accessing the Admin Dashboard
-1. Open `admin/index.html` in your browser
-2. Use the tabs to manage:
-   - **Artists** - Add/edit artist information and images
-   - **Events** - Manage tour dates and bookings
-   - **Merchandise** - Edit products and prices
-   - **Gallery** - Manage gallery items
-   - **Featured Artist** - Select which artist to feature
-   - **Label Info** - Update contact information
-   - **Import/Export** - Backup and restore all data
-
-### Making Content Changes
-All website content is managed through JSON files in the `/data/` folder. Changes made in the admin dashboard automatically update these files. No HTML editing required!
-
----
-
-## 📁 Project Structure
+## Project structure
 
 ```
-GOAT-RECORDS-main/
-├── index.html                 # Main website (AUTO-POPULATED from JSON)
-├── admin/
-│   └── index.html            # Admin Dashboard (EDIT CONTENT HERE!)
-├── css/
-│   ├── variables.css         # Color, typography, spacing
-│   ├── main.css              # Global styles & resets
-│   ├── responsive.css        # All media queries
-│   ├── components/           # Reusable UI components
-│   │   ├── hero.css
-│   │   ├── cards.css
-│   │   ├── forms.css
-│   │   └── navigation.css
-│   └── sections/             # Section-specific styles
-│       ├── featured-artist.css
-│       ├── about.css
-│       ├── artists.css
-│       ├── events.css
-│       ├── gallery.css
-│       ├── bookings.css
-│       ├── newsletter.css
-│       ├── contact.css
-│       ├── footer.css
-│       └── music-player.css
-├── js/
-│   ├── main.js               # Main entry point
-│   ├── content-loader.js     # Loads JSON data (AUTO-RUN)
-│   ├── renderer.js           # Renders dynamic content from JSON
-│   ├── canvas/
-│   │   └── hero-canvas.js    # Hero section animation
-│   ├── ui/
-│   │   ├── navigation.js     # Mobile menu & sticky nav
-│   │   ├── gallery.js        # Gallery grid
-│   │   ├── lightbox.js       # Image lightbox
-│   │   ├── music-player.js   # Ambient sound toggle
-│   │   └── scroll-animations.js
-│   └── forms/
-│       ├── booking-form.js   # Event booking form
-│       └── newsletter.js     # Newsletter signup
-├── data/                     # JSON DATA FILES (edited via admin dashboard)
-│   ├── artists.json          # Artist roster
-│   ├── events.json           # Tour dates & events
-│   ├── merchandise.json      # Merch products
-│   ├── gallery.json          # Gallery items
-│   ├── featured-artist.json  # Featured artist selection
-│   └── label-info.json       # Label info & contact
-└── images/
-    ├── luda g poster pic.jpg
-    ├── DJ_LES.jpeg
-    ├── KAY_MEDUSA.jpeg
-    ├── Geo_flame.jpg
-    ├── YOUNG_OG_CPT.jpeg
-    ├── ENERGY.jpg
-    ├── MIDNIGHT FREQUENCIES.jpg
-    ├── KAITLYN_FILANDER.jpeg
-    └── KATTIE.jpeg
+index.html                  Page structure and section anchors
+admin/index.html            Browser editor (session only)
+admin/css/admin.css
+admin/js/                   Editor modules
+css/variables.css           Design tokens
+css/main.css                Reset, type, buttons, motion
+css/components/             Navigation, hero, cards, forms
+css/sections/               One file per page section
+css/responsive.css          Shared breakpoints
+js/app.js                   Public entry point
+js/config.js                File names, social labels, date helper
+js/dom.js                   DOM helpers and URL checks
+js/data/loader.js           Loads each JSON file independently
+js/data/store.js            In-memory content for the open page
+js/components/              Roster, events, merch, gallery, chrome
+js/ui/                      Navigation, lightbox, scroll, music
+js/forms/                   Booking and newsletter (browser only)
+js/canvas/hero-canvas.js    Hero light beams
+data/                       Content files
+images/                     Artist and artwork files
 ```
 
----
+Open the site through a local server. `fetch` and ES modules do not work from a `file://` URL.
 
-## 🎯 How to Edit Content
+```bash
+python3 -m http.server 8080
+```
 
-### **Method 1: Use the Admin Dashboard (RECOMMENDED)**
-1. Open `admin/index.html` 
-2. Use intuitive forms to add/edit/delete content
-3. Changes save to JSON files automatically
-4. Export/import backup files for safekeeping
+Then visit `http://localhost:8080`. The admin editor is `http://localhost:8080/admin/`.
 
-### **Method 2: Edit JSON Files Directly (Advanced)**
-1. Open files in `/data/` folder with a text editor
-2. Edit JSON data directly
-3. Refresh website to see changes
-4. **Be careful with JSON syntax!** Invalid JSON will break the site.
+## How content works
 
----
+`js/app.js` loads every file in `data/`, keeps it on `window.GOAT.data`, and renders into the empty targets in `index.html`:
 
-## 📊 Content Types & JSON Schema
+- `[data-render="featured-artist"]`
+- `[data-render="artists"]`
+- `[data-render="events"]`
+- `[data-render="merchandise"]`
+- `[data-render="gallery"]`
 
-### **Artists** (`data/artists.json`)
+Brand, hero, navigation labels, about copy, contact, and footer text are filled from `data/site-config.json` and `data/label-info.json`. Section ids (`#about`, `#artists`, `#events`, and the rest) stay where they are so existing links keep working.
+
+One missing or broken JSON file does not blank the rest of the page. That section shows a short message and the others still render.
+
+Text from JSON is written with `textContent`. Image addresses are checked before they are applied. A missing image falls back to initials or a gradient block.
+
+## Customization
+
+| What you want to change | Edit |
+| --- | --- |
+| Brand name, logo text, tagline, copyright year | `data/site-config.json` → `brand` |
+| Hero eyebrow, title, subtitle, buttons | `data/site-config.json` → `hero` |
+| Ticker phrases | `data/site-config.json` → `ticker` |
+| Navigation labels and the Book Now button | `data/site-config.json` → `navigation` |
+| Section headings | `data/site-config.json` → `sections` |
+| Newsletter wording | `data/site-config.json` → `newsletter` |
+| Colors | `data/site-config.json` → `theme`, or the tokens in `css/variables.css` |
+| Fonts | `css/variables.css` (`--font-display`, `--font-body`, `--font-cond`) and the Google Fonts link in `index.html` |
+| Artists | `data/artists.json` |
+| Who is featured | `data/featured-artist.json` (`artistId` must match an artist `id`) |
+| Events | `data/events.json` |
+| Merch | `data/merchandise.json` |
+| Gallery | `data/gallery.json` |
+| About copy, stats, booking blurbs | `data/label-info.json` |
+| Email, phone, location, office hours, socials | `data/label-info.json` → `contact`, `officeHours`, `socials` |
+| Layout, spacing, animation | The CSS file for that section. Do not put CSS rules in JSON. |
+
+Theme values are hex colors. On load they are applied to `--color-primary`, `--color-bg`, `--color-surface`, and `--color-text`. The older names (`--red`, `--black`, `--gray-dark`) point at those tokens, so existing CSS follows the config.
+
+### Add an artist
+
+Add an object to the `artists` array in `data/artists.json`. Do not add a card to `index.html`.
+
 ```json
 {
-  "id": "artist-id",
-  "name": "Artist Name",
-  "status": "Signed" | "Upcoming",
-  "genres": ["Genre1", "Genre2"],
-  "location": "City, Country",
-  "image": "images/filename.jpg",
-  "bio": "Full biography text",
-  "shortBio": "Short bio for card display",
-  "featured": true | false
+  "id": "new-artist",
+  "name": "NEW ARTIST",
+  "status": "Signed",
+  "genres": ["Hip-Hop"],
+  "location": "Paarl, SA",
+  "image": "images/new-artist.jpg",
+  "bio": "Full biography.",
+  "shortBio": "Short line used on the roster card.",
+  "socials": { "instagram": "https://instagram.com/example" },
+  "featured": false
 }
 ```
 
-### **Events** (`data/events.json`)
+`status` is `Signed` or `Upcoming`. `image` is a path under `images/` or a full `http` URL. Leave `image` empty to show initials on a dark gradient. Put the file in `images/` with the same spelling and capitalization the JSON uses.
+
+### Choose the featured artist
+
+Set `artistId` in `data/featured-artist.json` to an `id` from `artists.json`. The showcase and the wide roster card both use that id. The component does not assume the featured artist is LUDA G. Optional `stats` on the artist object (`tracksReleased`, `monthlyListeners`, `yearsActive`) appear in the showcase. Optional `featured_rank` such as `"★ #1 Lead Artist"` sets the badge.
+
+### Add an event
+
+Add an object to `events` in `data/events.json`. `date` is the canonical value (`YYYY-MM-DD`). The day and month on the page are derived from it. `day` and `month` are only a fallback if `date` is missing.
+
 ```json
 {
-  "id": "event-id",
-  "title": "Event Title",
-  "date": "2026-04-04",
-  "day": "04",
-  "month": "Apr 2026",
+  "id": "event-7",
+  "title": "SHOW NAME",
+  "date": "2026-07-01",
   "venue": "Venue Name",
   "location": "City, Country",
-  "tags": ["Tag1", "Tag2"],
-  "status": "available" | "sold-out"
+  "tags": ["Live Show"],
+  "type": "Showcase",
+  "status": "available",
+  "buttonText": "Get Tickets"
 }
 ```
 
-### **Merchandise** (`data/merchandise.json`)
+`status` of `sold-out` uses the outline button. Anything else uses the red button. `buttonText` is the label.
+
+### Add merchandise
+
+Add an object to `merchandise` in `data/merchandise.json`. There is no cart and no payment.
+
 ```json
 {
-  "id": "merch-id",
+  "id": "merch-5",
   "name": "Product Name",
-  "description": "Product description",
-  "price": 750,
+  "description": "Short description",
+  "price": 500,
   "currency": "ZAR",
-  "new": true | false
+  "new": false,
+  "symbol": "G",
+  "type": "TEE",
+  "gradient": "linear-gradient(135deg,#1a1a1a,#2a2a2a)",
+  "image": ""
 }
 ```
 
----
+A long `symbol` (more than three characters) uses the smaller type size. A real image path replaces the symbol. An empty `image` keeps the gradient mark.
 
-## 🚀 Performance Optimization
+### Add gallery content
 
-### Current Performance Status
-- ✅ All images fixed and paths corrected
-- ✅ Accessibility (WCAG 2.1 AA compliant)
-- ✅ Mobile responsive (375px to 1440px+)
-- ✅ Web Audio memory leak fixed
-- ✅ Content separated from presentation (JSON-based)
+Add an object to `gallery` in `data/gallery.json`.
 
-### Further Optimization Opportunities
-
-**1. CSS Optimization**
-```bash
-# Minify CSS files (use any minifier)
-npx cssnano input.css -o output.min.css
-
-# Or use an online tool: https://cssnano.co/
+```json
+{
+  "id": "gallery-10",
+  "label": "STAGE",
+  "description": "Live stage performance",
+  "height": 280,
+  "gradient": "linear-gradient(135deg,#1a0000,#330000,#000)",
+  "image": ""
+}
 ```
 
-**2. Image Optimization**
-- Use WebP format with fallbacks
-- Compress PNG/JPG: https://tinypng.com
-- Add `loading="lazy"` attribute to below-fold images
+If `image` is empty or the file fails to load, the gradient block is used. `height` only affects that fallback.
 
-**3. JavaScript Bundling**
-```bash
-# Install esbuild
-npm install esbuild --save-dev
+## Admin editor
 
-# Bundle all JS files
-npx esbuild js/main.js --bundle --outfile=js/bundle.min.js
-```
+Open `admin/index.html` through the same local server. It can edit artists, events, merchandise, gallery items, the featured artist, and the main label fields, and it can import or export a JSON backup.
 
-**4. CSS Concatenation**
-Combine multiple CSS files into one for faster loading:
-```html
-<!-- Instead of 15 separate files -->
-<link rel="stylesheet" href="css/styles.min.css">
-```
+Those edits exist only in the current browser tab. Refreshing the admin page loads the files from `data/` again and drops unsaved work. The editor cannot write files to disk, to GitHub, or to a host. To publish:
 
-**5. Lazy Loading**
-```html
-<!-- Add to images for below-fold loading -->
-<img src="image.jpg" loading="lazy" alt="Description">
-```
+1. Export or copy the JSON from the Import/Export tab.
+2. Split the collections back into the matching files in `data/` (`artists`, `events`, `merchandise`, `gallery`, `featuredArtist`, `label`).
+3. Redeploy the static folder.
 
-### Performance Targets
-- **Lighthouse Score:** 80+
-- **First Contentful Paint (FCP):** <3 seconds
-- **Largest Contentful Paint (LCP):** <2.5 seconds
-- **Cumulative Layout Shift (CLS):** <0.1
+There is no login. Do not treat the admin page as private just because it lives in a folder.
 
----
+The booking form and newsletter form only confirm input in the browser. They do not send email or store addresses.
 
-## 🛠️ Development
+## Development
 
-### Scripts Overview
+- Keep page structure in HTML, appearance in CSS, behavior in `js/`, and copy in `data/`.
+- Add a module only when it has one clear job. `js/app.js` is the only public script tag.
+- After rendering new `.fade-in` nodes, scroll reveal picks them up automatically.
+- Prefer `prefers-reduced-motion` for new animation. The hero canvas draws a single frame when that setting is on.
 
-| Script | Purpose | Dependencies |
-|--------|---------|--------------|
-| `content-loader.js` | Loads JSON data on page start | None |
-| `renderer.js` | Renders content from JSON into HTML | content-loader.js |
-| `navigation.js` | Mobile menu & sticky nav | None |
-| `gallery.js` | Gallery grid generation | lightbox.js |
-| `lightbox.js` | Image lightbox modal | None |
-| `music-player.js` | Ambient sound toggle (Web Audio) | None |
-| `hero-canvas.js` | Canvas animation | None |
-| `booking-form.js` | Booking form submission | None |
-| `newsletter.js` | Newsletter signup | None |
-| `main.js` | Initialization & utilities | All |
+## Static hosting
 
-### Adding New Features
-
-1. **New Artist:** Add in admin dashboard (no coding needed!)
-2. **New Product:** Edit in admin → Merch tab
-3. **Custom CSS:** Add to appropriate CSS file in `/css/sections/`
-4. **Custom JS:** Create module in `/js/ui/` or `/js/forms/`
-
----
-
-## 🔒 Backup & Restore
-
-### Export All Data
-1. Open admin dashboard
-2. Go to "Import/Export" tab
-3. Click "Download All Data (JSON)"
-4. Save file safely
-
-### Restore From Backup
-1. Open admin dashboard
-2. Go to "Import/Export" tab
-3. Click "Upload Data (JSON)"
-4. Select your backup file
-5. Data restores automatically
-
----
-
-## 🌐 Deployment
-
-### Option 1: Static Hosting (Recommended for Simple Sites)
-- **Vercel:** https://vercel.com
-- **Netlify:** https://netlify.com
-- **GitHub Pages:** https://pages.github.com
-
-### Option 2: Server/VPS
-1. Upload all files to server
-2. Set permissions: `chmod 755 data/` (so server can write JSON)
-3. Add `.htaccess` for CORS if needed
-4. Test all features work
-
-### Deploy Checklist
-- [ ] All images optimized
-- [ ] CSS minified (optional but recommended)
-- [ ] JS minified (optional but recommended)
-- [ ] Admin dashboard password-protected (optional)
-- [ ] Backup data/files regularly
-
----
-
-## 📱 Mobile Responsiveness
-
-Tested breakpoints:
-- **Mobile:** 375px
-- **Tablet:** 768px
-- **Desktop:** 1024px+
-- **Large Desktop:** 1440px+
-
-All media queries centralized in `css/responsive.css` for easy management.
-
----
-
-## ♿ Accessibility
-
-**WCAG 2.1 AA Compliance:**
-- ✅ Proper alt text on all images
-- ✅ ARIA labels on interactive elements
-- ✅ Keyboard navigation support
-- ✅ Color contrast ratio >4.5:1
-- ✅ Mobile menu with proper semantics
-- ✅ Form labels associated with inputs
-
-### Screen Reader Support
-- Test with: NVDA (Windows), JAWS, VoiceOver (Mac)
-- All interactive elements keyboard accessible
-- Semantic HTML used throughout
-
----
-
-## 🐛 Troubleshooting
-
-### Images Not Loading
-1. Check image path in admin dashboard
-2. Ensure file exists in `/images/` folder
-3. Verify filename spelling and case (case-sensitive on servers!)
-4. Use `images/filename.ext` format
-
-### Content Not Updating
-1. Clear browser cache (Ctrl+Shift+Delete or Cmd+Shift+Delete)
-2. Hard refresh: Ctrl+F5 or Cmd+Shift+R
-3. Check browser console for errors (F12)
-4. Verify JSON files are valid (use https://jsonlint.com/)
-
-### Music Player Not Working
-1. Check browser console for audio errors
-2. Ensure browser allows Web Audio API
-3. Try different browser (Chrome, Firefox, Safari)
-4. Check system volume is not muted
-
-### Admin Dashboard Blank
-1. Ensure data/JSON files exist
-2. Check browser console (F12) for errors
-3. Verify you're accessing `/admin/index.html` (not /admin/)
-4. Try different browser
-
----
-
-## 📈 Future Enhancements
-
-### Phase 2 (Backend Integration)
-- [ ] Backend server for form submissions
-- [ ] Email notifications for bookings/newsletter
-- [ ] Admin dashboard with user authentication
-- [ ] Database for scaling beyond JSON files
-- [ ] Image upload & storage
-- [ ] Analytics tracking
-
-### Phase 3 (Advanced Features)
-- [ ] Artist login area
-- [ ] Streaming integration (Spotify, SoundCloud)
-- [ ] Ticket sales integration
-- [ ] Email marketing automation
-- [ ] SEO optimization & blog
-- [ ] Social media feed integration
-
----
-
-## 📞 Support
-
-**Critical Issues:** Check `/data/*.json` files are present and valid
-
-**Custom Development:** Modify CSS in `/css/sections/` or create new JS modules in `/js/`
-
----
-
-## 📄 License
-
-GOAT RECORDS Website — © 2026. All Rights Reserved.
-
----
-
-## ✅ What's Fixed & Improved
-
-### Critical Fixes ✔️
-- [x] Fixed 5 missing artist images (DJ-LES, GEO FLAME, YOUNG OG CPT, YOUNG OG, BLXCKOUT)
-- [x] Fixed broken image paths (`assets/img/` → `images/`)
-- [x] Added descriptive alt text to all images
-- [x] Replaced inline onclick handlers with proper event listeners
-- [x] Added ARIA labels for accessibility
-
-### Content Management ✔️
-- [x] Extracted all hardcoded content to JSON files
-- [x] Created admin dashboard for easy editing (no coding needed!)
-- [x] Implemented content-loader to auto-populate website
-- [x] Added renderer to dynamically display JSON data
-- [x] Export/import functionality for data backup
-
-### Code Quality ✔️
-- [x] Fixed Web Audio memory leak in music player
-- [x] Improved JavaScript organization (modules)
-- [x] Added proper cleanup on page unload
-- [x] Removed hardcoded setup comments from HTML
-
-### Accessibility ✔️
-- [x] Added proper alt text to all images
-- [x] Added aria-label to interactive elements
-- [x] Replaced inline onclick handlers
-- [x] Improved semantic HTML structure
-
----
-
-**Ready to manage your content with ease!** 🚀
-
-Open `admin/index.html` to get started.
+Any static host works (GitHub Pages, Netlify, S3, a plain web server). Upload the folder as-is. Do not add a build command. The host must serve the site over HTTP so modules and JSON can load. It does not need write access to `data/`.

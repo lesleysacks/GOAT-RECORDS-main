@@ -92,6 +92,12 @@
   background: var(--red-dim);
 }
 
+.form-submit.is-sent,
+.form-submit:disabled {
+  background: #111;
+  cursor: default;
+}
+
 /* ─── NEWSLETTER FORM ─── */
 .nl-form {
   display: flex;

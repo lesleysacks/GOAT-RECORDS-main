@@ -1,29 +1,26 @@
 /**
- * newsletter.js
- * 
- * @description Newsletter subscription form handler
- * Validates email and provides visual feedback
- * 
- * @requires None (vanilla JS)
- * @exports None (Event listener on .nl-btn)
- * 
- * @features
- * - Email validation (checks for @)
- * - Visual feedback with button text change
- * - Auto-reset after 3 seconds
- * - Clear input on successful subscription
- * 
- * @validation
- * - Checks for non-empty input
- * - Checks for @ character (basic email validation)
+ * Newsletter field. The address is checked locally and then cleared.
+ * It is not stored or sent anywhere.
  */
 
-// ─── NEWSLETTER SUBSCRIPTION ───
-document.querySelector('.nl-btn').addEventListener('click', function() {
-  const input = document.querySelector('.nl-input');
-  if (input.value && input.value.includes('@')) {
-    this.textContent = '✓ Subscribed!';
+export function initNewsletter() {
+  const form = document.getElementById('newsletter-form');
+  if (!form) return;
+  const input = form.querySelector('.nl-input');
+  const button = form.querySelector('.nl-btn');
+  if (!input || !button) return;
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const value = input.value.trim();
+    if (!value.includes('@') || !value.includes('.')) {
+      input.focus();
+      return;
+    }
+    const success = button.dataset.success || '✓ Subscribed!';
+    const label = button.dataset.label || 'Subscribe';
+    button.textContent = success;
     input.value = '';
-    setTimeout(() => { this.textContent = 'Subscribe'; }, 3000);
-  }
-});
+    window.setTimeout(() => { button.textContent = label; }, 3000);
+  });
+}

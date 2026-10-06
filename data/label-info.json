@@ -17,7 +17,9 @@
       "bookingsEmail": "bookings@goatrecords.co.za",
       "phone": "+27 21 000 0000",
       "hours": "Mon – Fri, 9am – 6pm SAST",
-      "location": "Paarl, Western Cape, South Africa"
+      "location": "Paarl, Western Cape, South Africa",
+      "locationPrimary": "Paarl, South Africa",
+      "locationRegion": "Western Cape"
     },
     "officeHours": {
       "monday_friday": "9:00 – 18:00",

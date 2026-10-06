@@ -51,6 +51,10 @@
   position: relative;
   max-width: 85vw;
   max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
 .lightbox-close {
@@ -63,6 +67,9 @@
   cursor: pointer;
   line-height: 1;
   transition: color 0.2s;
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
 .lightbox-close:hover {

@@ -51,6 +51,12 @@ footer {
   margin-top: 8px;
 }
 
+.footer-nav {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
 /* ─── LINK COLUMNS ─── */
 .footer-links-col h4 {
   font-family: var(--font-cond);
