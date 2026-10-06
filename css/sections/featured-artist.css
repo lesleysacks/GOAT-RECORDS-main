@@ -39,6 +39,7 @@
   position: relative;
   overflow: hidden;
   min-height: 500px;
+  min-width: 0;
 }
 
 .featured-visual-bg {
@@ -101,6 +102,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
+}
+
+.featured-monogram img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.featured-rank,
+.featured-vinyl,
+.featured-visual-glow,
+.featured-visual-grid {
+  z-index: 2;
+}
+
+.featured-inner:empty,
+.featured-inner:has(.empty-state) {
+  display: block;
+  min-height: 0;
 }
 
 .featured-monogram-text {
@@ -163,6 +185,7 @@
   flex-direction: column;
   justify-content: center;
   position: relative;
+  min-width: 0;
   background: var(--gray-dark);
   border-left: 1px solid rgba(255, 0, 0, 0.12);
 }
@@ -193,6 +216,7 @@
   letter-spacing: 0.03em;
   color: var(--white);
   margin-bottom: 8px;
+  overflow-wrap: anywhere;
 }
 
 .featured-name .highlight {
@@ -204,6 +228,7 @@
 .featured-genre-bar {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 16px;
   margin: 20px 0 32px;
 }

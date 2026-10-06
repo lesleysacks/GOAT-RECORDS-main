@@ -1,59 +1,82 @@
 /**
- * lightbox.js
- * 
- * @description Gallery lightbox image viewer functionality
- * Handles opening, closing, and keyboard navigation
- * 
- * @requires None (vanilla JS)
- * @exports openLightbox(), closeLightbox() - Control functions
- * 
- * @features
- * - Click to view full-size images
- * - Close on X button, background click, or Escape key
- * - Gallery item counter display
- * - Responsive scaling
- * 
- * @events
- * - click: Gallery items and close button
- * - click: Lightbox background
- * - keydown: Escape key support
+ * Gallery lightbox. Opens from a gallery item, which may be a photo or a fallback.
  */
 
-/**
- * Opens lightbox with image and metadata
- * @param {Object} item - Gallery item data (label, bg)
- * @param {number} i - Index for counter display
- */
-function openLightbox(item, i) {
-  const lb = document.getElementById('lightbox');
-  const content = document.getElementById('lb-content');
-  content.innerHTML = `
-    <div class="lb-placeholder" style="background:${item.bg};">
-      <div class="lb-placeholder-title">${item.label}</div>
-      <div class="lb-placeholder-sub">GOAT RECORDS — ${i + 1} / ${galleryData.length}</div>
-    </div>
-  `;
-  lb.classList.add('open');
-  document.body.style.overflow = 'hidden';
+import { el, isSafeGradient, isSafeUrl } from '../dom.js';
+
+let lastFocus = null;
+
+function lightboxRoot() {
+  return document.getElementById('lightbox');
 }
 
-/**
- * Closes lightbox and restores body scroll
- */
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('open');
+export function closeLightbox() {
+  const lightbox = lightboxRoot();
+  if (!lightbox) return;
+  lightbox.classList.remove('open');
+  lightbox.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
+  if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+  lastFocus = null;
 }
 
-// ─── CLOSE BUTTON ───
-document.getElementById('lb-close').addEventListener('click', closeLightbox);
+function placeholder(item, index, total) {
+  const block = el('div', { className: 'lb-placeholder' });
+  if (isSafeGradient(item.gradient)) block.style.background = item.gradient.trim();
+  block.append(
+    el('div', { className: 'lb-placeholder-title', text: item.label || 'GOAT' }),
+    el('div', { className: 'lb-placeholder-sub', text: `GOAT RECORDS — ${index + 1} / ${total}` })
+  );
+  return block;
+}
 
-// ─── BACKGROUND CLICK ───
-document.getElementById('lightbox').addEventListener('click', function(e) {
-  if (e.target === this) closeLightbox();
-});
+export function openLightbox(item, index, items) {
+  const lightbox = lightboxRoot();
+  const content = document.getElementById('lb-content');
+  if (!lightbox || !content || !item) return;
 
-// ─── ESCAPE KEY ───
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeLightbox();
-});
+  const list = Array.isArray(items) ? items : [];
+  const total = list.length || 1;
+  content.replaceChildren();
+
+  const description = item.description || item.label || 'Gallery image';
+  const showPhoto = isSafeUrl(item.image) && !String(item.image).startsWith('data:');
+
+  if (showPhoto) {
+    const image = el('img', {
+      className: 'lightbox-img-display',
+      attrs: { alt: description }
+    });
+    image.src = item.image.trim();
+    image.addEventListener('error', () => {
+      image.remove();
+      content.append(placeholder({ ...item, image: '' }, index, total));
+    });
+    content.append(image);
+    const caption = el('p', { className: 'lb-placeholder-sub', text: `${description} — ${index + 1} / ${total}` });
+    content.append(caption);
+  } else {
+    content.append(placeholder(item, index, total));
+  }
+
+  lastFocus = document.activeElement;
+  lightbox.classList.add('open');
+  lightbox.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  const close = document.getElementById('lb-close');
+  if (close) close.focus();
+}
+
+export function initLightbox() {
+  const lightbox = lightboxRoot();
+  const close = document.getElementById('lb-close');
+  if (!lightbox) return;
+
+  if (close) close.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (event) => {
+    if (event.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
+  });
+}

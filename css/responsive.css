@@ -73,15 +73,31 @@
     grid-template-columns: 1fr;
   }
 
-  .luda-wide {
-    grid-column: span 1 !important;
-    grid-template-columns: 1fr !important;
+  .artist-card--featured {
+    grid-column: span 1;
+    grid-template-columns: 1fr;
     flex-direction: column;
   }
 
-  .luda-wide .artist-card-img {
-    min-height: 200px !important;
-    padding-top: 0 !important;
+  .artist-card--featured .artist-card-img {
+    min-height: 200px;
+    padding-top: 0;
+  }
+
+  .section-heading--split {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  footer {
+    padding-bottom: 96px;
+  }
+
+  .footer-bottom {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 12px 20px;
+    padding-right: 72px;
   }
 }
 

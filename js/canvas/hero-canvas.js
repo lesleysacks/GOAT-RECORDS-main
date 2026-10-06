@@ -22,9 +22,12 @@
  * - Minimal DOM manipulation
  */
 
-(function() {
+export function initHeroCanvas() {
   const canvas = document.getElementById('hero-canvas');
-  const ctx    = canvas.getContext('2d');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let W, H, beams = [], particles = [], frame = 0;
 
   /**
@@ -161,12 +164,14 @@
     ctx.stroke();
 
     frame++;
-    requestAnimationFrame(draw);
+    if (!reducedMotion) requestAnimationFrame(draw);
   }
 
   resize();
   initBeams();
   initParticles();
   draw();
-  window.addEventListener('resize', () => { resize(); initBeams(); initParticles(); });
-})();
+  if (!reducedMotion) {
+    window.addEventListener('resize', () => { resize(); initBeams(); initParticles(); });
+  }
+}

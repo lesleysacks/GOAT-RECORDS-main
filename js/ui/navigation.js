@@ -1,49 +1,45 @@
 /**
- * navigation.js
- * 
- * @description Navigation interactivity and hamburger menu functionality
- * Handles sticky navigation bar on scroll, mobile menu toggle
- * 
- * @requires None (vanilla JS)
- * @exports closeMobile() - Function to close mobile menu
- * 
- * @features
- * - Sticky nav with blur effect on scroll (triggers at 60px)
- * - Hamburger menu animation on mobile
- * - Mobile menu open/close with smooth transitions
- * - Link handling for navigation
- * 
- * @events
- * - scroll: Triggers nav.scrolled class
- * - click: Hamburger menu toggle
+ * Sticky navigation and the mobile menu.
+ * Link clicks are delegated so links can be re-rendered from config.
  */
 
-// ─── STICKY NAVIGATION ─── 
-window.addEventListener('scroll', () => {
+export function initNavigation() {
   const nav = document.getElementById('nav');
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-});
+  const ham = document.getElementById('hamburger');
+  const menu = document.getElementById('mobile-menu');
 
-// ─── HAMBURGER MENU ───
-const ham = document.getElementById('hamburger');
-const mob = document.getElementById('mobile-menu');
+  if (nav) {
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 60);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
 
-ham.addEventListener('click', () => {
-  ham.classList.toggle('open');
-  mob.classList.toggle('open');
-});
+  if (!ham || !menu) return;
 
-/**
- * Closes the mobile menu
- * Called when user clicks navigation link
- */
-function closeMobile() {
-  ham.classList.remove('open');
-  mob.classList.remove('open');
+  const setOpen = (open) => {
+    ham.classList.toggle('open', open);
+    menu.classList.toggle('open', open);
+    ham.setAttribute('aria-expanded', open ? 'true' : 'false');
+    ham.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    menu.setAttribute('aria-hidden', open ? 'false' : 'true');
+    if (open) menu.removeAttribute('inert');
+    else menu.setAttribute('inert', '');
+    if (open) {
+      const first = menu.querySelector('a');
+      if (first) first.focus();
+    }
+  };
+
+  ham.addEventListener('click', () => setOpen(!menu.classList.contains('open')));
+
+  menu.addEventListener('click', (event) => {
+    if (event.target.closest('a')) setOpen(false);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && menu.classList.contains('open')) {
+      setOpen(false);
+      ham.focus();
+    }
+  });
 }
-
-// ─── MOBILE MENU LINK HANDLERS ───
-const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
-mobileMenuLinks.forEach(link => {
-  link.addEventListener('click', closeMobile);
-});
