@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" width="800" height="560" role="img">
+  <rect width="800" height="560" fill="#0d0d0d"/>
+  
+  <rect width="800" height="560" fill="#140000"/>
+  <polygon points="120,520 250,40 380,520" fill="#ff0000" opacity="0.22"/>
+  <polygon points="420,520 520,20 640,520" fill="#ffffff" opacity="0.05"/>
+  <polygon points="500,520 640,80 760,520" fill="#ff0000" opacity="0.12"/>
+  <rect x="40" y="430" width="720" height="70" fill="#000"/>
+  <rect x="70" y="300" width="70" height="130" fill="#1a1a1a" stroke="#ff0000"/>
+  <rect x="660" y="300" width="70" height="130" fill="#1a1a1a" stroke="#ff0000"/>
+  <text x="40" y="48" fill="#ff0000" font-family="Arial,sans-serif" font-size="20" letter-spacing="4">STAGE MOCKUP</text>
+
+</svg>

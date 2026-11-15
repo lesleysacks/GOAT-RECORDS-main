@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 640" width="800" height="640" role="img">
+  <rect width="800" height="640" fill="#0d0d0d"/>
+  
+  <rect width="800" height="640" fill="#100000"/>
+  <rect x="0" y="430" width="800" height="210" fill="#070707"/>
+  <polygon points="80,430 200,160 320,430" fill="#1a1a1a" stroke="#ff0000"/>
+  <polygon points="480,430 600,120 720,430" fill="#1a1a1a" stroke="#ff0000"/>
+  <polygon points="220,430 400,200 580,430" fill="#000" stroke="#ff0000" stroke-width="3"/>
+  <circle cx="200" cy="180" r="10" fill="#ff0000"/>
+  <circle cx="600" cy="140" r="10" fill="#ff0000"/>
+  <circle cx="400" cy="220" r="12" fill="#ff0000"/>
+<circle cx="60" cy="500" r="16" fill="#111" stroke="#333"/>
+<circle cx="130" cy="500" r="16" fill="#111" stroke="#333"/>
+<circle cx="200" cy="500" r="16" fill="#111" stroke="#333"/>
+<circle cx="270" cy="500" r="16" fill="#111" stroke="#333"/>
+<circle cx="340" cy="500" r="16" fill="#111" stroke="#333"/>
+<circle cx="410" cy="500" r="16" fill="#111" stroke="#333"/>
+<circle cx="480" cy="500" r="16" fill="#111" stroke="#333"/>
+<circle cx="550" cy="500" r="16" fill="#111" stroke="#333"/>
+<circle cx="620" cy="500" r="16" fill="#111" stroke="#333"/>
+<circle cx="690" cy="500" r="16" fill="#111" stroke="#333"/>
+  <text x="40" y="52" fill="#ff0000" font-family="Arial,sans-serif" font-size="20" letter-spacing="4">FESTIVAL MOCKUP</text>
+
+</svg>

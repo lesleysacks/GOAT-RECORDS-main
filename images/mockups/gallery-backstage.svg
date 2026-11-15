@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 440" width="800" height="440" role="img">
+  <rect width="800" height="440" fill="#0d0d0d"/>
+  
+  <rect width="800" height="440" fill="#0c0c0c"/>
+  <polygon points="80,40 720,40 640,400 160,400" fill="#161616" stroke="#222"/>
+  <rect x="360" y="150" width="80" height="250" fill="#000"/>
+  <circle cx="400" cy="120" r="16" fill="#ff0000"/>
+  <rect x="120" y="160" width="90" height="140" fill="#1a0000" stroke="#ff0000"/>
+  <rect x="590" y="160" width="90" height="140" fill="#1a0000" stroke="#333"/>
+  <text x="40" y="48" fill="#ff0000" font-family="Arial,sans-serif" font-size="20" letter-spacing="4">BACKSTAGE MOCKUP</text>
+
+</svg>

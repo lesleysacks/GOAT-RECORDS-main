@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800" role="img">
+  <rect width="800" height="800" fill="#0d0d0d"/>
+  
+  <rect width="800" height="800" fill="#160000"/>
+  <path d="M250 200 L330 150 L470 150 L550 200 L640 300 L560 360 L520 300 L520 640 L280 640 L280 300 L240 360 L160 300 Z" fill="#0c0c0c" stroke="#ff0000" stroke-width="6"/>
+  <path d="M160 300 L250 250 L250 520 L180 470 Z" fill="#ff0000" opacity="0.85"/>
+  <path d="M640 300 L550 250 L550 520 L620 470 Z" fill="#ff0000" opacity="0.85"/>
+  <circle cx="400" cy="340" r="16" fill="#fff"/>
+  <text x="40" y="64" fill="#ff0000" font-family="Arial,sans-serif" font-size="22" letter-spacing="4">JACKET MOCKUP</text>
+
+</svg>

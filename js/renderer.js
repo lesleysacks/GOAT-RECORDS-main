@@ -158,21 +158,32 @@ window.renderer = {
       imgWrap.className = 'merch-img';
       const inner = document.createElement('div');
       inner.className = 'merch-img-inner';
-      inner.style.background = item.gradient || 'linear-gradient(135deg,#1a1a1a,#2a2a2a)';
-      inner.style.flexDirection = 'column';
-      inner.style.gap = '8px';
-      const symbol = document.createElement('div');
-      symbol.style.fontFamily = 'var(--font-display)';
-      symbol.style.fontSize = String(item.symbol || '').length > 3 ? '2rem' : '4rem';
-      symbol.style.color = '#ffffff';
-      symbol.textContent = item.symbol || '';
-      const type = document.createElement('div');
-      type.style.fontFamily = 'var(--font-cond)';
-      type.style.fontSize = '0.72rem';
-      type.style.letterSpacing = '0.22em';
-      type.style.color = 'rgba(255,255,255,0.78)';
-      type.textContent = item.type || '';
-      inner.append(symbol, type);
+      const photo = item.image && !String(item.image).startsWith('data:');
+      if (photo) {
+        const img = document.createElement('img');
+        img.className = 'merch-photo';
+        img.src = item.image;
+        img.alt = `Preview mockup of ${item.name}. Not an official product photograph.`;
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        inner.append(img);
+      } else {
+        inner.style.background = item.gradient || 'linear-gradient(135deg,#1a1a1a,#2a2a2a)';
+        inner.style.flexDirection = 'column';
+        inner.style.gap = '8px';
+        const symbol = document.createElement('div');
+        symbol.style.fontFamily = 'var(--font-display)';
+        symbol.style.fontSize = String(item.symbol || '').length > 3 ? '2rem' : '4rem';
+        symbol.style.color = '#ffffff';
+        symbol.textContent = item.symbol || '';
+        const type = document.createElement('div');
+        type.style.fontFamily = 'var(--font-cond)';
+        type.style.fontSize = '0.72rem';
+        type.style.letterSpacing = '0.22em';
+        type.style.color = 'rgba(255,255,255,0.78)';
+        type.textContent = item.type || '';
+        inner.append(symbol, type);
+      }
       imgWrap.append(inner);
 
       const body = document.createElement('div');

@@ -7,7 +7,7 @@
       "price": 750,
       "currency": "ZAR",
       "new": true,
-      "image": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Crect fill='%231a1a1a' width='200' height='200'/%3E%3Ctext x='50%25' y='50%25' font-size='80' fill='%23ff0000' text-anchor='middle' dominant-baseline='middle' font-family='sans-serif' font-weight='bold'%3EG%3C/text%3E%3C/svg%3E",
+      "image": "images/mockups/merch-hoodie.svg",
       "gradient": "linear-gradient(135deg,#1a1a1a,#2a2a2a)",
       "symbol": "G",
       "type": "HOODIE"
@@ -19,7 +19,7 @@
       "price": 420,
       "currency": "ZAR",
       "new": false,
-      "image": "",
+      "image": "images/mockups/merch-tee.svg",
       "gradient": "linear-gradient(135deg,#110000,#220000)",
       "symbol": "GOAT",
       "type": "TEE"
@@ -31,7 +31,7 @@
       "price": 380,
       "currency": "ZAR",
       "new": true,
-      "image": "",
+      "image": "images/mockups/merch-cap.svg",
       "gradient": "linear-gradient(135deg,#0d0d0d,#1a1a1a)",
       "symbol": "●",
       "type": "SNAPBACK"
@@ -43,7 +43,7 @@
       "price": 1800,
       "currency": "ZAR",
       "new": false,
-      "image": "",
+      "image": "images/mockups/merch-jacket.svg",
       "gradient": "linear-gradient(135deg,#200000,#300000)",
       "symbol": "RECORDS",
       "type": "JACKET"

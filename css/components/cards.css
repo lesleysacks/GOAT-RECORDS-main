@@ -190,6 +190,7 @@
   position: relative;
   background: var(--gray-mid);
   overflow: hidden;
+  min-width: 0;
   transition: transform 0.3s ease;
 }
 
@@ -203,6 +204,7 @@
   position: relative;
   overflow: hidden;
   background: var(--gray);
+  min-width: 0;
 }
 
 .merch-img-inner {
@@ -322,6 +324,17 @@
 
 .gallery-item-img {
   width: 100%;
+  object-fit: cover;
+  display: block;
+  background: #0d0d0d;
+}
+
+.merch-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 

@@ -6,15 +6,15 @@
  */
 
 const galleryFallback = [
-  { label: 'STAGE', height: 280, gradient: 'linear-gradient(135deg,#1a0000,#330000,#000)', description: 'Live stage performance' },
-  { label: 'STUDIO', height: 200, gradient: 'linear-gradient(135deg,#000,#0d0d0d,#1a1a1a)', description: 'Recording studio session' },
-  { label: 'CROWD', height: 340, gradient: 'linear-gradient(135deg,#0d0000,#200000)', description: 'Crowd at live event' },
-  { label: 'LIGHTS', height: 220, gradient: 'linear-gradient(135deg,#110000,#1a0000,#0d0d00)', description: 'Stage lighting setup' },
-  { label: 'ARTIST', height: 360, gradient: 'linear-gradient(135deg,#000,#0a0a1a,#000)', description: 'Artist portrait' },
-  { label: 'BACKSTAGE', height: 200, gradient: 'linear-gradient(135deg,#0a0a0a,#1a0a00)', description: 'Backstage moments' },
-  { label: 'FESTIVAL', height: 300, gradient: 'linear-gradient(135deg,#0d0000,#1a0000,#000)', description: 'Festival performance' },
-  { label: 'STUDIO', height: 240, gradient: 'linear-gradient(135deg,#000,#111,#0a000a)', description: 'Studio equipment' },
-  { label: 'MERCH', height: 260, gradient: 'linear-gradient(135deg,#0d0d0d,#1a0000)', description: 'Merchandise display' }
+  { label: 'STAGE', height: 280, image: 'images/mockups/gallery-stage.svg', description: 'Preview mockup of a stage. Not a GOAT RECORDS photograph.' },
+  { label: 'STUDIO', height: 200, image: 'images/mockups/gallery-studio-session.svg', description: 'Preview mockup of a recording session. Not a GOAT RECORDS photograph.' },
+  { label: 'CROWD', height: 340, image: 'images/mockups/gallery-crowd.svg', description: 'Preview mockup of a crowd. The figures are not GOAT RECORDS artists.' },
+  { label: 'LIGHTS', height: 220, image: 'images/mockups/gallery-lights.svg', description: 'Preview mockup of stage lights. Not a GOAT RECORDS photograph.' },
+  { label: 'ARTIST', height: 360, image: 'images/mockups/gallery-artist-silhouette.svg', description: 'Preview silhouette mockup. This is not a GOAT RECORDS artist.' },
+  { label: 'BACKSTAGE', height: 200, image: 'images/mockups/gallery-backstage.svg', description: 'Preview mockup of a backstage corridor. Not a GOAT RECORDS photograph.' },
+  { label: 'FESTIVAL', height: 300, image: 'images/mockups/gallery-festival.svg', description: 'Preview mockup of a festival stage. Not a GOAT RECORDS photograph.' },
+  { label: 'STUDIO', height: 240, image: 'images/mockups/gallery-studio-gear.svg', description: 'Preview mockup of studio equipment. Not a GOAT RECORDS photograph.' },
+  { label: 'MERCH', height: 260, image: 'images/mockups/gallery-merch-display.svg', description: 'Preview mockup of a merch display. Not official GOAT RECORDS products.' }
 ];
 
 function renderGallery(items) {
@@ -39,7 +39,8 @@ function renderGallery(items) {
       const img = document.createElement('img');
       img.className = 'gallery-item-img';
       img.src = item.image;
-      img.alt = description || label;
+      img.alt = description || `Preview mockup: ${label}`;
+      img.style.height = `${item.height || item.h || 240}px`;
       img.loading = 'lazy';
       img.decoding = 'async';
       inner.append(img);

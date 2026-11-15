@@ -13,6 +13,7 @@ function openLightbox(item, index) {
   const frame = document.createElement('div');
   frame.className = 'lb-placeholder';
   if (item.image) {
+    frame.classList.add('has-photo');
     const img = document.createElement('img');
     img.className = 'lightbox-img-display';
     img.src = item.image;
@@ -28,7 +29,7 @@ function openLightbox(item, index) {
 
   const meta = document.createElement('p');
   meta.className = 'lb-placeholder-sub';
-  const description = item.description ? `${item.description}. ` : '';
+  const description = item.description ? `${item.description.replace(/\.+$/, '')}. ` : '';
   meta.textContent = `${description}GOAT RECORDS — ${index + 1} / ${total}`;
 
   frame.append(title, meta);
