@@ -29,10 +29,10 @@
 .form-group label {
   display: block;
   font-family: var(--font-cond);
-  font-size: 0.7rem;
-  letter-spacing: 0.25em;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.45);
+  color: var(--text-muted);
   margin-bottom: 8px;
 }
 
@@ -62,7 +62,10 @@
 
 .form-group input:focus,
 .form-group select:focus,
-.form-group textarea:focus {
+.form-group textarea:focus,
+.form-group input:user-invalid,
+.form-group select:user-invalid,
+.form-group textarea:user-invalid {
   border-color: var(--red);
 }
 
@@ -103,17 +106,17 @@
 .nl-input {
   flex: 1;
   padding: 14px 20px;
-  background: rgba(0, 0, 0, 0.15);
-  border: 2px solid rgba(0, 0, 0, 0.2);
+  background: #fff;
+  border: 2px solid #140000;
   border-right: none;
-  color: var(--black);
+  color: #140000;
   font-family: var(--font-body);
   font-size: 0.88rem;
   outline: none;
 }
 
 .nl-input::placeholder {
-  color: rgba(0, 0, 0, 0.4);
+  color: rgba(0, 0, 0, 0.72);
 }
 
 .nl-btn {

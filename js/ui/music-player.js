@@ -95,10 +95,20 @@ function stopAmbient(immediate = false) {
   }
 }
 
+const playerState = document.getElementById('player-state');
+
+function setPlayerUi(on) {
+  musicBtn.classList.toggle('paused', !on);
+  musicBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+  if (playerState) playerState.textContent = on ? 'On' : 'Off';
+}
+
+setPlayerUi(false);
+
 // ─── MUSIC TOGGLE ───
 musicBtn.addEventListener('click', () => {
   musicOn = !musicOn;
-  musicBtn.classList.toggle('paused', !musicOn);
+  setPlayerUi(musicOn);
   if (musicOn) startAmbient();
   else stopAmbient();
 });

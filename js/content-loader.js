@@ -70,9 +70,11 @@ window.goatData = {
       if (featured?.featuredArtist) this.featuredArtist = featured.featuredArtist;
       if (label?.label) this.label = label.label;
       
+      this.ready = true;
       console.log('✓ Content loaded from JSON data files');
       window.dispatchEvent(new CustomEvent('goatDataLoaded', { detail: this }));
     } catch (err) {
+      this.ready = true;
       console.warn('⚠ Using fallback data (JSON files not found or error loading):', err.message);
       window.dispatchEvent(new CustomEvent('goatDataLoaded', { detail: this }));
     }

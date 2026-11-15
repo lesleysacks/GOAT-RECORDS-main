@@ -117,8 +117,8 @@
         grad.addColorStop(0.5, `rgba(255,0,0,${alpha})`);
         grad.addColorStop(1, 'rgba(255,0,0,0)');
       } else {
-        grad.addColorStop(0, `rgba(255,220,160,${alpha * 1.5})`);
-        grad.addColorStop(0.4, `rgba(255,240,200,${alpha * 0.5})`);
+        grad.addColorStop(0, `rgba(255,255,255,${alpha * 1.5})`);
+        grad.addColorStop(0.4, `rgba(255,255,255,${alpha * 0.5})`);
         grad.addColorStop(1, 'rgba(255,255,255,0)');
       }
 
@@ -161,12 +161,43 @@
     ctx.stroke();
 
     frame++;
-    requestAnimationFrame(draw);
+    if (running) raf = requestAnimationFrame(draw);
+  }
+
+  let running = false;
+  let raf = 0;
+  const hero = document.getElementById('hero');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function start() {
+    if (running) return;
+    running = true;
+    raf = requestAnimationFrame(draw);
+  }
+
+  function stop() {
+    running = false;
+    cancelAnimationFrame(raf);
   }
 
   resize();
   initBeams();
   initParticles();
-  draw();
+
+  if (reduceMotion) {
+    draw();
+  } else {
+    const visibility = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !document.hidden) start();
+      else stop();
+    });
+    visibility.observe(hero);
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stop();
+      else if (hero.getBoundingClientRect().bottom > 0 && hero.getBoundingClientRect().top < window.innerHeight) start();
+    });
+    start();
+  }
+
   window.addEventListener('resize', () => { resize(); initBeams(); initParticles(); });
 })();

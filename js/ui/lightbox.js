@@ -1,59 +1,49 @@
 /**
  * lightbox.js
- * 
- * @description Gallery lightbox image viewer functionality
- * Handles opening, closing, and keyboard navigation
- * 
- * @requires None (vanilla JS)
- * @exports openLightbox(), closeLightbox() - Control functions
- * 
- * @features
- * - Click to view full-size images
- * - Close on X button, background click, or Escape key
- * - Gallery item counter display
- * - Responsive scaling
- * 
- * @events
- * - click: Gallery items and close button
- * - click: Lightbox background
- * - keydown: Escape key support
+ *
+ * Native dialog for gallery items. The browser handles focus and Escape.
  */
 
-/**
- * Opens lightbox with image and metadata
- * @param {Object} item - Gallery item data (label, bg)
- * @param {number} i - Index for counter display
- */
-function openLightbox(item, i) {
-  const lb = document.getElementById('lightbox');
+function openLightbox(item, index) {
+  const dialog = document.getElementById('lightbox');
   const content = document.getElementById('lb-content');
-  content.innerHTML = `
-    <div class="lb-placeholder" style="background:${item.bg};">
-      <div class="lb-placeholder-title">${item.label}</div>
-      <div class="lb-placeholder-sub">GOAT RECORDS — ${i + 1} / ${galleryData.length}</div>
-    </div>
-  `;
-  lb.classList.add('open');
-  document.body.style.overflow = 'hidden';
+  const total = window.galleryItems?.length || 0;
+  content.replaceChildren();
+
+  const frame = document.createElement('div');
+  frame.className = 'lb-placeholder';
+  if (item.image) {
+    const img = document.createElement('img');
+    img.className = 'lightbox-img-display';
+    img.src = item.image;
+    img.alt = item.description || item.label || 'Gallery image';
+    frame.append(img);
+  } else if (item.gradient || item.bg) {
+    frame.style.background = item.gradient || item.bg;
+  }
+
+  const title = document.createElement('p');
+  title.className = 'lb-placeholder-title';
+  title.textContent = item.label || 'Gallery';
+
+  const meta = document.createElement('p');
+  meta.className = 'lb-placeholder-sub';
+  const description = item.description ? `${item.description}. ` : '';
+  meta.textContent = `${description}GOAT RECORDS — ${index + 1} / ${total}`;
+
+  frame.append(title, meta);
+  content.append(frame);
+
+  if (!dialog.open) dialog.showModal();
 }
 
-/**
- * Closes lightbox and restores body scroll
- */
 function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('open');
-  document.body.style.overflow = '';
+  const dialog = document.getElementById('lightbox');
+  if (dialog?.open) dialog.close();
 }
 
-// ─── CLOSE BUTTON ───
 document.getElementById('lb-close').addEventListener('click', closeLightbox);
 
-// ─── BACKGROUND CLICK ───
-document.getElementById('lightbox').addEventListener('click', function(e) {
-  if (e.target === this) closeLightbox();
-});
-
-// ─── ESCAPE KEY ───
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeLightbox();
+document.getElementById('lightbox').addEventListener('click', (event) => {
+  if (event.target === event.currentTarget) closeLightbox();
 });

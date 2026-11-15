@@ -28,5 +28,18 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.08 });
 
-// Observe all fade-in elements
-document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+function watchFadeIns() {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('.fade-in:not(.visible)').forEach((el) => {
+    if (reduce) {
+      el.classList.add('visible');
+      return;
+    }
+    observer.observe(el);
+  });
+}
+
+watchFadeIns();
+
+const fadeWatch = new MutationObserver(() => watchFadeIns());
+fadeWatch.observe(document.body, { childList: true, subtree: true });

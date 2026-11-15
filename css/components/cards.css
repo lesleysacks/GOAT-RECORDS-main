@@ -20,8 +20,9 @@
   position: relative;
   background: var(--gray-mid);
   overflow: hidden;
-  cursor: pointer;
+  cursor: default;
   transition: transform 0.35s cubic-bezier(.22, 1, .36, 1);
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .artist-card:hover {
@@ -100,7 +101,7 @@
   opacity: 1;
 }
 
-.artist-card:hover .artist-overlay {
+.artist-card:has(.artist-overlay-detail):hover .artist-overlay {
   opacity: 0;
 }
 
@@ -115,11 +116,16 @@
 
 .artist-genre {
   font-family: var(--font-cond);
-  font-size: 0.7rem;
-  letter-spacing: 0.25em;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--red);
   margin-top: 4px;
+}
+
+.artist-overlay .btn {
+  margin-top: 12px;
+  align-self: flex-start;
 }
 
 .artist-bio {
@@ -228,9 +234,10 @@
 }
 
 .merch-desc {
-  font-size: 0.78rem;
-  color: rgba(255, 255, 255, 0.45);
-  margin-top: 4px;
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  margin-top: 6px;
+  line-height: 1.5;
 }
 
 .merch-footer {
@@ -294,6 +301,13 @@
   overflow: hidden;
   cursor: pointer;
   background: var(--gray-mid);
+  display: block;
+  width: 100%;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
 }
 
 .gallery-item-inner {
@@ -313,18 +327,19 @@
 
 .gallery-item-overlay {
   position: absolute;
-  inset: 0;
-  background: rgba(255, 0, 0, 0.7);
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s;
-  font-size: 2rem;
-}
-
-.gallery-item:hover .gallery-item-overlay {
-  opacity: 1;
+  align-items: flex-end;
+  padding: 36px 14px 12px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.88), transparent);
+  color: var(--white);
+  font-family: var(--font-cond);
+  font-size: 0.85rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  pointer-events: none;
 }
 
 .gallery-placeholder {

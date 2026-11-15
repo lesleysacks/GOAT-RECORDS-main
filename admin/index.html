@@ -4,6 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GOAT RECORDS — Admin Dashboard</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <script>
+    (function () {
+      var host = location.hostname;
+      var local = !host || host === 'localhost' || host === '127.0.0.1' || host === '[::1]' || location.protocol === 'file:';
+      if (local) document.documentElement.setAttribute('data-admin-local', '');
+    })();
+  </script>
+  <style>
+    html:not([data-admin-local]) body { visibility: hidden; }
+  </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
@@ -559,6 +570,12 @@
   <!-- SCRIPT -->
   <script src="../js/content-loader.js"></script>
   <script>
+    if (!document.documentElement.hasAttribute('data-admin-local')) {
+      document.body.style.visibility = 'visible';
+      document.body.innerHTML = '<main style="min-height:100vh;background:#000;color:#fff;font-family:Barlow,sans-serif;padding:48px 24px;max-width:40rem"><h1 style="font-size:1.5rem;letter-spacing:.06em">GOAT RECORDS</h1><p style="margin:16px 0">This editor is for use on your own computer. It is not available on the public website.</p><p><a href="../" style="color:#ff0000">Back to the site</a></p></main>';
+      throw new Error('Public admin disabled');
+    }
+
     let currentEditIndex = -1;
     let currentEditType = '';
     

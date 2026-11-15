@@ -1,6 +1,10 @@
 # GOAT RECORDS — Website Documentation
 
-**Last Updated:** May 4, 2026
+**Last Updated:** November 15, 2026
+
+The public site is a static page. Booking, merch, and mailing-list forms open an email draft to the addresses already published on the site. They are not delivered until that email is sent. There is no checkout and no connected mailing list.
+
+The editor in `admin/` runs on your own computer (`localhost` or a file open). On a public host it shows a short notice instead of the editor.
 
 ---
 

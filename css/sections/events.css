@@ -41,7 +41,16 @@
 }
 
 .event-row:hover {
-  background: rgba(255, 0, 0, 0.03);
+  background: rgba(255, 0, 0, 0.05);
+}
+
+.event-status {
+  font-family: var(--font-cond);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  padding: 10px 18px;
 }
 
 /* ─── DATE DISPLAY ─── */
@@ -58,10 +67,10 @@
 
 .event-month {
   font-family: var(--font-cond);
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text-muted);
 }
 
 /* ─── EVENT INFO ─── */
