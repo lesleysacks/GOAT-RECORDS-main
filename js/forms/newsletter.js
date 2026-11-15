@@ -1,29 +1,20 @@
 /**
  * newsletter.js
- * 
- * @description Newsletter subscription form handler
- * Validates email and provides visual feedback
- * 
- * @requires None (vanilla JS)
- * @exports None (Event listener on .nl-btn)
- * 
- * @features
- * - Email validation (checks for @)
- * - Visual feedback with button text change
- * - Auto-reset after 3 seconds
- * - Clear input on successful subscription
- * 
- * @validation
- * - Checks for non-empty input
- * - Checks for @ character (basic email validation)
+ *
+ * There is no connected mailing list. A valid address opens an email
+ * to the published general address.
  */
 
-// ─── NEWSLETTER SUBSCRIPTION ───
-document.querySelector('.nl-btn').addEventListener('click', function() {
-  const input = document.querySelector('.nl-input');
-  if (input.value && input.value.includes('@')) {
-    this.textContent = '✓ Subscribed!';
-    input.value = '';
-    setTimeout(() => { this.textContent = 'Subscribe'; }, 3000);
+document.getElementById('newsletter-form').addEventListener('submit', (event) => {
+  event.preventDefault();
+  const email = String(new FormData(event.currentTarget).get('email') || '').trim();
+  const status = document.getElementById('newsletter-status');
+
+  if (!email.includes('@')) {
+    status.textContent = 'Enter an email address.';
+    return;
   }
+
+  status.textContent = 'There is no mailing list connected on this site. Your email app will open a note to info@goatrecords.co.za. Nothing is delivered until you send it.';
+  window.location.href = `mailto:info@goatrecords.co.za?subject=${encodeURIComponent('Mailing list request — GOAT RECORDS')}&body=${encodeURIComponent(`Please add this address to label news:\n${email}\n\nThis request is delivered only if you send the email.`)}`;
 });

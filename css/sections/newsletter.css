@@ -33,9 +33,16 @@
 
 .nl-sub {
   font-family: var(--font-cond);
-  font-size: 0.9rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.55);
-  margin-bottom: 36px;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: none;
+  color: #140000;
+  font-weight: 500;
+  margin-bottom: 28px;
+  max-width: 46ch;
+}
+
+#newsletter .status-live {
+  color: #000;
+  max-width: 46ch;
 }

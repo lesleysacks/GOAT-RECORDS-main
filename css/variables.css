@@ -33,4 +33,10 @@
   --transition-fast: 0.2s ease;
   --transition-smooth: 0.3s ease;
   --transition-slow: 0.6s ease;
+
+  /* ─── TYPE & SPACE ─── */
+  --text-muted: rgba(255, 255, 255, 0.78);
+  --line-red: rgba(255, 0, 0, 0.35);
+  --space-section: clamp(72px, 10vw, 120px);
+  --measure: 62ch;
 }

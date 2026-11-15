@@ -53,6 +53,14 @@
   letter-spacing: 0.1em;
 }
 
+.about-mockup {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* ─── BADGE ─── */
 .about-badge {
   position: absolute;

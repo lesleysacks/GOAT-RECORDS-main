@@ -33,18 +33,70 @@
 }
 
 /* ─── LIGHTBOX ─── */
-#lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.96);
-  z-index: 9000;
-  display: none;
-  align-items: center;
-  justify-content: center;
+#lightbox,
+#artist-dialog {
+  border: 0;
+  color: var(--white);
+  outline: none;
 }
 
-#lightbox.open {
-  display: flex;
+#lightbox {
+  padding: 56px 20px 24px;
+  margin: auto;
+  background: #000;
+  max-width: none;
+  width: min(960px, calc(100vw - 32px));
+}
+
+#artist-dialog {
+  padding: 0;
+  margin: auto;
+  background: #0d0d0d;
+  width: min(880px, calc(100vw - 24px));
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+}
+
+#lightbox::backdrop,
+#artist-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.94);
+}
+
+.artist-dialog-layout {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.85fr) 1.15fr;
+  min-height: 420px;
+}
+
+.artist-dialog-layout img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 260px;
+  background: #000;
+}
+
+.artist-dialog-copy {
+  padding: 64px 28px 28px;
+}
+
+.artist-dialog-copy h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  line-height: 0.9;
+  letter-spacing: 0.03em;
+  margin: 8px 0 12px;
+}
+
+.artist-dialog-copy p {
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+@media (max-width: 700px) {
+  .artist-dialog-layout {
+    grid-template-columns: 1fr;
+  }
 }
 
 .lightbox-content {
@@ -53,16 +105,20 @@
   max-height: 85vh;
 }
 
-.lightbox-close {
-  position: fixed;
-  top: 24px;
-  right: 32px;
-  font-family: var(--font-display);
-  font-size: 2.5rem;
+.lightbox-close,
+.dialog-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-family: var(--font-cond);
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
   color: var(--white);
+  background: #000;
+  border: 1px solid rgba(255, 255, 255, 0.35);
   cursor: pointer;
-  line-height: 1;
-  transition: color 0.2s;
+  padding: 8px 12px;
 }
 
 .lightbox-close:hover {
@@ -73,6 +129,33 @@
   max-width: 100%;
   max-height: 85vh;
   display: block;
+}
+
+.lb-placeholder.has-photo {
+  position: relative;
+  overflow: hidden;
+  justify-content: flex-end;
+  padding: 0;
+}
+
+.lb-placeholder.has-photo .lightbox-img-display {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  object-fit: contain;
+  background: #0d0d0d;
+}
+
+.lb-placeholder.has-photo .lb-placeholder-title,
+.lb-placeholder.has-photo .lb-placeholder-sub {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin: 0;
+  padding: 8px 16px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.92), transparent);
 }
 
 /* ─── LIGHTBOX PLACEHOLDER ─── */
@@ -91,14 +174,18 @@
 
 .lb-placeholder-title {
   font-family: var(--font-display);
-  font-size: 3rem;
-  color: rgba(255, 0, 0, 0.3);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  color: var(--white);
+  text-align: center;
+  padding: 0 16px;
 }
 
 .lb-placeholder-sub {
   font-family: var(--font-cond);
-  font-size: 0.75rem;
-  letter-spacing: 0.3em;
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.2);
+  color: var(--text-muted);
+  text-align: center;
+  padding: 0 16px;
 }

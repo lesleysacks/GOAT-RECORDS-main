@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 760" width="800" height="760" role="img">
+  <rect width="800" height="760" fill="#0d0d0d"/>
+  
+  <rect width="800" height="760" fill="#100000"/>
+  <polygon points="300,0 500,0 420,220" fill="#ff0000" opacity="0.2"/>
+<g transform="translate(40,180)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+<g transform="translate(135,180)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+<g transform="translate(230,180)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+<g transform="translate(325,180)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+<g transform="translate(420,180)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+<g transform="translate(515,180)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+<g transform="translate(610,180)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+<g transform="translate(705,180)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+<g transform="translate(40,320)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+<g transform="translate(135,320)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+<g transform="translate(230,320)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+<g transform="translate(325,320)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+<g transform="translate(420,320)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+<g transform="translate(515,320)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+<g transform="translate(610,320)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+<g transform="translate(705,320)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+<g transform="translate(40,460)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+<g transform="translate(135,460)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+<g transform="translate(230,460)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+<g transform="translate(325,460)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+<g transform="translate(420,460)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+<g transform="translate(515,460)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+<g transform="translate(610,460)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+<g transform="translate(705,460)"><circle cx="30" cy="20" r="16" fill="#1a1a1a" stroke="#ff0000"/><rect x="8" y="40" width="44" height="50" rx="10" fill="#111"/></g>
+  <text x="40" y="56" fill="#ff0000" font-family="Arial,sans-serif" font-size="20" letter-spacing="4">CROWD MOCKUP</text>
+
+</svg>
